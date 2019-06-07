@@ -2,6 +2,7 @@ import Layout from "./containers/Layout/Layout";
 import React from "react";
 import axios from "axios";
 import { Route, Switch } from "react-router-dom";
+import Cart from "./components/Cart/Cart";
 
 const config = {
   headers: {
@@ -22,7 +23,12 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Layout>children</Layout>
+        <Layout>
+          <Switch>
+            children
+            <Route component={Cart} path='/cart' />
+          </Switch>
+        </Layout>
       </React.Fragment>
     );
   }
