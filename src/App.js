@@ -1,7 +1,7 @@
 import Layout from "./containers/Layout/Layout";
 import React from "react";
 import axios from "axios";
-import Button from "@material-ui/core/Button";
+import { Route, Switch } from "react-router-dom";
 
 const config = {
   headers: {
@@ -21,12 +21,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className='App'>
-        <Layout />
-        <Button variant='contained' color='primary'>
-          Hello World
-        </Button>
-      </div>
+      <React.Fragment>
+        <Layout>children</Layout>
+      </React.Fragment>
     );
   }
 }
