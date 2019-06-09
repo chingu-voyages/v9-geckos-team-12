@@ -1,19 +1,17 @@
-import React, { Component, Fragment} from 'react';
-import NavigationTop from '../../components/UI/NavigationTop/NavigationTop';
-import NavigationBottom from '../../components/UI/NavigationBottom/NavigationBottom';
+import React, { Component, Fragment } from "react";
+import NavigationTop from "../../components/UI/NavigationTop/NavigationTop";
+import NavigationBottom from "../../components/UI/NavigationBottom/NavigationBottom";
 
-
- class Layout extends Component {
-    render() {
-        return (
-             <Fragment>
-                 <NavigationTop />
-                 <NavigationBottom />
-             </Fragment>
-        )
-    }
+class Layout extends Component {
+  render() {
+    return (
+      <Fragment>
+        <NavigationTop />
+        {this.props.children}
+        <NavigationBottom />
+      </Fragment>
+    );
+  }
 }
 
-
-
-export default Layout
+export default Layout;
