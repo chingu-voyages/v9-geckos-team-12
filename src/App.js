@@ -10,8 +10,8 @@ class App extends React.Component {
       <React.Fragment>
         <Layout>
           <Switch>
-            <Route component={ClothesList} path='/' exact />
-            <Route component={Cart} path='/cart' />
+            <Route component={ClothesList} path='' exact />
+           <Route component={Cart} path='/cart' />
           </Switch>
         </Layout>
       </React.Fragment>
