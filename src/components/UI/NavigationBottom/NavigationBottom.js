@@ -20,7 +20,7 @@ const NavigationBottom = () => {
 
     return (
         <div>
-             <AppBar position="fixed" color="primary" className={classes.appBar}>
+             <AppBar position="static" color="primary" className={classes.appBar}>
                  <Toolbar style={{alignSelf: 'center'}}>
                     <Box p={2}>
                         <Typography variant="button" color="inherit"   style={{ borderRight: '0.1em solid ', paddingRight: '33px' }}>
