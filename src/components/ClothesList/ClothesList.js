@@ -45,7 +45,7 @@ export default class ClothesList extends Component {
     <Grid container justify='center' alignItems='center'> 
           {this.state.items.map(item => {
             return (
-              <Grid item xs={12} sm={12} md={3}>  {/* sm indicates how much of the page will an individual card cover xs= exstra small etc..*/}
+              <Grid item xs={12} sm={12} md={6} lg={3}>  {/* sm indicates how much of the page will an individual card cover xs= exstra small etc..*/}
               <Card
                 name={item.name}
                 img={item.baseImageUrl}
