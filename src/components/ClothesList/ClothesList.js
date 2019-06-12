@@ -31,14 +31,16 @@ export default class ClothesList extends Component {
     console.log(items);
     return (
       <div>
-        <Grid container>
+        <Grid container justify='center'>
           {this.state.items.map(item => {
             return (
+              <Grid item xs={3}> 
               <Card
                 name={item.name}
                 img={item.baseImageUrl}
                 price={item.price.current.text}
               />
+              </Grid>
             );
           })}
         </Grid>
