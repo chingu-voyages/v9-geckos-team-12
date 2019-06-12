@@ -3,6 +3,7 @@ import axios from "axios";
 import Card from "../ClothesList/Card/Card";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
+import Box from '@material-ui/core/Box'
 
 const config = {
   headers: {
@@ -35,11 +36,14 @@ export default class ClothesList extends Component {
           {this.state.items.map(item => {
             return (
               <Grid item xs={3}> 
+              <Box m={3}>
               <Card
                 name={item.name}
                 img={item.baseImageUrl}
                 price={item.price.current.text}
               />
+              </Box>
+              
               </Grid>
             );
           })}
