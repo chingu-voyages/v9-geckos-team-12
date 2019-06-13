@@ -9,36 +9,49 @@ const useStyles = makeStyles({
   }
 });
 
-const NavigationTop = () => {
-  const classes = useStyles();
+class NavigationTop extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { currentTerm: "t-shirts" };
+  }
 
-  return (
-    <div className={classes.root}>
-      <AppBar position='static'>
-        <Toolbar>
-          <Box p={2}>
-            <Button
-              variant='contained'
-              color='secondary'
-              onClick={() => alert("clicked!")}
-            >
-              T-Shirts
-            </Button>
-          </Box>
-          <Box p={2}>
-            <Button variant='contained' color='secondary'>
-              Jeans
-            </Button>
-          </Box>
-          <Box p={2}>
-            <Button variant='contained' color='secondary'>
-              Shoes
-            </Button>
-          </Box>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
-};
+  render() {
+    return (
+      <div className={useStyles.root}>
+        <AppBar position='static'>
+          <Toolbar>
+            <Box p={2}>
+              <Button
+                variant='contained'
+                color='secondary'
+                onClick={() => this.setState({ currentTerm: "t-shirts" })}
+              >
+                T-Shirts
+              </Button>
+            </Box>
+            <Box p={2}>
+              <Button
+                variant='contained'
+                color='secondary'
+                onClick={() => this.setState({ currentTerm: "jeans" })}
+              >
+                Jeans
+              </Button>
+            </Box>
+            <Box p={2}>
+              <Button
+                variant='contained'
+                color='secondary'
+                onClick={() => this.setState({ currentTerm: "shoes" })}
+              >
+                Shoes
+              </Button>
+            </Box>
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
+  }
+}
 
 export default NavigationTop;
