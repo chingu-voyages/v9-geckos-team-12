@@ -1,7 +1,7 @@
 import React from "react";
-import Box from '@material-ui/core/Box';
+import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
-import { AppBar, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Toolbar, Button } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
@@ -10,33 +10,31 @@ const useStyles = makeStyles({
 });
 
 const NavigationTop = () => {
-    const classes = useStyles();
+  const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      
-      <AppBar position="static">
+      <AppBar position='static'>
         <Toolbar>
-        <Box p={2}>
-          <Typography variant="button" color="inherit"   style={{ borderRight: '0.1em solid ', paddingRight: '33px' }}>
-            Shirts 
-          </Typography>
+          <Box p={2}>
+            <Button variant='contained' color='secondary'>
+              Shirts
+            </Button>
           </Box>
           <Box p={2}>
-          <Typography variant="button" color="inherit" style={{ borderRight: '0.1em solid ', paddingRight: '33px' }}>
-            Jeans 
-          </Typography>
+            <Button variant='contained' color='secondary'>
+              Jeans
+            </Button>
           </Box>
           <Box p={2}>
-          <Typography variant="button" color="inherit">
-            Shoes
-          </Typography>
+            <Button variant='contained' color='secondary'>
+              Shoes
+            </Button>
           </Box>
         </Toolbar>
       </AppBar>
-    
     </div>
   );
-}
+};
 
-export default NavigationTop
+export default NavigationTop;
