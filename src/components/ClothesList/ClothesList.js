@@ -32,13 +32,12 @@ export default class ClothesList extends Component {
 
  
 
-  componentDidUpdate(prevState) {
-
+  componentDidUpdate(prevProps,prevState) {
     let params = this.props.location.pathname.slice(1);
-    console.log(this.props);
-    console.log(params);
-  
-    axios
+      if(prevProps.location!== this.props.location) {
+        console.log('yay') // fetch is called only if yo usee YAY in the console. Once you click on a shoes or jeans you will only see yay appear once
+                          // The rest of the data that shows up is normal and is data inside this if statement
+        axios
       .get(
         `https://brianiswu-unofficial-asos-com-v1.p.rapidapi.com/product/search/v1/?q=${params}&lang=en-GB&currency=EUR&store=1`,
         config
@@ -53,6 +52,8 @@ export default class ClothesList extends Component {
           });
         }
       }).catch(err =>console.log(err));
+      } 
+    
 
   }
 
