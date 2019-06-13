@@ -10,10 +10,12 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
   card: {
-    maxWidth: 345
+    maxWidth: 345,
+    marginTop: '20px',
+    marginBottom: '20px'
   },
   media: {
-    height: 314
+    height: 420
   }
 });
 
@@ -25,7 +27,7 @@ export default function CardComponent({ ...props }) {
       <CardActionArea>
         <CardMedia className={classes.media} image={props.img} />
         <CardContent>
-          <Typography gutterBottom variant='h5' component='h2'>
+          <Typography gutterBottom variant='caption' component='h2'>
             {props.name}
           </Typography>
           <Typography variant='body2' color='textSecondary' component='p'>
