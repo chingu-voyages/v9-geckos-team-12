@@ -18,33 +18,21 @@ class NavigationTop extends React.Component {
           <Toolbar>
             <Box p={2}>
               <Link to={{ pathname: "/t-shirts" }}>
-                <Button
-                  variant='contained'
-                  color='secondary'
-                  onClick={() => this.setState({ currentTerm: "t-shirts" })}
-                >
+                <Button variant='contained' color='secondary'>
                   T-Shirts
                 </Button>
               </Link>
             </Box>
             <Box p={2}>
               <Link to={{ pathname: "/jeans" }}>
-                <Button
-                  variant='contained'
-                  color='secondary'
-                  onClick={() => this.setState({ currentTerm: "jeans" })}
-                >
+                <Button variant='contained' color='secondary'>
                   Jeans
                 </Button>
               </Link>
             </Box>
             <Box p={2}>
               <Link to={{ pathname: "/shoes" }}>
-                <Button
-                  variant='contained'
-                  color='secondary'
-                  onClick={() => this.setState({ currentTerm: "" })}
-                >
+                <Button variant='contained' color='secondary'>
                   Shoes
                 </Button>
               </Link>
