@@ -5,15 +5,24 @@ import Cart from "./components/Cart/Cart";
 import ClothesList from "./components/ClothesList/ClothesList";
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentTerm: "flip"
+    };
+  }
   render() {
     return (
       <React.Fragment>
-        <Layout>
+        <Layout currentTerm='sandals'>
           <Switch>
-            <Route component={ClothesList} path='/' exact />
+            <Route component={ClothesList} path='/jeans' />
+            <Route component={ClothesList} path='/t-shirts' />
+            <Route component={ClothesList} path='/shoes' />
             <Route component={Cart} path='/cart' />
           </Switch>
         </Layout>
+        s
       </React.Fragment>
     );
   }

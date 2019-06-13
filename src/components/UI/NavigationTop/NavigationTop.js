@@ -2,6 +2,7 @@ import React from "react";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Toolbar, Button } from "@material-ui/core";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -10,42 +11,43 @@ const useStyles = makeStyles({
 });
 
 class NavigationTop extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { currentTerm: "t-shirts" };
-  }
-
   render() {
     return (
       <div className={useStyles.root}>
         <AppBar position='static'>
           <Toolbar>
             <Box p={2}>
-              <Button
-                variant='contained'
-                color='secondary'
-                onClick={() => this.setState({ currentTerm: "t-shirts" })}
-              >
-                T-Shirts
-              </Button>
+              <Link to={{ pathname: "/t-shirts" }}>
+                <Button
+                  variant='contained'
+                  color='secondary'
+                  onClick={() => this.setState({ currentTerm: "t-shirts" })}
+                >
+                  T-Shirts
+                </Button>
+              </Link>
             </Box>
             <Box p={2}>
-              <Button
-                variant='contained'
-                color='secondary'
-                onClick={() => this.setState({ currentTerm: "jeans" })}
-              >
-                Jeans
-              </Button>
+              <Link to={{ pathname: "/jeans" }}>
+                <Button
+                  variant='contained'
+                  color='secondary'
+                  onClick={() => this.setState({ currentTerm: "jeans" })}
+                >
+                  Jeans
+                </Button>
+              </Link>
             </Box>
             <Box p={2}>
-              <Button
-                variant='contained'
-                color='secondary'
-                onClick={() => this.setState({ currentTerm: "shoes" })}
-              >
-                Shoes
-              </Button>
+              <Link to={{ pathname: "/shoes" }}>
+                <Button
+                  variant='contained'
+                  color='secondary'
+                  onClick={() => this.setState({ currentTerm: "" })}
+                >
+                  Shoes
+                </Button>
+              </Link>
             </Box>
           </Toolbar>
         </AppBar>
