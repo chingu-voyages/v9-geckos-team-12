@@ -17,8 +17,12 @@ const NavigationTop = () => {
       <AppBar position='static'>
         <Toolbar>
           <Box p={2}>
-            <Button variant='contained' color='secondary'>
-              Shirts
+            <Button
+              variant='contained'
+              color='secondary'
+              onClick={() => alert("clicked!")}
+            >
+              T-Shirts
             </Button>
           </Box>
           <Box p={2}>

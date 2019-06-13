@@ -15,14 +15,16 @@ export default class ClothesList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: []
+      items: [],
+      searchTerm: "t-shirt"
     };
   }
 
   componentDidMount() {
+    let searchTerm = this.state.searchTerm;
     axios
       .get(
-        "https://brianiswu-unofficial-asos-com-v1.p.rapidapi.com/product/search/v1/?q=t-shirt&lang=en-GB&currency=EUR&store=1",
+        `https://brianiswu-unofficial-asos-com-v1.p.rapidapi.com/product/search/v1/?q=${searchTerm}&lang=en-GB&currency=EUR&store=1`,
         config
       )
       .then(res => this.setState({ items: res.data.products }));
