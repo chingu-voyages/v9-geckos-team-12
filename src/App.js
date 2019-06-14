@@ -16,7 +16,7 @@ class App extends React.Component {
       <React.Fragment>
         <Layout currentTerm='sandals'>
           <Switch>
-            <Route component={ClothesList} path='' exact />
+            <Route component={ClothesList} path='/' exact />
             <Route component={Cart} path='/cart' />
           </Switch>
         </Layout>
