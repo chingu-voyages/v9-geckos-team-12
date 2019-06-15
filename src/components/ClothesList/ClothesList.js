@@ -65,8 +65,6 @@ export default class ClothesList extends Component {
     }
   }
 
-  fetchClothes = () => {};
-
   render() {
     const items = this.state.items;
     return (
@@ -75,7 +73,7 @@ export default class ClothesList extends Component {
         {/* MuiThemeProvider allos us to override styles made by MaterialUi so we can edit all aspects of the default style */}
         <Fragment>
           <Grid container justify='center' alignItems='center'>
-            {this.state.items.map(item => {
+            {items.map(item => {
               return (
                 <Grid item xs={12} sm={12} md={6} lg={3}>
                   {" "}
