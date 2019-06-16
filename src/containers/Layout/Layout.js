@@ -17,9 +17,7 @@ class Layout extends Component {
     return (
       <Fragment>
         <NavigationTop />
-        <Switch>
-            <Route component={ClothesList} path='/shoes'  />
-          </Switch>
+        <Route component={ClothesList } path='/' />
         <NavigationBottom />
       </Fragment>
     );
