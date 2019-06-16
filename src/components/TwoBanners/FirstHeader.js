@@ -7,7 +7,7 @@ import InnerBox from "../../components/TwoBanners/InnerBox";
 let FirstHeader = props => {
   return (
     <Box className="forAbsolute">
-      <Box className="pictureClass" />
+      <Box className="pictureClass secondClass" />
       <InnerBox
         namehone="NEWS !!!!"
         namesecond="Check Now !!!"
