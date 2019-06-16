@@ -6,7 +6,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
 const app = (
-  <BrowserRouter>
+  <BrowserRouter basename='/v9-geckos-team-12'>
     <App />
   </BrowserRouter>
 );
