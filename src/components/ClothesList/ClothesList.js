@@ -52,13 +52,17 @@ export default class ClothesList extends Component {
         config
       )
       .then(res => {
-          console.log(res.data.products[0].id, 'response data products[0]')
-          console.log(this.state.items[0].id)
-          console.log(this.state.items)
-        if (res.data.products[0].id !== this.state.items[0].id)  {
+        if(this.state.items.length === 0) {
           this.setState({
             items: res.data.products
           });
+        }
+     else {
+      if (res.data.products[0].id !== this.state.items[0].id )  {
+        this.setState({
+          items: res.data.products
+        });
+      }
         }
       }).catch(err =>console.log(err));
       } 
