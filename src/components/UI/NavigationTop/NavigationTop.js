@@ -2,7 +2,7 @@ import React from "react";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Toolbar, Button } from "@material-ui/core";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -17,21 +17,21 @@ class NavigationTop extends React.Component {
         <AppBar position='static'>
           <Toolbar>
             <Box p={2}>
-              <Link to={{ pathname: "/t-shirts" }}>
+              <Link to="/t-shirts" replace>
                 <Button variant='contained' color='secondary'>
                   T-Shirts
                 </Button>
               </Link>
             </Box>
             <Box p={2}>
-              <Link to={{ pathname: "/jeans" }}>
+              <Link  to="v9-geckos-team-12/jeans" replace>
                 <Button variant='contained' color='secondary'>
                   Jeans
                 </Button>
               </Link>
             </Box>
             <Box p={2}>
-              <Link to={{ pathname: "/shoes" }}>
+              <Link  to="v9-geckos-team-12/shoes" replace>
                 <Button variant='contained' color='secondary'>
                   Shoes
                 </Button>
