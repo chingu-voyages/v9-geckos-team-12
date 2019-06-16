@@ -25,13 +25,12 @@ export default class ClothesList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: [],
-      params: this.props.location.pathname.slice(1)
+      items: [], 
     };
   }
   //fetch for the first time
   componentDidMount() {
-    let params = this.state.params;
+    let params = this.props.location.pathname.slice(1);
     axios
       .get(
         `https://brianiswu-unofficial-asos-com-v1.p.rapidapi.com/product/search/v1/?q=${params}&lang=en-GB&currency=EUR&store=1`,
