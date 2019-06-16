@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from "react";
 import NavigationTop from "../../components/UI/NavigationTop/NavigationTop";
 import NavigationBottom from "../../components/UI/NavigationBottom/NavigationBottom";
-
+import { Route, Switch } from "react-router-dom";
+import ClothesList from '../../components/ClothesList/ClothesList'
 // Layout will render NavigationTop, NavigationBottom,ClothesList
 
 class Layout extends Component {
@@ -16,7 +17,9 @@ class Layout extends Component {
     return (
       <Fragment>
         <NavigationTop />
-        {this.props.children}
+        <Switch>
+            <Route component={ClothesList} path='/shoes'  />
+          </Switch>
         <NavigationBottom />
       </Fragment>
     );
