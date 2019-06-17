@@ -21,7 +21,13 @@ const theme = createMuiTheme({
 class ClothesList extends Component {
   //fetch for the first time
   componentDidMount() {
-    this.props.dispatch(fetchProducts());
+    this.props.dispatch(fetchProducts(this.props.category));
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.category !== prevProps.category) {
+      this.props.dispatch(fetchProducts(this.props.category));
+    }
   }
 
   render() {
@@ -62,7 +68,8 @@ class ClothesList extends Component {
 const mapStateToProps = state => ({
   products: state.products.items,
   loading: state.products.loading,
-  error: state.products.error
+  error: state.products.error,
+  category: state.products.category
 });
 
 export default connect(mapStateToProps)(ClothesList);

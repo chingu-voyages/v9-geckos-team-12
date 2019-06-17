@@ -3,9 +3,9 @@ import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Toolbar, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import ClothesList from "../../ClothesList/ClothesList";
+// import ClothesList from "../../ClothesList/ClothesList";
 import { connect } from "react-redux";
-// import { alertjeans } from "../../../actions";
+import { selectCategory } from "../../../actions/productActions";
 const useStyles = makeStyles({
   root: {
     flexGrow: 1
@@ -13,12 +13,8 @@ const useStyles = makeStyles({
 });
 
 class NavigationTop extends React.Component {
-  handleClick = () => {
-    return <ClothesList />;
-  };
-
-  alertJeans = () => {
-    this.props.alertjeans();
+  handleSelectCategory = category => {
+    this.props.selectCategory(category);
   };
 
   render() {
@@ -27,7 +23,12 @@ class NavigationTop extends React.Component {
         <AppBar position='static'>
           <Toolbar>
             <Box p={2}>
-              <Link to='/t-shirts' replace onClick={this.alertJeans}>
+              <Link
+                to='/t-shirts'
+                replace
+                value='t-shirts'
+                onClick={() => this.handleSelectCategory("t-shirts")}
+              >
                 <Button variant='contained' color='secondary'>
                   T-Shirts
                 </Button>
@@ -35,14 +36,22 @@ class NavigationTop extends React.Component {
             </Box>
             <Box p={2}>
               <Link to='/jeans' replace>
-                <Button variant='contained' color='secondary'>
+                <Button
+                  variant='contained'
+                  color='secondary'
+                  onClick={() => this.handleSelectCategory("jeans")}
+                >
                   Jeans
                 </Button>
               </Link>
             </Box>
             <Box p={2}>
               <Link to='/shoes' replace>
-                <Button variant='contained' color='secondary'>
+                <Button
+                  variant='contained'
+                  color='secondary'
+                  onClick={() => this.handleSelectCategory("shoes")}
+                >
                   Shoes
                 </Button>
               </Link>
@@ -54,18 +63,11 @@ class NavigationTop extends React.Component {
   }
 }
 
-// const mapStateToProps = state => {
-//   return {
-//     jeans: state.jeans
-//   };
-// };
+const mapDispatchToProps = {
+  selectCategory
+};
 
-// const mapDispatchToProps = {
-//   alertjeans
-// };
-
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(NavigationTop);
-export default NavigationTop;
+export default connect(
+  null,
+  mapDispatchToProps
+)(NavigationTop);
