@@ -1,13 +1,15 @@
 import {
   FETCH_PRODUCTS_BEGIN,
   FETCH_PRODUCTS_SUCCESS,
-  FETCH_PRODUCTS_FAILURE
+  FETCH_PRODUCTS_FAILURE,
+  SELECT_CATEGORY
 } from "../actions/productActions";
 
 const initialState = {
   items: [],
   loading: false,
-  error: null
+  error: null,
+  category: ""
 };
 
 export default function productReducer(state = initialState, action) {
@@ -30,6 +32,12 @@ export default function productReducer(state = initialState, action) {
         loading: false,
         error: action.payload.error,
         items: []
+      };
+    case SELECT_CATEGORY:
+      return {
+        ...state,
+        loading: false,
+        category: action.category
       };
     default:
       return state;

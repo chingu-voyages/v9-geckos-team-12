@@ -2,6 +2,7 @@ import axios from "axios";
 export const FETCH_PRODUCTS_BEGIN = "FETCH_PRODUCTS_BEGIN";
 export const FETCH_PRODUCTS_SUCCESS = "FETCH_PRODUCTS_SUCCESS";
 export const FETCH_PRODUCTS_FAILURE = "FETCH_PRODUCTS_FAILURE";
+export const SELECT_CATEGORY = "SELECT_CATEGORY";
 
 const config = {
   headers: {
@@ -23,12 +24,17 @@ export const fetchProductsFailure = error => ({
   payload: { error }
 });
 
-export function fetchProducts() {
+export const selectCategory = category => ({
+  type: SELECT_CATEGORY,
+  category
+});
+
+export function fetchProducts(category) {
   return dispatch => {
     dispatch(fetchProductsBegin());
     return axios
       .get(
-        `https://brianiswu-unofficial-asos-com-v1.p.rapidapi.com/product/search/v1/?q=jeans&lang=en-GB&currency=EUR&store=1`,
+        `https://brianiswu-unofficial-asos-com-v1.p.rapidapi.com/product/search/v1/?q=${category}&lang=en-GB&currency=EUR&store=1`,
         config
       )
       .then(res => {
