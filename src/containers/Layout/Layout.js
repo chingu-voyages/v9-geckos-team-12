@@ -7,13 +7,6 @@ import Details from "../../components/Details/Details";
 // Layout will render NavigationTop, NavigationBottom,ClothesList
 
 class Layout extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentTerm: "sandals"
-    };
-  }
-
   render() {
     return (
       <Fragment>
