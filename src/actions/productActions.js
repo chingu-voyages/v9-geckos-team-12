@@ -2,7 +2,9 @@ import axios from "axios";
 export const FETCH_PRODUCTS_BEGIN = "FETCH_PRODUCTS_BEGIN";
 export const FETCH_PRODUCTS_SUCCESS = "FETCH_PRODUCTS_SUCCESS";
 export const FETCH_PRODUCTS_FAILURE = "FETCH_PRODUCTS_FAILURE";
+export const FETCH_SINGLE_PRODUCT_SUCCESS = "FETCH_SINGLE_PRODUCT_SUCCESS";
 export const SELECT_CATEGORY = "SELECT_CATEGORY";
+export const CARD_SELECT_BY_ID = "CARD_SELECT_BY_ID";
 
 const config = {
   headers: {
@@ -28,6 +30,32 @@ export const selectCategory = category => ({
   type: SELECT_CATEGORY,
   category
 });
+
+export const cardSelectByID = id => ({
+  type: CARD_SELECT_BY_ID,
+  id
+});
+
+export const fetchSingleProductSuccess = data => ({
+  type: FETCH_SINGLE_PRODUCT_SUCCESS,
+  payload: { data }
+});
+
+export function fetchProductByID(id) {
+  return dispatch => {
+    dispatch(fetchProductsBegin());
+    return axios
+      .get(
+        `https://brianiswu-unofficial-asos-com-v1.p.rapidapi.com/product/catalogue/v2/products/${id}?lang=en-GB&productid=${id}&store=COM&sizeschema=EU&currency=EUR`,
+        config
+      )
+      .then(res => {
+        dispatch(fetchSingleProductSuccess(res.data));
+        return res.data;
+      })
+      .catch(error => dispatch(fetchProductsFailure(error)));
+  };
+}
 
 export function fetchProducts(category) {
   return dispatch => {

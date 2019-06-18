@@ -2,14 +2,18 @@ import {
   FETCH_PRODUCTS_BEGIN,
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS_FAILURE,
-  SELECT_CATEGORY
+  SELECT_CATEGORY,
+  CARD_SELECT_BY_ID,
+  FETCH_SINGLE_PRODUCT_SUCCESS
 } from "../actions/productActions";
 
 const initialState = {
   items: [],
   loading: false,
   error: null,
-  category: ""
+  category: "",
+  id: 1,
+  item: []
 };
 
 export default function productReducer(state = initialState, action) {
@@ -26,6 +30,12 @@ export default function productReducer(state = initialState, action) {
         loading: false,
         items: action.payload.products
       };
+    case FETCH_SINGLE_PRODUCT_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        item: action.payload.data
+      };
     case FETCH_PRODUCTS_FAILURE:
       return {
         ...state,
@@ -38,6 +48,12 @@ export default function productReducer(state = initialState, action) {
         ...state,
         loading: false,
         category: action.category
+      };
+    case CARD_SELECT_BY_ID:
+      return {
+        ...state,
+        loading: false,
+        id: action.id
       };
     default:
       return state;

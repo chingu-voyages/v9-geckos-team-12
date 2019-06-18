@@ -34,6 +34,7 @@ export default function CardComponent({ ...props }) {
             </Typography>
             <Typography variant='body2' color='textSecondary' component='p'>
               Price: {props.price}
+              ID: {props.id}
             </Typography>
           </CardContent>
         </CardActionArea>
