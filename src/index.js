@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
@@ -15,6 +15,7 @@ if (process.env.NODE_ENV === "prod" || process.env.NODE_ENV === "production") {
   devTools = a => a;
 }
 
+//rootReducer combines all reducers
 const store = createStore(
   rootReducer,
   compose(
@@ -25,9 +26,9 @@ const store = createStore(
 
 const app = (
   <Provider store={store}>
-    <HashRouter basename='/'>
+    <BrowserRouter>
       <App />
-    </HashRouter>
+    </BrowserRouter>
   </Provider>
 );
 
