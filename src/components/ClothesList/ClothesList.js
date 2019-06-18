@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import Card from "../ClothesList/Card/Card";
 import Grid from "@material-ui/core/Grid";
 import { connect } from "react-redux";
-import { fetchProducts } from "../../actions/productActions";
+import { fetchProducts, cardSelectByID } from "../../actions/productActions";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -30,8 +30,8 @@ class ClothesList extends Component {
     }
   }
 
-  cardClicked = id => {
-    console.log("card of id" + id);
+  cardSelectByID = id => {
+    this.props.dispatch(cardSelectByID(id));
   };
 
   render() {
@@ -58,12 +58,13 @@ class ClothesList extends Component {
                   sm={12}
                   md={6}
                   lg={3}
-                  onClick={() => this.cardClicked(item.id)}
+                  onClick={() => this.cardSelectByID(item.id)}
                 >
                   {" "}
                   {/* sm indicates how much of the page will an individual card cover xs= exstra small etc..*/}
                   <Card
                     key={item.id}
+                    id={item.id}
                     name={item.name}
                     img={item.baseImageUrl}
                     price={item.price.current.text}
