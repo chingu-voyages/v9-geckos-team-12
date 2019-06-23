@@ -3,6 +3,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { Slide } from "react-slideshow-image";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+import { Button } from "@material-ui/core";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
@@ -37,6 +38,7 @@ const Details = props => {
   //when component did mount it fetches product by ID passed before by clicking Card
   React.useEffect(() => {
     props.dispatch(fetchProductByID(props.id));
+    // eslint-disable-next-line
   }, []);
 
   const [values, setValues] = React.useState({
@@ -68,6 +70,15 @@ const Details = props => {
       <Typography variant='h5' gutterBottom>
         Price: {item.price.current.text}
       </Typography>
+      <Button
+        variant='contained'
+        color='primary'
+        onClick={() => {
+          alert("added to cart");
+        }}
+      >
+        Add to cart
+      </Button>
       <Typography variant='button' display='block' gutterBottom>
         Brand: {item.brand.name}
       </Typography>
