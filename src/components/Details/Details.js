@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { Slide } from "react-slideshow-image";
+import Typography from "@material-ui/core/Typography";
 
 import { fetchProductByID } from "../../actions/productActions";
 import { connect } from "react-redux";
@@ -30,7 +31,9 @@ class Details extends Component {
 
     return (
       <div>
-        <h1>{item.name}</h1>
+        <Typography variant='h4' gutterBottom>
+          {item.name}
+        </Typography>
 
         {item.brand.name}
         <div className='slideshow'>
