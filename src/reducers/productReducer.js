@@ -4,7 +4,8 @@ import {
   FETCH_PRODUCTS_FAILURE,
   SELECT_CATEGORY,
   CARD_SELECT_BY_ID,
-  FETCH_SINGLE_PRODUCT_SUCCESS
+  FETCH_SINGLE_PRODUCT_SUCCESS,
+  FETCH_READY
 } from "../actions/productActions";
 
 const initialState = {
@@ -33,8 +34,8 @@ export default function productReducer(state = initialState, action) {
     case FETCH_SINGLE_PRODUCT_SUCCESS:
       return {
         ...state,
-        loading: false,
-        item: action.payload.data
+        loading: true,
+        item: action.payload.item
       };
     case FETCH_PRODUCTS_FAILURE:
       return {
@@ -52,8 +53,13 @@ export default function productReducer(state = initialState, action) {
     case CARD_SELECT_BY_ID:
       return {
         ...state,
-        loading: false,
+        loading: true,
         id: action.id
+      };
+    case FETCH_READY:
+      return {
+        ...state,
+        loading: false
       };
     default:
       return state;

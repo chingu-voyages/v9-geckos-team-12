@@ -5,6 +5,7 @@ export const FETCH_PRODUCTS_FAILURE = "FETCH_PRODUCTS_FAILURE";
 export const FETCH_SINGLE_PRODUCT_SUCCESS = "FETCH_SINGLE_PRODUCT_SUCCESS";
 export const SELECT_CATEGORY = "SELECT_CATEGORY";
 export const CARD_SELECT_BY_ID = "CARD_SELECT_BY_ID";
+export const FETCH_READY = "FETCH_READY";
 
 const config = {
   headers: {
@@ -36,9 +37,13 @@ export const cardSelectByID = id => ({
   id
 });
 
-export const fetchSingleProductSuccess = data => ({
+export const fetchReady = () => ({
+  type: FETCH_READY
+});
+
+export const fetchSingleProductSuccess = item => ({
   type: FETCH_SINGLE_PRODUCT_SUCCESS,
-  payload: { data }
+  payload: { item }
 });
 
 export function fetchProductByID(id) {
@@ -53,6 +58,7 @@ export function fetchProductByID(id) {
         dispatch(fetchSingleProductSuccess(res.data));
         return res.data;
       })
+      .then(() => dispatch(fetchReady()))
       .catch(error => dispatch(fetchProductsFailure(error)));
   };
 }

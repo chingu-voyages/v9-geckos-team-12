@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import CircularProgress from "@material-ui/core/CircularProgress";
+
 import { fetchProductByID } from "../../actions/productActions";
 import { connect } from "react-redux";
 class Details extends Component {
@@ -7,10 +9,21 @@ class Details extends Component {
   }
 
   render() {
+    const { loading, error, item } = this.props;
+    if (error) {
+      return <div>Error! {error.message}</div>;
+    }
+
+    if (loading) {
+      return <CircularProgress className='progress' color='secondary' />;
+    }
+
     return (
       <div>
         <h1>Welcome To Details</h1>
-        <p>{this.props.item.name}</p>
+        {item.name}
+        {item.productCode}
+        {item.brand.name}
       </div>
     );
   }
@@ -23,4 +36,5 @@ const mapStateToProps = state => ({
   item: state.products.item,
   id: state.products.id
 });
+
 export default connect(mapStateToProps)(Details);
