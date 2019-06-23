@@ -16,7 +16,8 @@
     "react-scripts": "3.0.1",
     "react-slideshow-image": "^1.2.0",
     "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "typeface-roboto": "0.0.54"
   },
   "scripts": {
     "predeploy": "npm run build",
