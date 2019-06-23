@@ -1,8 +1,18 @@
 import React, { Component } from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { Slide } from "react-slideshow-image";
 
 import { fetchProductByID } from "../../actions/productActions";
 import { connect } from "react-redux";
+
+const properties = {
+  duration: 5000,
+  transitionDuration: 400,
+  infinite: true,
+  indicators: true,
+  arrows: true
+};
+
 class Details extends Component {
   componentDidMount() {
     this.props.dispatch(fetchProductByID(this.props.id));
@@ -20,10 +30,43 @@ class Details extends Component {
 
     return (
       <div>
-        <h1>Welcome To Details</h1>
-        {item.name}
-        {item.productCode}
+        <h1>{item.name}</h1>
+
         {item.brand.name}
+        <div className='slideshow'>
+          <Slide {...properties} style={{ width: "314px", margin: "0 auto" }}>
+            <div className='each-slide'>
+              <div
+                style={{
+                  backgroundImage: `url('https://${item.media.images[0].url}')`,
+                  height: "400px",
+                  width: "314px",
+                  margin: "0 auto"
+                }}
+              />
+            </div>
+            <div className='each-slide'>
+              <div
+                style={{
+                  backgroundImage: `url('https://${item.media.images[1].url}')`,
+                  height: "400px",
+                  width: "314px",
+                  margin: "0 auto"
+                }}
+              />
+            </div>
+            <div className='each-slide'>
+              <div
+                style={{
+                  backgroundImage: `url('https://${item.media.images[2].url}')`,
+                  height: "400px",
+                  width: "314px",
+                  margin: "0 auto"
+                }}
+              />
+            </div>
+          </Slide>
+        </div>
       </div>
     );
   }
