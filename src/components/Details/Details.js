@@ -9,7 +9,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import { fetchProductByID } from "../../actions/productActions";
 import { connect } from "react-redux";
-
+//properties for slideshow
 const properties = {
   duration: 5000,
   transitionDuration: 400,
@@ -17,7 +17,7 @@ const properties = {
   indicators: true,
   arrows: true
 };
-
+// style for size input select
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
@@ -34,13 +34,13 @@ const useStyles = makeStyles(theme => ({
 
 const Details = props => {
   const classes = useStyles();
-
+  //when component did mount it fetches product by ID passed before by clicking Card
   React.useEffect(() => {
     props.dispatch(fetchProductByID(props.id));
   }, []);
 
   const [values, setValues] = React.useState({
-    size: "",
+    size: "Select size",
     sizeType: ""
   });
 
@@ -110,9 +110,9 @@ const Details = props => {
       <form className={classes.root} autoComplete='off'>
         <FormControl className={classes.formControl}>
           <Select
-            value={values.age}
+            value={values.size}
             onChange={handleChange}
-            name='age'
+            name='size'
             displayEmpty
             className={classes.selectEmpty}
           >
