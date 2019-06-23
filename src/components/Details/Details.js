@@ -1,8 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { Slide } from "react-slideshow-image";
 import Typography from "@material-ui/core/Typography";
-
+import { makeStyles } from "@material-ui/core/styles";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 import { fetchProductByID } from "../../actions/productActions";
 import { connect } from "react-redux";
 
@@ -14,66 +18,121 @@ const properties = {
   arrows: true
 };
 
-class Details extends Component {
-  componentDidMount() {
-    this.props.dispatch(fetchProductByID(this.props.id));
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: "flex",
+    flexWrap: "wrap"
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2)
+  }
+}));
+
+const Details = props => {
+  const classes = useStyles();
+
+  React.useEffect(() => {
+    props.dispatch(fetchProductByID(props.id));
+  }, []);
+
+  const [values, setValues] = React.useState({
+    size: "",
+    sizeType: ""
+  });
+
+  function handleChange(event) {
+    setValues(oldValues => ({
+      ...oldValues,
+      [event.target.name]: event.target.value
+    }));
   }
 
-  render() {
-    const { loading, error, item } = this.props;
-    if (error) {
-      return <div>Error! {error.message}</div>;
-    }
+  const { loading, error, item } = props;
+  if (error) {
+    return <div>Error! {error.message}</div>;
+  }
 
-    if (loading) {
-      return <CircularProgress className='progress' color='secondary' />;
-    }
+  if (loading) {
+    return <CircularProgress className='progress' color='secondary' />;
+  }
 
-    return (
-      <div>
-        <Typography variant='h4' gutterBottom>
-          {item.name}
-        </Typography>
+  return (
+    <div>
+      <Typography variant='h4' gutterBottom>
+        {item.name}
+      </Typography>
+      <Typography variant='h5' gutterBottom>
+        Price: {item.price.current.text}
+      </Typography>
+      <Typography variant='button' display='block' gutterBottom>
+        Brand: {item.brand.name}
+      </Typography>
 
-        {item.brand.name}
-        <div className='slideshow'>
-          <Slide {...properties} style={{ width: "314px", margin: "0 auto" }}>
-            <div className='each-slide'>
-              <div
-                style={{
-                  backgroundImage: `url('https://${item.media.images[0].url}')`,
-                  height: "400px",
-                  width: "314px",
-                  margin: "0 auto"
-                }}
-              />
-            </div>
-            <div className='each-slide'>
-              <div
-                style={{
-                  backgroundImage: `url('https://${item.media.images[1].url}')`,
-                  height: "400px",
-                  width: "314px",
-                  margin: "0 auto"
-                }}
-              />
-            </div>
-            <div className='each-slide'>
-              <div
-                style={{
-                  backgroundImage: `url('https://${item.media.images[2].url}')`,
-                  height: "400px",
-                  width: "314px",
-                  margin: "0 auto"
-                }}
-              />
-            </div>
-          </Slide>
-        </div>
+      <div className='slideshow'>
+        <Slide {...properties} style={{ width: "314px", margin: "0 auto" }}>
+          <div className='each-slide'>
+            <div
+              style={{
+                backgroundImage: `url('https://${item.media.images[0].url}')`,
+                height: "400px",
+                width: "314px",
+                margin: "0 auto"
+              }}
+            />
+          </div>
+          <div className='each-slide'>
+            <div
+              style={{
+                backgroundImage: `url('https://${item.media.images[1].url}')`,
+                height: "400px",
+                width: "314px",
+                margin: "0 auto"
+              }}
+            />
+          </div>
+          <div className='each-slide'>
+            <div
+              style={{
+                backgroundImage: `url('https://${item.media.images[2].url}')`,
+                height: "400px",
+                width: "314px",
+                margin: "0 auto"
+              }}
+            />
+          </div>
+        </Slide>
       </div>
-    );
-  }
-}
+
+      <form className={classes.root} autoComplete='off'>
+        <FormControl className={classes.formControl}>
+          <Select
+            value={values.age}
+            onChange={handleChange}
+            name='age'
+            displayEmpty
+            className={classes.selectEmpty}
+          >
+            <MenuItem value='Select size' disabled>
+              Select size
+            </MenuItem>
+            {item.variants.map(variant => {
+              return (
+                <MenuItem value={variant.brandSize}>
+                  {variant.brandSize}
+                </MenuItem>
+              );
+            })}
+          </Select>
+          <FormHelperText>Select your size</FormHelperText>
+        </FormControl>
+      </form>
+    </div>
+  );
+};
 
 const mapStateToProps = state => ({
   products: state.products.items,
