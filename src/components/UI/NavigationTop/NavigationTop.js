@@ -1,51 +1,62 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
-import { makeStyles } from "@material-ui/core/styles";
+import ResponsiveDrawer from "../SideDrawer/SideDrawer";
 import { AppBar, Toolbar, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import ClothesList from '../../ClothesList/ClothesList'
-const useStyles = makeStyles({
-  root: {
-    flexGrow: 1
-  }
-});
+import ClothesList from "../../ClothesList/ClothesList";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 
-class NavigationTop extends React.Component {
+const Sstyles = makeStyles(theme => ({
+  appBarMy: {
+    [theme.breakpoints.down("xs")]: {
+      display: "none"
+    }
+  }
+}));
 
-  handleClick = () => {
-    return <ClothesList />
-  }
-  render() {
-    return (
-      <div className={useStyles.root}>
-        <AppBar position='static'>
-          <Toolbar>
-            <Box p={2}>
-              <Link to="/t-shirts" replace>
-                <Button variant='contained' color='secondary' >
-                  T-Shirts
-                </Button>
-              </Link>
-            </Box>
-            <Box p={2}>
-              <Link  to="/jeans" replace>
-                <Button variant='contained' color='secondary'>
-                  Jeans
-                </Button>
-              </Link>
-            </Box>
-            <Box p={2}>
-              <Link  to="/shoes" replace>
-                <Button variant='contained' color='secondary'>
-                  Shoes
-                </Button>
-              </Link>
-            </Box>
-          </Toolbar>
-        </AppBar>
-      </div>
-    );
-  }
+/*function queryStyle() {
+  
+  return classes;
+} */
+
+//class NavigationTop extends React.Component {
+function NavigationTop() {
+  /*  handleClick = () => {
+    return <ClothesList />;
+  }; */
+  const classes = Sstyles();
+  //  render() {
+  return (
+    <div>
+      <ResponsiveDrawer />
+      <AppBar position="static" className={classes.appBarMy}>
+        <Toolbar>
+          <Box p={2}>
+            <Link to="/t-shirts" replace>
+              <Button variant="contained" color="secondary">
+                T-Shirts
+              </Button>
+            </Link>
+          </Box>
+          <Box p={2}>
+            <Link to="/jeans" replace>
+              <Button variant="contained" color="secondary">
+                Jeans
+              </Button>
+            </Link>
+          </Box>
+          <Box p={2}>
+            <Link to="/shoes" replace>
+              <Button variant="contained" color="secondary">
+                Shoes
+              </Button>
+            </Link>
+          </Box>
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
+  // }
 }
 
 export default NavigationTop;
