@@ -5,7 +5,11 @@ import { AppBar, Toolbar, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import ClothesList from "../../ClothesList/ClothesList";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
+{
+  /* For first implementation of media queries with MakeStyles and BreakPoints*/
+}
 const Sstyles = makeStyles(theme => ({
   appBarMy: {
     [theme.breakpoints.down("xs")]: {
@@ -14,6 +18,11 @@ const Sstyles = makeStyles(theme => ({
   }
 }));
 
+{
+  /* For second implementation of media queries with useMediaQuery*/
+}
+const dontDisplayBigMenu = { display: "none" };
+const emptyStyle = {};
 /*function queryStyle() {
   
   return classes;
@@ -24,12 +33,30 @@ function NavigationTop() {
   /*  handleClick = () => {
     return <ClothesList />;
   }; */
+
+  {
+    /* For first implementation of media queries with MakeStyles and BreakPoints*/
+  }
   const classes = Sstyles();
+  {
+    /* where you need to implement style add className={classes.appBarMy} */
+  }
+
+  {
+    /* For second implementation of media queries with useMediaQuery*/
+  }
+  const matches = useMediaQuery("(max-width:600px)");
+
+  const finalClass = matches ? dontDisplayBigMenu : emptyStyle;
+  {
+    /* For second implementation , where you need to apply style use style= and finalClass*/
+  }
+
   //  render() {
   return (
     <div>
       <ResponsiveDrawer />
-      <AppBar position="static" className={classes.appBarMy}>
+      <AppBar position="static" style={finalClass}>
         <Toolbar>
           <Box p={2}>
             <Link to="/t-shirts" replace>
