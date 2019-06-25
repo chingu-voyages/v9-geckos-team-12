@@ -56,6 +56,17 @@ class NavigationTop extends React.Component {
                 </Button>
               </Link>
             </Box>
+            <Box p={2}>
+              <Link to='/login' >
+                <Button
+                  variant='contained'
+                  color='secondary'
+                  //onClick={() => this.handleSelectCategory("shoes")}
+                >
+                  Login
+                </Button>
+              </Link>
+            </Box>
           </Toolbar>
         </AppBar>
       </div>
