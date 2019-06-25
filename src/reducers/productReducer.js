@@ -5,7 +5,8 @@ import {
   SELECT_CATEGORY,
   CARD_SELECT_BY_ID,
   FETCH_SINGLE_PRODUCT_SUCCESS,
-  FETCH_READY
+  FETCH_READY,
+  ADD_CART_COUNT
 } from "../actions/productActions";
 
 const initialState = {
@@ -14,7 +15,8 @@ const initialState = {
   error: null,
   category: "",
   id: 1,
-  item: []
+  item: [],
+  cartCount: 0
 };
 
 export default function productReducer(state = initialState, action) {
@@ -60,6 +62,11 @@ export default function productReducer(state = initialState, action) {
       return {
         ...state,
         loading: false
+      };
+    case ADD_CART_COUNT:
+      return {
+        ...state,
+        cartCount: state.cartCount + 1
       };
     default:
       return state;

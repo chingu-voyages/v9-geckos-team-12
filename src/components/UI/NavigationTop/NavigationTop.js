@@ -99,7 +99,7 @@ function NavigationTop(props) {
                 variant='contained'
                 onClick={() => alert("this is your bag")}
               >
-                Items in cart: 1
+                Items in cart: {props.cartCount}
                 {/* implement displaying the value from the counter */}
               </Button>
             </Link>
@@ -115,7 +115,11 @@ const mapDispatchToProps = {
   selectCategory
 };
 
+const mapStateToProps = state => ({
+  cartCount: state.products.cartCount
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(NavigationTop);
