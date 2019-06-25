@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { selectCategory } from "../../../actions/productActions";
 
-
 //import ClothesList from "../../ClothesList/ClothesList";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -21,10 +20,8 @@ const Sstyles = makeStyles(theme => ({
     [theme.breakpoints.down("xs")]: {
       display: "none"
     }
-
   }
 }));
-
 
 {
   /* For second implementation of media queries with useMediaQuery*/
@@ -37,7 +34,6 @@ function NavigationTop(props) {
   let handleSelectCategory = category => {
     props.selectCategory(category);
   };
-
 
   {
     /* For first implementation of media queries with MakeStyles and BreakPoints*/
@@ -57,30 +53,29 @@ function NavigationTop(props) {
     /* For second implementation , where you need to apply style use style= and finalClass*/
   }
 
-
   // render() {
   return (
-    <div >
-	<ResponsiveDrawer />
-      <AppBar position="static" style={finalClass}>
+    <div>
+      <ResponsiveDrawer />
+      <AppBar position='static' style={finalClass}>
         <Toolbar>
           <Box p={2}>
             <Link
-              to="/t-shirts"
+              to='/t-shirts'
               replace
-              value="t-shirts"
+              value='t-shirts'
               onClick={() => handleSelectCategory("t-shirts")}
             >
-              <Button variant="contained" color="secondary">
+              <Button variant='contained' color='secondary'>
                 T-Shirts
               </Button>
             </Link>
           </Box>
           <Box p={2}>
-            <Link to="/jeans" replace>
+            <Link to='/jeans' replace>
               <Button
-                variant="contained"
-                color="secondary"
+                variant='contained'
+                color='secondary'
                 onClick={() => handleSelectCategory("jeans")}
               >
                 Jeans
@@ -88,14 +83,24 @@ function NavigationTop(props) {
             </Link>
           </Box>
           <Box p={2}>
-            <Link to="/shoes" replace>
-
+            <Link to='/shoes' replace>
               <Button
-                variant="contained"
-                color="secondary"
+                variant='contained'
+                color='secondary'
                 onClick={() => handleSelectCategory("shoes")}
               >
                 Shoes
+              </Button>
+            </Link>
+          </Box>
+          <Box p={2}>
+            <Link to='/cart' replace>
+              <Button
+                variant='contained'
+                onClick={() => alert("this is your bag")}
+              >
+                Items in cart: 1
+                {/* implement displaying the value from the counter */}
               </Button>
             </Link>
           </Box>
