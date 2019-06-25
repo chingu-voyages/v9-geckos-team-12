@@ -12,55 +12,56 @@ const useStyles = makeStyles({
   }
 });
 
-class NavigationTop extends React.Component {
-  handleSelectCategory = category => {
-    this.props.selectCategory(category);
+//class NavigationTop extends React.Component {
+function NavigationTop(props) {
+  let handleSelectCategory = category => {
+    props.selectCategory(category);
   };
 
-  render() {
-    return (
-      <div className={useStyles.root}>
-        <AppBar position='static'>
-          <Toolbar>
-            <Box p={2}>
-              <Link
-                to='/t-shirts'
-                replace
-                value='t-shirts'
-                onClick={() => this.handleSelectCategory("t-shirts")}
+  // render() {
+  return (
+    <div className={useStyles.root}>
+      <AppBar position="static">
+        <Toolbar>
+          <Box p={2}>
+            <Link
+              to="/t-shirts"
+              replace
+              value="t-shirts"
+              onClick={() => handleSelectCategory("t-shirts")}
+            >
+              <Button variant="contained" color="secondary">
+                T-Shirts
+              </Button>
+            </Link>
+          </Box>
+          <Box p={2}>
+            <Link to="/jeans" replace>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => handleSelectCategory("jeans")}
               >
-                <Button variant='contained' color='secondary'>
-                  T-Shirts
-                </Button>
-              </Link>
-            </Box>
-            <Box p={2}>
-              <Link to='/jeans' replace>
-                <Button
-                  variant='contained'
-                  color='secondary'
-                  onClick={() => this.handleSelectCategory("jeans")}
-                >
-                  Jeans
-                </Button>
-              </Link>
-            </Box>
-            <Box p={2}>
-              <Link to='/shoes' replace>
-                <Button
-                  variant='contained'
-                  color='secondary'
-                  onClick={() => this.handleSelectCategory("shoes")}
-                >
-                  Shoes
-                </Button>
-              </Link>
-            </Box>
-          </Toolbar>
-        </AppBar>
-      </div>
-    );
-  }
+                Jeans
+              </Button>
+            </Link>
+          </Box>
+          <Box p={2}>
+            <Link to="/shoes" replace>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => handleSelectCategory("shoes")}
+              >
+                Shoes
+              </Button>
+            </Link>
+          </Box>
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
+  // }
 }
 
 const mapDispatchToProps = {
