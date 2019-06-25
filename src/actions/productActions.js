@@ -6,6 +6,7 @@ export const FETCH_SINGLE_PRODUCT_SUCCESS = "FETCH_SINGLE_PRODUCT_SUCCESS";
 export const SELECT_CATEGORY = "SELECT_CATEGORY";
 export const CARD_SELECT_BY_ID = "CARD_SELECT_BY_ID";
 export const FETCH_READY = "FETCH_READY";
+export const ADD_CART_COUNT = "ADD_CART_COUNT";
 
 const config = {
   headers: {
@@ -78,3 +79,7 @@ export function fetchProducts(category) {
       .catch(error => dispatch(fetchProductsFailure(error)));
   };
 }
+
+export const addCartCount = () => ({
+  type: ADD_CART_COUNT
+});
