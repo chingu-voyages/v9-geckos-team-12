@@ -94,12 +94,9 @@ function NavigationTop(props) {
             </Link>
           </Box>
           <Box p={2}>
-            <Link to='/cart' replace>
-              <Button
-                variant='contained'
-                onClick={() => alert("this is your bag")}
-              >
-                Items in cart: {props.cartCount}
+            <Link to='/basket' replace>
+              <Button variant='contained'>
+                Items in basket: {props.basket.length}
                 {/* implement displaying the value from the counter */}
               </Button>
             </Link>
@@ -116,7 +113,7 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = state => ({
-  cartCount: state.products.cartCount
+  basket: state.products.basket
 });
 
 export default connect(
