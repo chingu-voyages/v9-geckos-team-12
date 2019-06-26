@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 // import ClothesList from "../../ClothesList/ClothesList";
 import { connect } from "react-redux";
 import { selectCategory } from "../../../actions/productActions";
+import SignIn from '../../../containers/Form/SignIn/SignIn'
 const useStyles = makeStyles({
   root: {
     flexGrow: 1
