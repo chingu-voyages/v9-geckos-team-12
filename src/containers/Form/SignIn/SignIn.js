@@ -12,7 +12,8 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-
+import { Link as RouterLink } from 'react-router-dom'
+import { connect } from "react-redux";
 
 const useStyles = makeStyles(theme => ({
   "@global": {
@@ -39,7 +40,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SignIn = () => {
+const SignIn = (props) => {
   const classes = useStyles();
 
   return (
@@ -91,12 +92,18 @@ const SignIn = () => {
           <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">
+                <RouterLink onClick={() => props.history.push('/password-rest')}>
                 Forgot password?
+                </RouterLink>
+               
               </Link>
             </Grid>
             <Grid item>
               <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
+              <RouterLink onClick={() => props.history.push('/signUp')}>
+              {"Don't have an account? Sign Up"}
+                </RouterLink>
+       
               </Link>
             </Grid>
           </Grid>
@@ -107,4 +114,9 @@ const SignIn = () => {
   );
 }
 
-export default SignIn
+const mapStateToProps = state => ({
+  signUp: state.signUp,
+  signIn: state.signIn
+});
+
+export default connect(mapStateToProps)(SignIn)
