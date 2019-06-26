@@ -14,7 +14,7 @@ const formReducer = (state = initialState, action) => {
         case actionTypes.SIGN_IN : {
             return {
                 ...state,
-                signIn: true
+                signIn: !state.signIn
             }
         }
 

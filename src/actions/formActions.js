@@ -1,10 +1,10 @@
 export const SIGN_IN = 'SIGN_IN';
 export const SIGN_UP = 'SIGN_UP';
 
-export const signIn = () => ({
+export const signInAction = () => ({
     type: SIGN_IN
 })
 
-export const signUp = () => ({
+export const signUpAction = () => ({
     type: SIGN_UP
 })

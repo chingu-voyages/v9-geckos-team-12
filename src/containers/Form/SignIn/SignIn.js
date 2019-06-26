@@ -12,8 +12,9 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import { Link as RouterLink } from 'react-router-dom'
+import { Link as RouterLink } from "react-router-dom";
 import { connect } from "react-redux";
+import { signInAction } from "../../../actions/formActions";
 
 const useStyles = makeStyles(theme => ({
   "@global": {
@@ -40,9 +41,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SignIn = (props) => {
+const SignIn = props => {
   const classes = useStyles();
-
+  console.log(props)
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -50,10 +51,18 @@ const SignIn = (props) => {
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign in
-        </Typography>
+        {props.signIn === true ? (
+          <Typography component="h1" variant="h5">
+            Sign In
+          </Typography>
+        ) : (
+          <Typography component="h1" variant="h5">
+            Sign Up
+          </Typography>
+        
+        )}
         <form className={classes.form} noValidate>
+          
           <TextField
             variant="outlined"
             margin="normal"
@@ -92,31 +101,30 @@ const SignIn = (props) => {
           <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">
-                <RouterLink onClick={() => props.history.push('/password-rest')}>
                 Forgot password?
-                </RouterLink>
-               
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
-              <RouterLink onClick={() => props.history.push('/signUp')}>
-              {"Don't have an account? Sign Up"}
-                </RouterLink>
-       
+              <Link
+                href="#"
+                variant="body2"
+                onClick={() => {
+                  props.dispatch(signInAction());
+                }}
+              >
+                {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
           </Grid>
         </form>
       </div>
-     
     </Container>
   );
-}
+};
 
 const mapStateToProps = state => ({
-  signUp: state.signUp,
-  signIn: state.signIn
+  signUp: state.form.signUp,
+  signIn: state.form.signIn
 });
 
-export default connect(mapStateToProps)(SignIn)
+export default connect(mapStateToProps)(SignIn);
