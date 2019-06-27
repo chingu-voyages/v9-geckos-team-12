@@ -10,7 +10,6 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import {
   fetchProductByID,
-  addBasketCount,
   addItemToBasket
 } from "../../actions/productActions";
 import { connect } from "react-redux";
