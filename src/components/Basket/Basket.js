@@ -1,11 +1,40 @@
 import React from "react";
+import { connect } from "react-redux";
+import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
 
-const Basket = () => {
+const useStyles = makeStyles(theme => ({
+  root: {
+    padding: theme.spacing(3, 2),
+    margin: theme.spacing(2, 2),
+    width: "75%"
+  },
+  list: {
+    listStyleType: "none"
+  }
+}));
+const Basket = props => {
+  const { basket } = props;
+  const classes = useStyles();
+
   return (
     <div>
-      <h1>No items in your cart. Please add some</h1>
+      <ul className={classes.list}>
+        {basket.map(item => {
+          return (
+            <li>
+              <Paper className={classes.root}>{item.name}</Paper>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };
 
-export default Basket;
+const mapStateToProps = state => ({
+  basket: state.products.basket,
+  loading: state.products.loading
+});
+
+export default connect(mapStateToProps)(Basket);
