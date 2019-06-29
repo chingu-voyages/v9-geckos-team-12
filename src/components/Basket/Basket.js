@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
+import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,6 +21,9 @@ const useStyles = makeStyles(theme => ({
   },
   list: {
     listStyleType: "none"
+  },
+  thumbnail: {
+    width: "10%"
   }
 }));
 const Basket = props => {
@@ -37,12 +41,23 @@ const Basket = props => {
           <ul className={classes.list}>
             {basket.map(item => {
               return (
-                <li>
+                <li key={item.id}>
                   <Paper className={classes.basketItem}>
+                    <img
+                      className={classes.thumbnail}
+                      src={`https://${item.media.images[0].url}`}
+                      alt='thumbnail'
+                    />
                     {item.name}
                     {item.price.current.text}
                     {item.isInStock ? "IN STOCK" : null}
-                    REMOVE
+                    <Button
+                      variant='contained'
+                      color='primary'
+                      onClick={() => alert("hello")}
+                    >
+                      REMOVE
+                    </Button>
                   </Paper>
                 </li>
               );
