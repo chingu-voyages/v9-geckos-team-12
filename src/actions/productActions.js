@@ -8,6 +8,7 @@ export const CARD_SELECT_BY_ID = "CARD_SELECT_BY_ID";
 export const FETCH_READY = "FETCH_READY";
 export const ADD_BASKET_COUNT = "ADD_BASKET_COUNT";
 export const ADD_ITEM_TO_BASKET = "ADD_ITEM_TO_BASKET";
+export const REMOVE_ITEM_FROM_BASKET = "REMOVE_ITEM_FROM_BASKET";
 
 const config = {
   headers: {
@@ -87,4 +88,9 @@ export const addBasketCount = () => ({
 
 export const addItemToBasket = () => ({
   type: ADD_ITEM_TO_BASKET
+});
+
+export const removeItemFromBasket = id => ({
+  type: REMOVE_ITEM_FROM_BASKET,
+  id
 });

@@ -7,7 +7,8 @@ import {
   FETCH_SINGLE_PRODUCT_SUCCESS,
   FETCH_READY,
   ADD_BASKET_COUNT,
-  ADD_ITEM_TO_BASKET
+  ADD_ITEM_TO_BASKET,
+  REMOVE_ITEM_FROM_BASKET
 } from "../actions/productActions";
 
 const initialState = {
@@ -75,7 +76,17 @@ export default function productReducer(state = initialState, action) {
         ...state,
         basket: [...state.basket, state.item]
       };
-
+    case REMOVE_ITEM_FROM_BASKET:
+      let newBasket = [
+        ...state.basket.filter(item => {
+          // [1,2,3,5]
+          return item.id !== action.id;
+        })
+      ];
+      return {
+        ...state,
+        basket: newBasket
+      };
     default:
       return state;
   }
