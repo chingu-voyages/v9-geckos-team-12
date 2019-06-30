@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import { Button } from "@material-ui/core";
+import { removeItemFromBasket } from "../../actions/productActions";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -54,7 +55,9 @@ const Basket = props => {
                     <Button
                       variant='contained'
                       color='primary'
-                      onClick={() => alert("hello")}
+                      onClick={id =>
+                        props.dispatch(removeItemFromBasket(item.id))
+                      }
                     >
                       REMOVE
                     </Button>
@@ -67,7 +70,7 @@ const Basket = props => {
         <div className={classes.basketSummary}>
           <Paper>
             <h1>Order summary:</h1>
-            <h4>Total cost: {totalCost} EUR</h4>
+            <h4>Total cost: {totalCost.toFixed(2)} EUR</h4>
           </Paper>
         </div>
       </div>
