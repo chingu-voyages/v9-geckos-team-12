@@ -71,6 +71,15 @@ const Basket = props => {
           <Paper>
             <h1>Order summary:</h1>
             <h4>Total cost: {totalCost.toFixed(2)} EUR</h4>
+            {totalCost <= 0 ? null : (
+              <Button
+                variant='contained'
+                color='primary'
+                onClick={() => alert("Redirecting to checkout")}
+              >
+                PROCEED TO CHECKOUT
+              </Button>
+            )}
           </Paper>
         </div>
       </div>
