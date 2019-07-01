@@ -51,15 +51,7 @@ class ClothesList extends Component {
           <Grid container justify='center' alignItems='center'>
             {products.map(item => {
               return (
-                <Grid
-                  item
-                  key={item.id}
-                  xs={12}
-                  sm={12}
-                  md={6}
-                  lg={3}
-                  onClick={() => this.cardSelectByID(item.id)}
-                >
+                <Grid item key={item.id} xs={12} sm={12} md={6} lg={3}>
                   {" "}
                   {/* sm indicates how much of the page will an individual card cover xs= exstra small etc..*/}
                   <Card

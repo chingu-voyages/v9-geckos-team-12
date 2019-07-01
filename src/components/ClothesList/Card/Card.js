@@ -2,12 +2,15 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import {
+  addItemToBasket,
+  cardSelectByID
+} from "../../../actions/productActions";
 
 const useStyles = makeStyles({
   card: {
@@ -20,13 +23,13 @@ const useStyles = makeStyles({
   }
 });
 
-export default function CardComponent({ ...props }) {
+function CardComponent({ ...props }) {
   const classes = useStyles();
 
   return (
     <Card className={classes.card}>
       <Link to='/details'>
-        <CardActionArea>
+        <CardActionArea onClick={() => props.cardSelectByID(props.id)}>
           <CardMedia className={classes.media} image={props.img} />
           <CardContent>
             <Typography gutterBottom variant='caption' component='h2'>
@@ -34,17 +37,19 @@ export default function CardComponent({ ...props }) {
             </Typography>
             <Typography variant='body2' color='textSecondary' component='p'>
               Price: {props.price}
-              ID: {props.id}
             </Typography>
           </CardContent>
         </CardActionArea>
       </Link>
-
-      <CardActions>
-        <Button size='small' color='primary'>
-          ADD TO BASKET
-        </Button>
-      </CardActions>
     </Card>
   );
 }
+const mapDispatchToProps = {
+  addItemToBasket,
+  cardSelectByID
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(CardComponent);

@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import ClothesList from "../../components/ClothesList/ClothesList";
 import Details from "../../components/Details/Details";
 import Form from '../Form'
+import Basket from "../../components/Basket/Basket";
 // Layout will render NavigationTop, NavigationBottom,ClothesList
 
 class Layout extends Component {
@@ -19,6 +20,7 @@ class Layout extends Component {
 
           <Route component={Details} path='/details' exact />
           <Route component={Form} path='/login'  />
+          <Route component={Basket} path='/basket' />
         </Switch>
         <NavigationBottom />
       </Fragment>

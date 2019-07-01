@@ -5,7 +5,10 @@ import {
   SELECT_CATEGORY,
   CARD_SELECT_BY_ID,
   FETCH_SINGLE_PRODUCT_SUCCESS,
-  FETCH_READY
+  FETCH_READY,
+  ADD_BASKET_COUNT,
+  ADD_ITEM_TO_BASKET,
+  REMOVE_ITEM_FROM_BASKET
 } from "../actions/productActions";
 
 const initialState = {
@@ -14,7 +17,9 @@ const initialState = {
   error: null,
   category: "",
   id: 1,
-  item: []
+  item: [],
+  basketCount: 0,
+  basket: []
 };
 
 export default function productReducer(state = initialState, action) {
@@ -60,6 +65,27 @@ export default function productReducer(state = initialState, action) {
       return {
         ...state,
         loading: false
+      };
+    case ADD_BASKET_COUNT:
+      return {
+        ...state,
+        basketCount: state.basketCount + 1
+      };
+    case ADD_ITEM_TO_BASKET:
+      return {
+        ...state,
+        basket: [...state.basket, state.item]
+      };
+    case REMOVE_ITEM_FROM_BASKET:
+      let newBasket = [
+        ...state.basket.filter(item => {
+          // [1,2,3,5]
+          return item.id !== action.id;
+        })
+      ];
+      return {
+        ...state,
+        basket: newBasket
       };
     default:
       return state;
