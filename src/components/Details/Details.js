@@ -8,7 +8,10 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import { fetchProductByID } from "../../actions/productActions";
+import {
+  fetchProductByID,
+  addItemToBasket
+} from "../../actions/productActions";
 import { connect } from "react-redux";
 //properties for slideshow
 const properties = {
@@ -73,9 +76,7 @@ const Details = props => {
       <Button
         variant='contained'
         color='primary'
-        onClick={() => {
-          alert("added to cart");
-        }}
+        onClick={() => props.dispatch(addItemToBasket())}
       >
         Add to cart
       </Button>
