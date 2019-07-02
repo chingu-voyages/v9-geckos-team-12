@@ -12,6 +12,7 @@ import { Button } from "@material-ui/core";
 
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { thisExpression } from "@babel/types";
+import SimpleMenu from "../SimpleMenu";
 
 const theme = createMuiTheme({
   // We use createMuiTheme to create our own theme for the Card component we override the margin 0 auto
@@ -59,14 +60,7 @@ class ClothesList extends Component {
         {" "}
         {/* MuiThemeProvider allos us to override styles made by MaterialUi so we can edit all aspects of the default style */}
         <Fragment>
-          <Button
-            variant='contained'
-            color='primary'
-            // onClick={() => this.sortByPrice(this.props.products)}
-            onClick={() => this.props.dispatch(sortItemsByPriceAscending())}
-          >
-            SORY BY PRICE ASCENDING
-          </Button>{" "}
+          <SimpleMenu {...this.props} />{" "}
           <Grid container justify='center' alignItems='center'>
             {products.map(item => {
               return (

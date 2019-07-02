@@ -10,6 +10,7 @@ export const ADD_BASKET_COUNT = "ADD_BASKET_COUNT";
 export const ADD_ITEM_TO_BASKET = "ADD_ITEM_TO_BASKET";
 export const REMOVE_ITEM_FROM_BASKET = "REMOVE_ITEM_FROM_BASKET";
 export const SORT_ITEMS_BY_PRICE_ASCENDING = "SORT_ITEMS_BY_PRICE_ASCENDING";
+export const SORT_ITEMS_BY_PRICE_DESCENDING = "SORT_ITEMS_BY_PRICE_DESCENDING";
 
 const config = {
   headers: {
@@ -98,4 +99,8 @@ export const removeItemFromBasket = id => ({
 
 export const sortItemsByPriceAscending = () => ({
   type: SORT_ITEMS_BY_PRICE_ASCENDING
+});
+
+export const sortItemsByPriceDescending = () => ({
+  type: SORT_ITEMS_BY_PRICE_DESCENDING
 });
