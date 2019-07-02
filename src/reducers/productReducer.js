@@ -8,7 +8,8 @@ import {
   FETCH_READY,
   ADD_BASKET_COUNT,
   ADD_ITEM_TO_BASKET,
-  REMOVE_ITEM_FROM_BASKET
+  REMOVE_ITEM_FROM_BASKET,
+  SORT_ITEMS_BY_PRICE_ASCENDING
 } from "../actions/productActions";
 
 const initialState = {
@@ -86,6 +87,16 @@ export default function productReducer(state = initialState, action) {
       return {
         ...state,
         basket: newBasket
+      };
+    case SORT_ITEMS_BY_PRICE_ASCENDING:
+      let sortedItems = [
+        ...state.items.sort(
+          (a, b) => a.price.current.value - b.price.current.value
+        )
+      ];
+      return {
+        ...state,
+        items: sortedItems
       };
     default:
       return state;
