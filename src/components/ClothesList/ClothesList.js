@@ -60,7 +60,8 @@ class ClothesList extends Component {
         {" "}
         {/* MuiThemeProvider allos us to override styles made by MaterialUi so we can edit all aspects of the default style */}
         <Fragment>
-          <SimpleMenu {...this.props} />{" "}
+          {/* sorting menu below */}
+          <SimpleMenu {...this.props} />
           <Grid container justify='center' alignItems='center'>
             {products.map(item => {
               return (
