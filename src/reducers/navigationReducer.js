@@ -9,6 +9,9 @@ import {
 const initialState = {
     menuOpen: false,
     menuItemOpen: false,
+    anchorClothing: null,
+    anchorShoes: null,
+    anchorActivewear: null,
     anchorEl: null,
     anchorItemEl: null,
     clothing: false,
@@ -30,7 +33,9 @@ export default function navigationReducer(state = initialState, action) {
                 clothing: true,
                 shoes: false,
                 activewear: false,
-                anchorEl: action.event,
+                anchorClothing: action.event,
+                anchorShoes: null,
+                anchorActivewear: null,
                 items:  [`Hoodies & Sweatshits`, `Jackets & Coats`, 'Jeans', 'Shirts', 'Shorts', 'Loungewear', 'Suits', 'Socks', 'Swimwear', 'Vests', 'Trousers', 'Underwear' ]
             }
         } else if(action.clotheType=== 'shoes') {
@@ -39,7 +44,9 @@ export default function navigationReducer(state = initialState, action) {
                 clothing: false,
                 shoes: true,
                 activewear: false,
-                anchorEl: action.event,
+                anchorClothing: null,
+                anchorShoes: action.event,
+                anchorActivewear: null,
                 items: ['View all', 'Boots', 'Loafers', 'Sneakers', 'Sandals', 'Flip-Flops']
             }
         } else if(action.clotheType === 'activewear') {
@@ -48,7 +55,9 @@ export default function navigationReducer(state = initialState, action) {
                 clothing: false,
                 shoes: false,
                 activewear: true,
-                anchorEl: action.event,
+                anchorClothing: null,
+                anchorShoes: null,
+                anchorActivewear: action.event,
                 items: ['View All', 'Footwear', 'Shorts', 'Swim', 'Tops', 'Tights']
             }
         };
