@@ -3,7 +3,8 @@ import Box from "@material-ui/core/Box";
 import ResponsiveDrawer from "../SideDrawer/SideDrawer";
 import { AppBar, Toolbar, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import SignIn from '../../../containers/Form/SignIn/SignIn'
+import SearchBar from "../SearchBar";
+import SignIn from "../../../containers/Form/SignIn/SignIn";
 // import ClothesList from "../../ClothesList/ClothesList";
 import { connect } from "react-redux";
 import { selectCategory } from "../../../actions/productActions";
@@ -102,16 +103,17 @@ function NavigationTop(props) {
             </Link>
           </Box>
           <Box p={2}>
-              <Link to='/login' >
-                <Button
-                  variant='contained'
-                  color='secondary'
-                  //onClick={() => this.handleSelectCategory("shoes")}
-                >
-                  Login
-                </Button>
-              </Link>
-            </Box>
+            <Link to='/login'>
+              <Button
+                variant='contained'
+                color='secondary'
+                //onClick={() => this.handleSelectCategory("shoes")}
+              >
+                Login
+              </Button>
+            </Link>
+          </Box>
+          <SearchBar />
         </Toolbar>
       </AppBar>
     </div>
