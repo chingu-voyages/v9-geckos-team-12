@@ -9,6 +9,9 @@ export const FETCH_READY = "FETCH_READY";
 export const ADD_BASKET_COUNT = "ADD_BASKET_COUNT";
 export const ADD_ITEM_TO_BASKET = "ADD_ITEM_TO_BASKET";
 export const REMOVE_ITEM_FROM_BASKET = "REMOVE_ITEM_FROM_BASKET";
+export const FETCH_MORE_PRODUCTS_SUCCESS = "FETCH_MORE_PRODUCTS_SUCCESS";
+export const FETCH_MORE_PRODUCTS_BEGIN = "FETCH_MORE_PRODUCTS_BEGIN";
+export const UPDATE_OFFSET = "UPDATE_OFFSET";
 
 const config = {
   headers: {
@@ -49,9 +52,13 @@ export const fetchSingleProductSuccess = item => ({
   payload: { item }
 });
 
+export const fetchMoreProductsBegin = () => ({
+  type: FETCH_MORE_PRODUCTS_BEGIN
+});
+
 export function fetchProductByID(id) {
   return dispatch => {
-    dispatch(fetchProductsBegin());
+    dispatch(fetchMoreProductsBegin());
     return axios
       .get(
         `https://brianiswu-unofficial-asos-com-v1.p.rapidapi.com/product/catalogue/v2/products/${id}?lang=en-GB&productid=${id}&store=COM&sizeschema=EU&currency=EUR`,
@@ -71,7 +78,7 @@ export function fetchProducts(category) {
     dispatch(fetchProductsBegin());
     return axios
       .get(
-        `https://brianiswu-unofficial-asos-com-v1.p.rapidapi.com/product/search/v1/?q=${category}&lang=en-GB&currency=EUR&store=1`,
+        `https://brianiswu-unofficial-asos-com-v1.p.rapidapi.com/product/search/v1/?q=${category}&lang=en-GB&currency=EUR&store=1&limit=40`,
         config
       )
       .then(res => {
@@ -93,4 +100,29 @@ export const addItemToBasket = () => ({
 export const removeItemFromBasket = id => ({
   type: REMOVE_ITEM_FROM_BASKET,
   id
+});
+
+export function fetchMoreProducts(category, offset) {
+  return dispatch => {
+    dispatch(fetchMoreProductsBegin());
+    return axios
+      .get(
+        `https://brianiswu-unofficial-asos-com-v1.p.rapidapi.com/product/search/v1/?q=${category}&lang=en-GB&currency=EUR&store=1&limit=40&offset=${offset}`,
+        config
+      )
+      .then(res => {
+        dispatch(fetchMoreProductsSuccess(res.data.products));
+      })
+      .catch(error => dispatch(fetchProductsFailure(error)));
+  };
+}
+
+export const fetchMoreProductsSuccess = products => ({
+  type: FETCH_MORE_PRODUCTS_SUCCESS,
+  payload: { products }
+});
+
+export const updateOffset = offset => ({
+  type: UPDATE_OFFSET,
+  offset
 });
