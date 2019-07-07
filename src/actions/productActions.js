@@ -12,6 +12,7 @@ export const REMOVE_ITEM_FROM_BASKET = "REMOVE_ITEM_FROM_BASKET";
 export const FETCH_MORE_PRODUCTS_SUCCESS = "FETCH_MORE_PRODUCTS_SUCCESS";
 export const FETCH_MORE_PRODUCTS_BEGIN = "FETCH_MORE_PRODUCTS_BEGIN";
 export const UPDATE_OFFSET = "UPDATE_OFFSET";
+export const FILTER_PRICE = "FILTER_PRICE";
 
 const config = {
   headers: {
@@ -125,4 +126,9 @@ export const fetchMoreProductsSuccess = products => ({
 export const updateOffset = offset => ({
   type: UPDATE_OFFSET,
   offset
+});
+
+export const filterPrice = rangeToFilter => ({
+  type: FILTER_PRICE,
+  rangeToFilter
 });

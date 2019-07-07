@@ -11,7 +11,8 @@ import {
   REMOVE_ITEM_FROM_BASKET,
   FETCH_MORE_PRODUCTS_SUCCESS,
   FETCH_MORE_PRODUCTS_BEGIN,
-  UPDATE_OFFSET
+  UPDATE_OFFSET,
+  FILTER_PRICE
 } from "../actions/productActions";
 
 const initialState = {
@@ -103,7 +104,6 @@ export default function productReducer(state = initialState, action) {
       let upcommingItems = action.payload.products;
       let newItems = [...state.items];
       upcommingItems.forEach(product => newItems.push(product));
-
       return {
         ...state,
         items: newItems,
@@ -113,6 +113,20 @@ export default function productReducer(state = initialState, action) {
       return {
         ...state,
         offset: state.offset + action.offset
+      };
+    case FILTER_PRICE:
+      let rangeToFilter = action.rangeToFilter;
+      let filteredItems = [
+        ...state.items.filter(item => {
+          return (
+            item.price.current.value >= rangeToFilter[0] &&
+            item.price.current.value <= rangeToFilter[1]
+          );
+        })
+      ];
+      return {
+        ...state,
+        items: filteredItems
       };
     default:
       return state;

@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from "react";
+import PriceFilter from "../PriceFilter";
+
 import Card from "../ClothesList/Card/Card";
 import Grid from "@material-ui/core/Grid";
 import { connect } from "react-redux";
@@ -56,6 +58,7 @@ class ClothesList extends Component {
       <MuiThemeProvider theme={theme}>
         {" "}
         {/* MuiThemeProvider allos us to override styles made by MaterialUi so we can edit all aspects of the default style */}
+        <PriceFilter productsList={products} />
         <Fragment>
           <Grid container justify='center' alignItems='center'>
             {products.map(item => {
