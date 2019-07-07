@@ -33,7 +33,7 @@ import {
 
 import MenuIcon from "@material-ui/icons/Menu";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import ArrowBack from '@material-ui/icons/ArrowBack'
+import ArrowBack from "@material-ui/icons/ArrowBack";
 
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 
@@ -106,9 +106,13 @@ function NavigationTop(props) {
               onClose={() => props.toggleSideDrawerAction(false)}
             >
               <List>
-                <IconButton onClick={() => props.goBackAction()}> 
-                  <ArrowBack/>
-                </IconButton>
+                {props.activewear || props.shoes || props.clothing ? (
+                  <IconButton onClick={() => props.goBackAction()}>
+                    {" "}
+                    <ArrowBack />{" "}
+                  </IconButton>
+                ) : null}{" "}
+                {/* Make sure go back doesn't show unless we're inside of a menu */}
                 {props.items ? (
                   props.items.map((option, index) => (
                     <Link to="/clothing">
@@ -134,25 +138,24 @@ function NavigationTop(props) {
                   ))
                 ) : (
                   <Fragment>
-                  
-                      <Button
-                        variant="button"
-                        onClick={(e, clothingType) =>
-                          props.openMenuAction(null, "clothing")
-                        }
-                      >
-                        Clothing
-                      </Button>
-                   
-                      <Button
-                        variant="button"
-                        onClick={(e, clothingType) =>
-                          props.openMenuAction(null, "footwear")
-                        }
-                      >
-                        Footwear
-                      </Button>
-                   
+                    <Button
+                      variant="button"
+                      onClick={(e, clothingType) =>
+                        props.openMenuAction(null, "clothing")
+                      }
+                    >
+                      Clothing
+                    </Button>
+
+                    <Button
+                      variant="button"
+                      onClick={(e, clothingType) =>
+                        props.openMenuAction(null, "footwear")
+                      }
+                    >
+                      Footwear
+                    </Button>
+
                     <Link to="/clothing">
                       <Button
                         variant="button"
@@ -168,6 +171,7 @@ function NavigationTop(props) {
               </List>
             </SwipeableDrawer>
           </div>
+
           <List component="nav" className={classes.list}>
             <ListItem
               button
@@ -182,7 +186,7 @@ function NavigationTop(props) {
               button
               className={classes.listItem}
               onMouseEnter={(e, clothingType) =>
-                props.openMenuAction(e.target, "shoes")
+                props.openMenuAction(e.target, "footwear")
               }
             >
               <ListItemText>Footwear</ListItemText>
@@ -204,45 +208,47 @@ function NavigationTop(props) {
               </Link>
             </ListItem>
           </List>
-          <Menu
-            BackdropComponent={hoc}
-            open={props.clothing || props.shoes || props.activewear || false}
-            anchorEl={
-              props.anchorClothing ||
-              props.anchorShoes ||
-              props.anchorActivewear
-            }
-            elevation={0}
-            className={classes.paper}
-          >
-            {props.items /* Using ternary operator to make sure items are available otherwise we get an error because items are initially null */
-              ? props.items.map((option, index) => (
-                  <Link to="/clothing">
-                    {console.log(props)}
-                    <MenuItem
-                      onClick={e =>
-                        handleSelectCategory(
-                          `${props.activewear ? "activewear " : null} ${
-                            e.target.id
-                          }`
-                        )
-                      }
-                      id={option}
-                      key={index}
-                      style={{ minHeight: "3px" }}
-                    >
-                      <Typography
-                        variant="caption"
-                        style={{ pointerEvents: "none" }}
+          {props.sideDrawer ? null : (
+            <Menu
+              BackdropComponent={hoc}
+              open={props.clothing || props.shoes || props.activewear || false}
+              anchorEl={
+                props.anchorClothing ||
+                props.anchorShoes ||
+                props.anchorActivewear
+              }
+              elevation={0}
+              className={classes.paper}
+            >
+              {props.items /* Using ternary operator to make sure items are available otherwise we get an error because items are initially null */
+                ? props.items.map((option, index) => (
+                    <Link to="/clothing">
+                      {console.log(props)}
+                      <MenuItem
+                        onClick={e =>
+                          handleSelectCategory(
+                            `${props.activewear ? "activewear " : null} ${
+                              e.target.id
+                            }`
+                          )
+                        }
+                        id={option}
+                        key={index}
+                        style={{ minHeight: "3px" }}
                       >
-                        {" "}
-                        {option}
-                      </Typography>
-                    </MenuItem>
-                  </Link>
-                ))
-              : null}
-          </Menu>
+                        <Typography
+                          variant="caption"
+                          style={{ pointerEvents: "none" }}
+                        >
+                          {" "}
+                          {option}
+                        </Typography>
+                      </MenuItem>
+                    </Link>
+                  ))
+                : null}
+            </Menu>
+          )}
         </Toolbar>
       </AppBar>
     </div>
