@@ -144,7 +144,6 @@ function NavigationTop(props) {
                         Clothing
                       </Button>
                    
-                    <Link to="/clothing">
                       <Button
                         variant="button"
                         onClick={(e, clothingType) =>
@@ -153,7 +152,7 @@ function NavigationTop(props) {
                       >
                         Footwear
                       </Button>
-                    </Link>
+                   
                     <Link to="/clothing">
                       <Button
                         variant="button"

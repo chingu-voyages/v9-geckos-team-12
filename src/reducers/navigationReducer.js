@@ -63,7 +63,7 @@ export default function navigationReducer(state = initialState, action) {
                 anchorActivewear: null,
                 items:  [`Hoodies & Sweatshits`, `Jackets & Coats`, 'Jeans', 'Shirts', 'Shorts', 'Loungewear', 'Suits', 'Socks', 'Swimwear', 'Vests', 'Trousers', 'Underwear' ]
             }
-        } else if(action.clotheType=== 'shoes') {
+        } else if(action.clotheType=== 'footwear') {
             return {
                 ...state,
                 clothing: false,
