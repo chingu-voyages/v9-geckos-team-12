@@ -26,6 +26,16 @@ const initialState = {
 
 export default function navigationReducer(state = initialState, action) {
     switch(action.type) {
+        case MENU_CLOSE:
+            return {
+                ...state,
+                menuOpen: false,
+                clothing: false,
+                shoes: false,
+                activewear: null,
+                anchorClothing: null,
+                anchorShoes: null,
+            }
         case MENU_OPEN: 
         if(action.clotheType === 'clothing') {
             return {
@@ -69,11 +79,7 @@ export default function navigationReducer(state = initialState, action) {
             anchorItemEl: action.event
         };
 
-        case MENU_CLOSE:
-            return {
-                ...state,
-                menuOpen: false
-            }
+       
         default: {
             return state
         }

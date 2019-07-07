@@ -1,11 +1,13 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
 import ResponsiveDrawer from "../SideDrawer/SideDrawer";
+import hoc from "../../../hoc";
 import {
   AppBar,
   Toolbar,
   Typography,
   Button,
+  Paper,
   Menu,
   MenuItem,
   List,
@@ -28,6 +30,9 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 const navigationStyles = makeStyles(theme => ({
   list: {
     display: "flex"
+  },
+  listItem: {
+    marginRight: theme.spacing(6)
   },
   paper: {
     boxShadow: "none !important",
@@ -60,22 +65,23 @@ function NavigationTop(props) {
 
   return (
     <div>
-      <AppBar position="static">
+      <AppBar position="static"  >
         <Toolbar>
           <List component="nav" className={classes.list}>
-            <ListItem button>
-              <ListItemText
-                onClick={(e, clothingType) =>
-                  props.openMenuAction(e.target, "clothing")
-                }
-              >
-                Clothing
-              </ListItemText>
-            </ListItem>
-
             <ListItem
               button
-              onClick={(e, clothingType) =>
+              className={classes.listItem}
+              onMouseEnter={(e, clothingType) =>
+                props.openMenuAction(e.target, "clothing")
+              }
+            >
+              <ListItemText>Clothing</ListItemText>
+            </ListItem>
+            <ListItem
+             
+              button
+              className={classes.listItem}
+              onMouseEnter={(e, clothingType) =>
                 props.openMenuAction(e.target, "shoes")
               }
             >
@@ -83,7 +89,8 @@ function NavigationTop(props) {
             </ListItem>
             <ListItem
               button
-              onClick={(e, clothingType) =>
+              className={classes.listItem}
+              onMouseEnter={(e, clothingType) =>
                 props.openMenuAction(e.target, "activewear")
               }
             >
@@ -91,21 +98,31 @@ function NavigationTop(props) {
             </ListItem>
           </List>
           <Menu
-            BackdropComponent='none'
+        
+            BackdropComponent={hoc}
             open={props.clothing || props.shoes || props.activewear || false}
-            anchorEl={props.anchorClothing || props.anchorShoes || props.anchorActivewear}
+            anchorEl={
+              props.anchorClothing ||
+              props.anchorShoes ||
+              props.anchorActivewear
+            }
             elevation={0}
             className={classes.paper}
           >
             {props.items /* Using ternary operator to make sure items are available otherwise we get an error because items are initially null */
               ? props.items.map((option, index) => (
+                  <Link to='/jeans'>
+
+                  {console.log(props)}
                   <MenuItem
+                   onClick={(e) => handleSelectCategory(`${props.activewear ? 'activewear ' : null} ${e.target.id}`)} id={option}
                     key={index}
-                    onClick={e => props.openMenuItemAction(e.currentTarget)}
+                    
                     style={{ minHeight: "3px" }}
                   >
-                    <Typography variant="caption"> {option}</Typography>
+                    <Typography variant="caption" > {option}</Typography>
                   </MenuItem>
+                  </Link>
                 ))
               : null}
           </Menu>
@@ -136,9 +153,9 @@ const mapStateToProps = state => ({
   shoes: state.navigation.shoes,
   activewear: state.navigation.activewear,
   items: state.navigation.items,
-  anchorClothing:state.navigation.anchorClothing,
-  anchorShoes:state.navigation.anchorShoes,
-  anchorActivewear:state.navigation.anchorActivewear,
+  anchorClothing: state.navigation.anchorClothing,
+  anchorShoes: state.navigation.anchorShoes,
+  anchorActivewear: state.navigation.anchorActivewear
 });
 
 export default connect(
