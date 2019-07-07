@@ -1,7 +1,9 @@
 import {
     MENU_OPEN,
     MENU_ITEM_OPEN,
-    MENU_CLOSE
+    MENU_CLOSE,
+    TOGGLE_SIDE_DRAWER,
+    GO_BACK
 
 } from '../actions/navigationActions';
 
@@ -18,14 +20,27 @@ const initialState = {
     shoes: false,
     activewear: false,
     clothingItems: [`Hoodies & Sweatshits`, `Jackets & Coats`, 'Jeans', 'Shirts', 'Shorts', 'Loungewear', 'Suits', 'Socks', 'Swimwear', 'Vests', 'Trousers', 'Underwear' ],
-    shoesItems: ['View all', 'Boots', 'Loafers', 'Sneakers', 'Sandals', 'Flip-Flops'],
+    shoesItems: [ 'Loafers', 'Heels', 'Sandals', 'Sperrys', 'Flip-Flops'],
     activewearItems: ['View All', 'Footwear', 'Shorts', 'Swim', 'Tops', 'Tights'],
     items: null,
-
+    sideDrawer: false
 }
 
 export default function navigationReducer(state = initialState, action) {
     switch(action.type) {
+        case GO_BACK: {
+            return {
+                ...state,
+                items: null
+            }
+        }
+        case TOGGLE_SIDE_DRAWER: {
+            return {
+                ...state,
+                sideDrawer: action.open
+                
+            }
+        }
         case MENU_CLOSE:
             return {
                 ...state,
@@ -57,7 +72,7 @@ export default function navigationReducer(state = initialState, action) {
                 anchorClothing: null,
                 anchorShoes: action.event,
                 anchorActivewear: null,
-                items: ['View all', 'Boots', 'Loafers', 'Sneakers', 'Sandals', 'Flip-Flops']
+                items: [ 'Loafers', 'Heels', 'Trainers', 'Sperrys', 'Plimsoll', ]
             }
         } else if(action.clotheType === 'activewear') {
             return {

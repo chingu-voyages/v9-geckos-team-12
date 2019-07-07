@@ -14,10 +14,8 @@ class Layout extends Component {
       <Fragment>
         <NavigationTop />
         <Switch>
-          <Route component={ClothesList} path='/jeans' />
-          <Route component={ClothesList} path='/t-shirts' />
-          <Route component={ClothesList} path='/shoes' />
-
+      
+          <Route component={ClothesList} path='/clothing' />
           <Route component={Details} path='/details' exact />
           <Route component={Form} path='/login'  />
           <Route component={Basket} path='/basket' />

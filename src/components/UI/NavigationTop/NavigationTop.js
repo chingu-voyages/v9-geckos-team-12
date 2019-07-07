@@ -1,4 +1,5 @@
 import React from "react";
+import { Fragment } from "react";
 import Box from "@material-ui/core/Box";
 import ResponsiveDrawer from "../SideDrawer/SideDrawer";
 import hoc from "../../../hoc";
@@ -12,7 +13,10 @@ import {
   MenuItem,
   List,
   ListItem,
-  ListItemText
+  ListItemText,
+  IconButton,
+  SwipeableDrawer,
+  Divider
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import SignIn from "../../../containers/Form/SignIn/SignIn";
@@ -22,14 +26,23 @@ import { selectCategory } from "../../../actions/productActions";
 import {
   openMenuAction,
   openMenuItemAction,
-  menuCloseAction
+  menuCloseAction,
+  toggleSideDrawerAction,
+  goBackAction
 } from "../../../actions/navigationActions";
+
+import MenuIcon from "@material-ui/icons/Menu";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import ArrowBack from '@material-ui/icons/ArrowBack'
 
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 const navigationStyles = makeStyles(theme => ({
   list: {
-    display: "flex"
+    display: "flex",
+    [theme.breakpoints.down("xs")]: {
+      display: "none"
+    }
   },
   listItem: {
     marginRight: theme.spacing(6)
@@ -38,6 +51,20 @@ const navigationStyles = makeStyles(theme => ({
     boxShadow: "none !important",
     marginTop: 50,
     minWidth: 250
+  },
+
+  menuIcon: {
+    display: "none",
+    [theme.breakpoints.down("xs")]: {
+      display: "inline-block"
+    }
+  },
+  sideDrawer: {
+    display: "none",
+    [theme.breakpoints.down("xs")]: {
+      display: "flex",
+      width: 450
+    }
   }
 }));
 
@@ -65,8 +92,83 @@ function NavigationTop(props) {
 
   return (
     <div>
-      <AppBar position="static"  >
+      <AppBar position="static">
         <Toolbar>
+          <IconButton
+            className={classes.menuIcon}
+            onClick={() => props.toggleSideDrawerAction(true)}
+          >
+            <MenuIcon />
+          </IconButton>
+          <div className={classes.sideDrawer}>
+            <SwipeableDrawer
+              open={props.sideDrawer}
+              onClose={() => props.toggleSideDrawerAction(false)}
+            >
+              <List>
+                <IconButton onClick={() => props.goBackAction()}> 
+                  <ArrowBack/>
+                </IconButton>
+                {props.items ? (
+                  props.items.map((option, index) => (
+                    <Link to="/clothing">
+                      <ListItem
+                        button
+                        onClick={e =>
+                          handleSelectCategory(
+                            `${props.activewear ? "activewear " : null} ${
+                              e.target.id
+                            }`
+                          )
+                        }
+                        id={option}
+                        key={index}
+                        style={{ minHeight: "3px" }}
+                      >
+                        <ListItemText style={{ pointerEvents: "none" }}>
+                          {" "}
+                          {option}
+                        </ListItemText>
+                      </ListItem>
+                    </Link>
+                  ))
+                ) : (
+                  <Fragment>
+                  
+                      <Button
+                        variant="button"
+                        onClick={(e, clothingType) =>
+                          props.openMenuAction(null, "clothing")
+                        }
+                      >
+                        Clothing
+                      </Button>
+                   
+                    <Link to="/clothing">
+                      <Button
+                        variant="button"
+                        onClick={(e, clothingType) =>
+                          props.openMenuAction(null, "footwear")
+                        }
+                      >
+                        Footwear
+                      </Button>
+                    </Link>
+                    <Link to="/clothing">
+                      <Button
+                        variant="button"
+                        onClick={(e, clothingType) =>
+                          props.openMenuAction(null, "activewear")
+                        }
+                      >
+                        Activewear
+                      </Button>
+                    </Link>
+                  </Fragment>
+                )}
+              </List>
+            </SwipeableDrawer>
+          </div>
           <List component="nav" className={classes.list}>
             <ListItem
               button
@@ -78,14 +180,13 @@ function NavigationTop(props) {
               <ListItemText>Clothing</ListItemText>
             </ListItem>
             <ListItem
-             
               button
               className={classes.listItem}
               onMouseEnter={(e, clothingType) =>
                 props.openMenuAction(e.target, "shoes")
               }
             >
-              <ListItemText>Shoes</ListItemText>
+              <ListItemText>Footwear</ListItemText>
             </ListItem>
             <ListItem
               button
@@ -96,9 +197,15 @@ function NavigationTop(props) {
             >
               <ListItemText>Activewear</ListItemText>
             </ListItem>
+            <ListItem button>
+              <Link to={"/login"}>
+                <ListItemText>
+                  <Typography>Login</Typography>
+                </ListItemText>
+              </Link>
+            </ListItem>
           </List>
           <Menu
-        
             BackdropComponent={hoc}
             open={props.clothing || props.shoes || props.activewear || false}
             anchorEl={
@@ -111,17 +218,28 @@ function NavigationTop(props) {
           >
             {props.items /* Using ternary operator to make sure items are available otherwise we get an error because items are initially null */
               ? props.items.map((option, index) => (
-                  <Link to='/jeans'>
-
-                  {console.log(props)}
-                  <MenuItem
-                   onClick={(e) => handleSelectCategory(`${props.activewear ? 'activewear ' : null} ${e.target.id}`)} id={option}
-                    key={index}
-                    
-                    style={{ minHeight: "3px" }}
-                  >
-                    <Typography variant="caption" > {option}</Typography>
-                  </MenuItem>
+                  <Link to="/clothing">
+                    {console.log(props)}
+                    <MenuItem
+                      onClick={e =>
+                        handleSelectCategory(
+                          `${props.activewear ? "activewear " : null} ${
+                            e.target.id
+                          }`
+                        )
+                      }
+                      id={option}
+                      key={index}
+                      style={{ minHeight: "3px" }}
+                    >
+                      <Typography
+                        variant="caption"
+                        style={{ pointerEvents: "none" }}
+                      >
+                        {" "}
+                        {option}
+                      </Typography>
+                    </MenuItem>
                   </Link>
                 ))
               : null}
@@ -137,7 +255,9 @@ const mapDispatchToProps = {
   selectCategory,
   openMenuAction,
   openMenuItemAction,
-  menuCloseAction
+  menuCloseAction,
+  toggleSideDrawerAction,
+  goBackAction
 };
 
 const mapStateToProps = state => ({
@@ -155,7 +275,8 @@ const mapStateToProps = state => ({
   items: state.navigation.items,
   anchorClothing: state.navigation.anchorClothing,
   anchorShoes: state.navigation.anchorShoes,
-  anchorActivewear: state.navigation.anchorActivewear
+  anchorActivewear: state.navigation.anchorActivewear,
+  sideDrawer: state.navigation.sideDrawer
 });
 
 export default connect(
