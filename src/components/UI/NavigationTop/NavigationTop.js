@@ -65,6 +65,10 @@ const navigationStyles = makeStyles(theme => ({
       display: "flex",
       width: 450
     }
+  },
+  sideDrawerList: {
+    display: 'flex',
+    flexDirection: 'column'
   }
 }));
 
@@ -105,7 +109,7 @@ function NavigationTop(props) {
               open={props.sideDrawer}
               onClose={() => props.toggleSideDrawerAction(false)}
             >
-              <List>
+              <List className={classes.sideDrawerList}>
                 {props.activewear || props.shoes || props.clothing ? (
                   <IconButton onClick={() => props.goBackAction()}>
                     {" "}
