@@ -7,7 +7,7 @@ import {
   sortItemsByPriceAscending,
   sortItemsByPriceDescending
 } from "../actions/productActions";
-function SimpleMenu(props) {
+const SortBy = props => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   function handleClick(event) {
@@ -54,7 +54,7 @@ function SimpleMenu(props) {
       </Menu>
     </div>
   );
-}
+};
 
 const mapStateToProps = state => ({
   products: state.products.items,
@@ -63,4 +63,4 @@ const mapStateToProps = state => ({
   category: state.products.category
 });
 
-export default connect(mapStateToProps)(SimpleMenu);
+export default connect(mapStateToProps)(SortBy);
