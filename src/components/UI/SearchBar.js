@@ -28,12 +28,13 @@ const useStyles = makeStyles({
 });
 
 const SearchBar = props => {
-  const [searchBarInput, setSearchBarInupt] = useState();
+  const [searchBarInput, setSearchBarInput] = useState();
+
   const handleSubmit = e => {
     e.preventDefault();
     props.history.push(`/search/${searchBarInput}`);
-
     props.dispatch(fetchProducts(searchBarInput));
+    setSearchBarInput("");
   };
 
   const classes = useStyles();
@@ -45,7 +46,8 @@ const SearchBar = props => {
           className={classes.input}
           placeholder='Search for items'
           inputProps={{ "aria-label": "search for items" }}
-          onChange={e => setSearchBarInupt(e.target.value)}
+          onChange={e => setSearchBarInput(e.target.value)}
+          value={searchBarInput}
         />
         <IconButton
           type='submit'
