@@ -12,7 +12,8 @@ export const REMOVE_ITEM_FROM_BASKET = "REMOVE_ITEM_FROM_BASKET";
 
 const config = {
   headers: {
-    "X-RapidAPI-Key": "07ea04e210mshdcdcdfaeb0a8a2fp1b7079jsnb16592877577"
+    "X-RapidAPI-Key": "07ea04e210mshdcdcdfaeb0a8a2fp1b7079jsnb16592877577",
+    "X-RapidAPI-Host": "brianiswu-unofficial-asos-com-v1.p.rapidapi.com"
   }
 };
 
@@ -71,7 +72,7 @@ export function fetchProducts(category) {
     dispatch(fetchProductsBegin());
     return axios
       .get(
-        `https://brianiswu-unofficial-asos-com-v1.p.rapidapi.com/product/search/v1/?q=${category}&lang=en-GB&currency=EUR&store=1`,
+        `https://brianiswu-unofficial-asos-com-v1.p.rapidapi.com/product/search/v1/?q=${category}&sort=freshness&offset=0&limit=100&sizeschema=EU&currency=EUR&store=1&lang=en-GB&channel=mobile-app`,
         config
       )
       .then(res => {
