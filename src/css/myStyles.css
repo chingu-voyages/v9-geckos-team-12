@@ -2,16 +2,7 @@
   background-image: url("../img/woman-1209590_1280.jpg");
 }
 
-.imageTwo {
-  background-image: url("../img/hat-591973_1280.jpg");
-  background-position: center center;
-  background-position: 62% 60% !important;
-}
 
-.imageThree {
-  background-position: contain;
-  background-image: url("../img/beard-1866984_1280.jpg");
-}
 
 .imageFour {
   background-image: url("../img/men-2425121_1280.jpg");
