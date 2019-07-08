@@ -12,6 +12,8 @@ export const REMOVE_ITEM_FROM_BASKET = "REMOVE_ITEM_FROM_BASKET";
 export const FETCH_MORE_PRODUCTS_SUCCESS = "FETCH_MORE_PRODUCTS_SUCCESS";
 export const FETCH_MORE_PRODUCTS_BEGIN = "FETCH_MORE_PRODUCTS_BEGIN";
 export const UPDATE_OFFSET = "UPDATE_OFFSET";
+export const SORT_ITEMS_BY_PRICE_ASCENDING = "SORT_ITEMS_BY_PRICE_ASCENDING";
+export const SORT_ITEMS_BY_PRICE_DESCENDING = "SORT_ITEMS_BY_PRICE_DESCENDING";
 
 const config = {
   headers: {
@@ -125,4 +127,12 @@ export const fetchMoreProductsSuccess = products => ({
 export const updateOffset = offset => ({
   type: UPDATE_OFFSET,
   offset
+});
+
+export const sortItemsByPriceAscending = () => ({
+  type: SORT_ITEMS_BY_PRICE_ASCENDING
+});
+
+export const sortItemsByPriceDescending = () => ({
+  type: SORT_ITEMS_BY_PRICE_DESCENDING
 });

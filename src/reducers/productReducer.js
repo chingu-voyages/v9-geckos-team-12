@@ -11,7 +11,9 @@ import {
   REMOVE_ITEM_FROM_BASKET,
   FETCH_MORE_PRODUCTS_SUCCESS,
   FETCH_MORE_PRODUCTS_BEGIN,
-  UPDATE_OFFSET
+  UPDATE_OFFSET,
+  SORT_ITEMS_BY_PRICE_ASCENDING,
+  SORT_ITEMS_BY_PRICE_DESCENDING
 } from "../actions/productActions";
 
 const initialState = {
@@ -113,6 +115,26 @@ export default function productReducer(state = initialState, action) {
       return {
         ...state,
         offset: state.offset + action.offset
+      };
+    case SORT_ITEMS_BY_PRICE_ASCENDING:
+      let sortedItemsAscending = [
+        ...state.items.sort(
+          (a, b) => a.price.current.value - b.price.current.value
+        )
+      ];
+      return {
+        ...state,
+        items: sortedItemsAscending
+      };
+    case SORT_ITEMS_BY_PRICE_DESCENDING:
+      let sortedItemsDescending = [
+        ...state.items.sort(
+          (a, b) => b.price.current.value - a.price.current.value
+        )
+      ];
+      return {
+        ...state,
+        items: sortedItemsDescending
       };
     default:
       return state;
