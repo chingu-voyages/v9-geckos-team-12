@@ -11,7 +11,9 @@ import {
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
 import CircularProgress from "@material-ui/core/CircularProgress";
+
 import { Button } from "@material-ui/core";
+import SortBy from "../SortBy";
 
 const theme = createMuiTheme({
   // We use createMuiTheme to create our own theme for the Card component we override the margin 0 auto
@@ -40,8 +42,13 @@ class ClothesList extends Component {
     this.props.dispatch(cardSelectByID(id));
   };
 
+  // sortByPrice(products) {
+  //   products.sort((a, b) => a.price.current.value - b.price.current.value);
+  // }
+
   render() {
     const { products, loading, error } = this.props;
+
     if (error) {
       return <div>Error! {error.message}</div>;
     }
@@ -57,6 +64,8 @@ class ClothesList extends Component {
         {" "}
         {/* MuiThemeProvider allos us to override styles made by MaterialUi so we can edit all aspects of the default style */}
         <Fragment>
+          {/* sorting menu below */}
+          <SortBy {...this.props} />
           <Grid container justify='center' alignItems='center'>
             {products.map(item => {
               if (item === undefined || null) {
