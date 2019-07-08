@@ -20,7 +20,7 @@ import {
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import SignIn from "../../../containers/Form/SignIn/SignIn";
-
+import SearchBar from "../SearchBar";
 import { connect } from "react-redux";
 import { selectCategory } from "../../../actions/productActions";
 import {
@@ -204,6 +204,19 @@ function NavigationTop(props) {
             >
               <ListItemText>Activewear</ListItemText>
             </ListItem>
+            <ListItem>
+              <SearchBar />
+            </ListItem>
+            <ListItem button>
+            <Link to='/basket' replace>
+              <ListItemText>
+                  <Typography>  Items in basket: {props.basket.length}
+                {/* implement displaying the value from the counter */}
+                </Typography>
+                </ListItemText>
+        
+            </Link>
+          </ListItem>
             <ListItem button>
               <Link to={"/login"}>
                 <ListItemText>
@@ -211,6 +224,7 @@ function NavigationTop(props) {
                 </ListItemText>
               </Link>
             </ListItem>
+          
           </List>
           {props.sideDrawer ? null : (
             <Menu
