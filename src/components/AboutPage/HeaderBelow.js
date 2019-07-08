@@ -60,41 +60,31 @@ export default function OurPeople() {
     <Paper className={classes.root}>
       <Box>
         <Box style={finalStyle}>
-          <Box className="imageOne" position="relative">
-            <Box className="whiteBoxAbout">
+          <Box className='imageOne' position='relative'>
+            <Box className='whiteBoxAbout'>
               <p>Meet Our Values</p>
               <p>
                 SOUVENIR <br />
                 FOR EVERY ORDER
               </p>
             </Box>
-            <Box className="blackBox">
+            <Box className='blackBox'>
               <p>MEET FOUNDERS:</p>
-            </Box>
-          </Box>
-          <Box className="imageTwo" position="relative">
-            <Box className="blackBox blackBoxTwo">
-              <p>Weird Mark</p>
-            </Box>
-          </Box>
-          <Box className="imageThree" position="relative">
-            <Box className="blackBox blackBoxThree">
-              <p>Always happy John</p>
             </Box>
           </Box>
         </Box>
         <Box style={finalStyle}>
-          <Box className="imageFour" position="relative">
-            <p className="findMike">AND OF COURSE MIKE ;)</p>
-            <p className="teamMike" />
+          <Box className='imageFour' position='relative'>
+            <p className='findMike'>AND OF COURSE MIKE ;)</p>
+            <p className='teamMike' />
           </Box>
-          <Box className="imageFive" position="relative">
-            <p className="toRemember">
+          <Box className='imageFive' position='relative'>
+            <p className='toRemember'>
               Remember <br /> We Are Your
             </p>
           </Box>
-          <Box className="imageSix" position="relative">
-            <p className="weCreate">
+          <Box className='imageSix' position='relative'>
+            <p className='weCreate'>
               Our People <br /> Do the best Clothes <br />
               For YOU
             </p>
