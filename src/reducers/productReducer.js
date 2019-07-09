@@ -28,13 +28,10 @@ const initialState = {
   offset: 0
 };
 
-
-
 export default function productReducer(state = initialState, action) {
-
   switch (action.type) {
     case FETCH_PRODUCTS_BEGIN:
-        console.log('product begins', state.offset)
+      console.log("product begins", state.offset);
       return {
         ...state,
         loading: true,
@@ -42,7 +39,7 @@ export default function productReducer(state = initialState, action) {
       };
 
     case FETCH_PRODUCTS_SUCCESS:
-      console.log('product suuccess', state.offset)
+      console.log("product suuccess", state.offset);
       return {
         ...state,
         loading: false,
@@ -115,7 +112,7 @@ export default function productReducer(state = initialState, action) {
       return {
         ...state,
         items: newItems,
-        loading: false,
+        loading: false
       };
     case UPDATE_OFFSET:
       return {

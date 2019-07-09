@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { fetchProducts } from "../../actions/productActions";
+import { fetchProducts, selectCategory } from "../../actions/productActions";
 import { withRouter } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -33,6 +33,7 @@ const SearchBar = props => {
   const handleSubmit = e => {
     e.preventDefault();
     props.history.push(`/search/${searchBarInput}`);
+    props.dispatch(selectCategory(searchBarInput));
     props.dispatch(fetchProducts(searchBarInput));
     setSearchBarInput("");
   };
