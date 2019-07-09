@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Fragment } from "react";
 import Box from "@material-ui/core/Box";
 import ResponsiveDrawer from "../SideDrawer/SideDrawer";
-import hoc from "../../../hoc";
+
 import {
   AppBar,
   Toolbar,
@@ -23,13 +23,8 @@ import SignIn from "../../../containers/Form/SignIn/SignIn";
 import SearchBar from "../SearchBar";
 import { connect } from "react-redux";
 import { selectCategory } from "../../../actions/productActions";
-import {
-  openMenuAction,
-  openMenuItemAction,
-  menuCloseAction,
-  toggleSideDrawerAction,
-  goBackAction
-} from "../../../actions/navigationActions";
+
+
 
 import MenuIcon from "@material-ui/icons/Menu";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -49,8 +44,9 @@ const navigationStyles = makeStyles(theme => ({
   },
   paper: {
     boxShadow: "none !important",
-    marginTop: 50,
-    minWidth: 250
+    [theme.breakpoints.down("xs")]: {
+      display: "none"
+    }
   },
 
   menuIcon: {
@@ -67,58 +63,88 @@ const navigationStyles = makeStyles(theme => ({
     }
   },
   sideDrawerList: {
-    display: 'flex',
-    flexDirection: 'column'
+    display: "flex",
+    flexDirection: "column"
   }
 }));
 
 function NavigationTop(props) {
-  let handleSelectCategory = category => {
+  const [toggleSideDrawer, setToggleSideDrawer] = useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(false);
+  const [menuOption, setMenuOption] = React.useState(null);
+
+  const options = {
+    clothing: [
+      `Hoodies & Sweatshits`,
+      `Jackets & Coats`,
+      "Jeans",
+      "Shirts",
+      "Shorts",
+      "Loungewear",
+      "Suits",
+      "Socks",
+      "Swimwear",
+      "Vests",
+      "Trousers",
+      "Underwear"
+    ],
+    footwear: ["Loafers", "Heels", "Trainers", "Sperrys", "Plimsoll"],
+    activewear: ["View All", "Footwear", "Shorts", "Swim", "Tops", "Tights"]
+  };
+
+  const handleClick = (e, menuOption) => {
+    if (anchorEl !== e.currentTarget) {
+      setAnchorEl(e.currentTarget);
+      setMenuOption(menuOption);
+    }
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+ const sideDrawerToggle = () => {
+    setToggleSideDrawer(!toggleSideDrawer)
+ }
+
+ const goBack = () => {
+   setMenuOption(null)
+ }
+
+  const handleSelectCategory = category => {
     props.selectCategory(category);
   };
 
-  const classes = navigationStyles();
 
-  /*  <Box p={2}>
-            <Link
-              to='/t-shirts'
-              replace
-              value='t-shirts'
-              onClick={() => handleSelectCategory("t-shirts")}
-            >
-              <Button variant='contained' color='secondary'>
-                T-Shirts
-              </Button>
-            </Link>
-          </Box> 
-          
-    */
+
+  const classes = navigationStyles();
 
   return (
     <div>
-      <AppBar position="static">
+      <AppBar position="static" onMouseEnter={e => handleClose()}>
         <Toolbar>
+          {/* SIDE DRAWER START */}
           <IconButton
             className={classes.menuIcon}
-            onClick={() => props.toggleSideDrawerAction(true)}
+            onClick={sideDrawerToggle}
           >
             <MenuIcon />
           </IconButton>
           <div className={classes.sideDrawer}>
             <SwipeableDrawer
-              open={props.sideDrawer}
-              onClose={() => props.toggleSideDrawerAction(false)}
+              open={toggleSideDrawer}
+              onClose={sideDrawerToggle}
             >
               <List className={classes.sideDrawerList}>
-                {props.activewear || props.shoes || props.clothing ? (
-                  <IconButton onClick={() => props.goBackAction()}>
+                {menuOption ===  'activewear' || menuOption ===  'footwear'  || menuOption ===  'clothing'  ? (
+                  <IconButton onClick={goBack}>
                     {" "}
                     <ArrowBack />{" "}
                   </IconButton>
                 ) : null}{" "}
                 {/* Make sure go back doesn't show unless we're inside of a menu */}
-                {props.items ? (
-                  props.items.map((option, index) => (
+                {options[menuOption] ? (
+                 options[menuOption] .map((option, index) => (
                     <Link to="/clothing">
                       <ListItem
                         button
@@ -144,18 +170,14 @@ function NavigationTop(props) {
                   <Fragment>
                     <Button
                       variant="button"
-                      onClick={(e, clothingType) =>
-                        props.openMenuAction(null, "clothing")
-                      }
+                      onClick={(e, menuOption) => handleClick(e, "clothing")}
                     >
                       Clothing
                     </Button>
 
                     <Button
                       variant="button"
-                      onClick={(e, clothingType) =>
-                        props.openMenuAction(null, "footwear")
-                      }
+                      onClick={(e, menuOption) => handleClick(e, "footwear")}
                     >
                       Footwear
                     </Button>
@@ -163,9 +185,7 @@ function NavigationTop(props) {
                     <Link to="/clothing">
                       <Button
                         variant="button"
-                        onClick={(e, clothingType) =>
-                          props.openMenuAction(null, "activewear")
-                        }
+                        onClick={(e, menuOption) => handleClick(e, "activewear")}
                       >
                         Activewear
                       </Button>
@@ -175,32 +195,33 @@ function NavigationTop(props) {
               </List>
             </SwipeableDrawer>
           </div>
-
+          {/* SIDE DRAWER END */}
           <List component="nav" className={classes.list}>
             <ListItem
               button
               className={classes.listItem}
-              onMouseEnter={(e, clothingType) =>
-                props.openMenuAction(e.target, "clothing")
-              }
+              onClick={(e, menuOption) => handleClick(e, "clothing")}
+              onMouseOver={(e, menuOption) => handleClick(e, "clothing")}
             >
               <ListItemText>Clothing</ListItemText>
             </ListItem>
             <ListItem
               button
               className={classes.listItem}
-              onMouseEnter={(e, clothingType) =>
-                props.openMenuAction(e.target, "footwear")
-              }
+              onClick={(e, menuOption) => handleClick(e, "footwear")}
+              onMouseOver={(e, menuOption) => handleClick(e, "footwear")}
             >
               <ListItemText>Footwear</ListItemText>
             </ListItem>
             <ListItem
               button
               className={classes.listItem}
-              onMouseEnter={(e, clothingType) =>
+              /*onMouseEnter={(e, clothingType) =>
                 props.openMenuAction(e.target, "activewear")
               }
+              */
+              onClick={(e, menuOption) => handleClick(e, "activewear")}
+              onMouseOver={(e, menuOption) => handleClick(e, "activewear")}
             >
               <ListItemText>Activewear</ListItemText>
             </ListItem>
@@ -208,15 +229,16 @@ function NavigationTop(props) {
               <SearchBar />
             </ListItem>
             <ListItem button>
-            <Link to='/basket' replace>
-              <ListItemText>
-                  <Typography>  Items in basket: {props.basket.length}
-                {/* implement displaying the value from the counter */}
-                </Typography>
+              <Link to="/basket" replace>
+                <ListItemText>
+                  <Typography>
+                    {" "}
+                    Items in basket: {props.basket.length}
+                    {/* implement displaying the value from the counter */}
+                  </Typography>
                 </ListItemText>
-        
-            </Link>
-          </ListItem>
+              </Link>
+            </ListItem>
             <ListItem button>
               <Link to={"/login"}>
                 <ListItemText>
@@ -224,32 +246,30 @@ function NavigationTop(props) {
                 </ListItemText>
               </Link>
             </ListItem>
-          
           </List>
-          {props.sideDrawer ? null : (
+          {toggleSideDrawer || anchorEl === false ? null : (
             <Menu
-              BackdropComponent={hoc}
-              open={props.clothing || props.shoes || props.activewear || false}
-              anchorEl={
-                props.anchorClothing ||
-                props.anchorShoes ||
-                props.anchorActivewear
-              }
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+              MenuListProps={{ onMouseLeave: handleClose }}
               elevation={0}
               className={classes.paper}
             >
-              {props.items /* Using ternary operator to make sure items are available otherwise we get an error because items are initially null */
-                ? props.items.map((option, index) => (
+              {options[
+                menuOption
+              ] /* Using ternary operator to make sure items are available otherwise we get an error because items are initially null */
+                ? options[menuOption].map((option, index) => (
                     <Link to="/clothing">
-                      {console.log(props)}
                       <MenuItem
-                        onClick={e =>
+                        onClick={e => {
                           handleSelectCategory(
                             `${props.activewear ? "activewear " : null} ${
                               e.target.id
                             }`
-                          )
-                        }
+                          );
+                          handleClose();
+                        }}
                         id={option}
                         key={index}
                         style={{ minHeight: "3px" }}
@@ -276,30 +296,11 @@ function NavigationTop(props) {
 
 const mapDispatchToProps = {
   selectCategory,
-  openMenuAction,
-  openMenuItemAction,
-  menuCloseAction,
-  toggleSideDrawerAction,
-  goBackAction
+ 
 };
 
 const mapStateToProps = state => ({
   basket: state.products.basket,
-  menuOpen: state.navigation.menuOpen,
-  menuItemOpen: state.navigation.menuItemOpen,
-  anchorEl: state.navigation.anchorEl,
-  anchorItemEl: state.navigation.anchorItemEl,
-  clothingItems: state.navigation.clothingItems,
-  shoesItems: state.navigation.shoesItems,
-  activewearItems: state.navigation.activewearItems,
-  clothing: state.navigation.clothing,
-  shoes: state.navigation.shoes,
-  activewear: state.navigation.activewear,
-  items: state.navigation.items,
-  anchorClothing: state.navigation.anchorClothing,
-  anchorShoes: state.navigation.anchorShoes,
-  anchorActivewear: state.navigation.anchorActivewear,
-  sideDrawer: state.navigation.sideDrawer
 });
 
 export default connect(
