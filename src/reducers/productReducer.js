@@ -100,7 +100,7 @@ export default function productReducer(state = initialState, action) {
     case FETCH_MORE_PRODUCTS_BEGIN:
       return {
         ...state,
-        loading: false,
+        loading: true,
         error: null
       };
     case FETCH_MORE_PRODUCTS_SUCCESS:
