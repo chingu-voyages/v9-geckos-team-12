@@ -198,6 +198,7 @@ function NavigationTop(props) {
           {/* SIDE DRAWER END */}
           <List component="nav" className={classes.list}>
             <ListItem
+             autoFocus={Boolean(anchorEl)}
               button
               className={classes.listItem}
               onClick={(e, menuOption) => handleClick(e, "clothing")}
@@ -206,6 +207,7 @@ function NavigationTop(props) {
               <ListItemText>Clothing</ListItemText>
             </ListItem>
             <ListItem
+             autoFocus={Boolean(anchorEl)}
               button
               className={classes.listItem}
               onClick={(e, menuOption) => handleClick(e, "footwear")}
@@ -216,6 +218,7 @@ function NavigationTop(props) {
             <ListItem
               button
               className={classes.listItem}
+              autoFocus={Boolean(anchorEl)}
               /*onMouseEnter={(e, clothingType) =>
                 props.openMenuAction(e.target, "activewear")
               }
@@ -249,6 +252,7 @@ function NavigationTop(props) {
           </List>
           {toggleSideDrawer || anchorEl === false ? null : (
             <Menu
+             autoFocus={Boolean(anchorEl)}
               anchorEl={anchorEl}
               open={Boolean(anchorEl)}
               onClose={handleClose}
