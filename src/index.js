@@ -11,11 +11,7 @@ import thunk from "redux-thunk";
 import "typeface-roboto";
 import { loadState, saveState } from "./localStorage";
 
-let devTools =
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
-if (process.env.NODE_ENV === "prod" || process.env.NODE_ENV === "production") {
-  devTools = a => a;
-}
+let devTools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const persistedState = loadState();
 
@@ -23,9 +19,8 @@ const persistedState = loadState();
 const store = createStore(
   rootReducer,
   persistedState,
-  compose(
+  devTools(
     applyMiddleware(thunk),
-    devTools
   )
 );
 
