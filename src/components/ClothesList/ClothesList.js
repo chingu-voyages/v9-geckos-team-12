@@ -70,7 +70,6 @@ class ClothesList extends Component {
           className={classes.gridContainer}
           container
           justify='center'
-          alignItems='center'
           spacing={2}
         >
           {products.map(item => {
