@@ -15,16 +15,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { Button } from "@material-ui/core";
 import SortBy from "../SortBy";
 
-const theme = createMuiTheme({
-  // We use createMuiTheme to create our own theme for the Card component we override the margin 0 auto
-  overrides: {
-    MuiPaper: {
-      root: {
-        margin: "0 auto"
-      }
-    }
-  }
-});
+
 
 class ClothesList extends Component {
   //fetch for the first time
@@ -60,9 +51,8 @@ class ClothesList extends Component {
       return <h1>oops</h1>;
     }
     return (
-      <MuiThemeProvider theme={theme}>
-        {" "}
-        {/* MuiThemeProvider allos us to override styles made by MaterialUi so we can edit all aspects of the default style */}
+
+      
         <Fragment>
           {/* sorting menu below */}
           <SortBy {...this.props} />
@@ -101,8 +91,8 @@ class ClothesList extends Component {
             LOAD MORE
           </Button>
         </Fragment>
-      </MuiThemeProvider>
-    );
+ 
+    )
   }
 }
 
