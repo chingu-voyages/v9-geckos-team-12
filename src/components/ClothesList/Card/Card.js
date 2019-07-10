@@ -13,12 +13,18 @@ import {
 } from "../../../actions/productActions";
 
 const useStyles = makeStyles({
-  card: {
-    marginTop: "20px",
-    marginBottom: "20px"
-  },
+  card: {},
   itemImage: {
     height: 405
+  },
+  titleBox: {
+    height: 44,
+    padding: "16px 16px 0 16px"
+  },
+  priceBox: {
+    height: 35,
+    padding: "0 16px 0 16px",
+    color: "green"
   }
 });
 
@@ -30,11 +36,12 @@ function CardComponent({ ...props }) {
       <Link to='/details' style={{ textDecoration: "none", color: "black" }}>
         <CardActionArea onClick={() => props.cardSelectByID(props.id)}>
           <CardMedia className={classes.itemImage} image={props.img} />
-          <CardContent>
-            <Typography gutterBottom variant='caption'>
+          <CardContent className={classes.titleBox}>
+            <Typography gutterBottom variant='body2'>
               {props.name}
             </Typography>
-
+          </CardContent>
+          <CardContent className={classes.priceBox}>
             <Typography>{props.price}</Typography>
           </CardContent>
         </CardActionArea>
