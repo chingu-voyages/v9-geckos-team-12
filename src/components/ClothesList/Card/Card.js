@@ -14,12 +14,11 @@ import {
 
 const useStyles = makeStyles({
   card: {
-    maxWidth: 345,
     marginTop: "20px",
     marginBottom: "20px"
   },
-  media: {
-    height: 420
+  itemImage: {
+    height: 405
   }
 });
 
@@ -28,16 +27,15 @@ function CardComponent({ ...props }) {
 
   return (
     <Card className={classes.card}>
-      <Link to='/details'>
+      <Link to='/details' style={{ textDecoration: "none", color: "black" }}>
         <CardActionArea onClick={() => props.cardSelectByID(props.id)}>
-          <CardMedia className={classes.media} image={props.img} />
+          <CardMedia className={classes.itemImage} image={props.img} />
           <CardContent>
-            <Typography gutterBottom variant='caption' component='h2'>
+            <Typography gutterBottom variant='caption'>
               {props.name}
             </Typography>
-            <Typography variant='body2' color='textSecondary' component='p'>
-              Price: {props.price}
-            </Typography>
+
+            <Typography>{props.price}</Typography>
           </CardContent>
         </CardActionArea>
       </Link>
