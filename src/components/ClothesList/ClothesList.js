@@ -21,14 +21,12 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { Button } from "@material-ui/core";
 import SortBy from "../SortBy";
-import { pink } from "@material-ui/core/colors";
 
 const styles = {
   gridContainer: {
     maxWidth: 1366,
     margin: "0 auto",
-    padding: 12,
-    backgroundColor: "pink"
+    padding: 12
   }
 };
 

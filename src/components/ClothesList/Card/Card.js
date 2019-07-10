@@ -15,7 +15,8 @@ import {
 const useStyles = makeStyles({
   card: {},
   itemImage: {
-    height: 405
+    height: "100%",
+    width: "100%"
   },
   titleBox: {
     height: 44,
@@ -35,9 +36,14 @@ function CardComponent({ ...props }) {
     <Card className={classes.card}>
       <Link to='/details' style={{ textDecoration: "none", color: "black" }}>
         <CardActionArea onClick={() => props.cardSelectByID(props.id)}>
-          <CardMedia className={classes.itemImage} image={props.img} />
+          {/* <CardMedia
+            component='div'
+            className={classes.itemImage}
+            image={props.img}
+          /> */}
+          <img src={props.img} alt='img' className={classes.itemImage} />
           <CardContent className={classes.titleBox}>
-            <Typography gutterBottom variant='body2'>
+            <Typography gutterBottom variant='caption'>
               {props.name}
             </Typography>
           </CardContent>
