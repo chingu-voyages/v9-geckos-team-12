@@ -1,6 +1,9 @@
 import React, { Component, Fragment } from "react";
 import Card from "../ClothesList/Card/Card";
 import Grid from "@material-ui/core/Grid";
+// import Container from "@material-ui/core/Container";
+import Box from "@material-ui/core/Box";
+
 import { connect } from "react-redux";
 import {
   fetchProducts,
@@ -8,12 +11,23 @@ import {
   fetchMoreProducts,
   updateOffset
 } from "../../actions/productActions";
-import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import {
+  // MuiThemeProvider,
+  // createMuiTheme,
+  withStyles
+} from "@material-ui/core/styles";
 
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { Button } from "@material-ui/core";
 import SortBy from "../SortBy";
+
+const styles = {
+  gridContainer: {
+    maxWidth: 1366,
+    margin: "0 auto"
+  }
+};
 
 class ClothesList extends Component {
   //fetch for the first time
@@ -36,7 +50,7 @@ class ClothesList extends Component {
   // }
 
   render() {
-    const { products, loading, error } = this.props;
+    const { classes, products, loading, error } = this.props;
 
     if (error) {
       return <div>Error! {error.message}</div>;
@@ -52,7 +66,13 @@ class ClothesList extends Component {
       <Fragment>
         {/* sorting menu below */}
         <SortBy {...this.props} />
-        <Grid container justify='center' alignItems='center' spacing={2}>
+        <Grid
+          className={classes.gridContainer}
+          container
+          justify='center'
+          alignItems='center'
+          spacing={2}
+        >
           {products.map(item => {
             if (item === undefined || null) {
               return null;
@@ -99,4 +119,4 @@ const mapStateToProps = state => ({
   offset: state.products.offset
 });
 
-export default connect(mapStateToProps)(ClothesList);
+export default connect(mapStateToProps)(withStyles(styles)(ClothesList));
