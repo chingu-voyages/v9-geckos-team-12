@@ -24,6 +24,7 @@ const SortBy = props => {
         variant='contained'
         aria-controls='simple-menu'
         aria-haspopup='true'
+        color='primary'
         onClick={handleClick}
       >
         SORT PRODUCTS
