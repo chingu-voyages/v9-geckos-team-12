@@ -67,8 +67,8 @@ const navigationStyles = makeStyles(theme => ({
     }
   },
   sideDrawerList: {
-    display: 'flex',
-    flexDirection: 'column'
+    display: "flex",
+    flexDirection: "column"
   }
 }));
 
@@ -208,15 +208,16 @@ function NavigationTop(props) {
               <SearchBar />
             </ListItem>
             <ListItem button>
-            <Link to='/basket' replace>
-              <ListItemText>
-                  <Typography>  Items in basket: {props.basket.length}
-                {/* implement displaying the value from the counter */}
-                </Typography>
+              <Link to="/basket" replace>
+                <ListItemText>
+                  <Typography>
+                    {" "}
+                    Items in basket: {props.basket.length}
+                    {/* implement displaying the value from the counter */}
+                  </Typography>
                 </ListItemText>
-        
-            </Link>
-          </ListItem>
+              </Link>
+            </ListItem>
             <ListItem button>
               <Link to={"/login"}>
                 <ListItemText>
@@ -224,7 +225,13 @@ function NavigationTop(props) {
                 </ListItemText>
               </Link>
             </ListItem>
-          
+            <ListItem button>
+              <Link to={"/about-us"}>
+                <ListItemText>
+                  <Typography>About Us</Typography>
+                </ListItemText>
+              </Link>
+            </ListItem>
           </List>
           {props.sideDrawer ? null : (
             <Menu
