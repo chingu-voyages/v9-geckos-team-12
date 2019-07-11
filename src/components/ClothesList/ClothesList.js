@@ -58,7 +58,11 @@ class ClothesList extends Component {
     }
 
     if (loading) {
-      return <CircularProgress className='progress' color='secondary' />;
+      return (
+        <Grid container justify='center' style={{ marginTop: "400px" }}>
+          <CircularProgress className='progress' color='secondary' size={80} />{" "}
+        </Grid>
+      );
     }
     if (!products) {
       return <h1>oops</h1>;
@@ -68,9 +72,6 @@ class ClothesList extends Component {
         {/* sorting menu below */}
 
         <div style={{ marginRight: "25px", marginTop: "20px" }}>
-          <Grid container justify='center'>
-            <SortBy {...this.props} />
-          </Grid>
           <Grid
             className={classes.gridContainer}
             container
@@ -97,19 +98,23 @@ class ClothesList extends Component {
               }
             })}
           </Grid>
-          <Button
-            autoFocus={false}
-            variant='contained'
-            color='primary'
-            onClick={() => {
-              this.props.dispatch(updateOffset(40));
-              this.props.dispatch(
-                fetchMoreProducts(this.props.category, 40 + this.props.offset)
-              );
-            }}
-          >
-            LOAD MORE
-          </Button>
+
+          <Grid container justify='center'>
+            <Button
+              autoFocus={false}
+              variant='contained'
+              color='primary'
+              onClick={() => {
+                this.props.dispatch(updateOffset(40));
+                this.props.dispatch(
+                  fetchMoreProducts(this.props.category, 40 + this.props.offset)
+                );
+              }}
+              style={{ marginBottom: "50px" }}
+            >
+              LOAD MORE
+            </Button>{" "}
+          </Grid>
         </div>
       </Fragment>
     );
