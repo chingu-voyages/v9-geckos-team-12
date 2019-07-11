@@ -66,8 +66,11 @@ class ClothesList extends Component {
     return (
       <Fragment>
         {/* sorting menu below */}
-        <SortBy {...this.props} />
-        <div style={{ marginRight: "25px" }}>
+
+        <div style={{ marginRight: "25px", marginTop: "20px" }}>
+          <Grid container justify='center'>
+            <SortBy {...this.props} />
+          </Grid>
           <Grid
             className={classes.gridContainer}
             container
