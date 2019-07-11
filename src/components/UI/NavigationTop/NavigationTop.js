@@ -84,7 +84,14 @@ const navigationStyles = makeStyles(theme => ({
 
   },
   label: {
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
+    
+  },
+
+  root: {
+    '&:hover': {
+      backgroundColor: 'transparent'
+    }
   }
 }));
 
@@ -156,7 +163,7 @@ function NavigationTop(props) {
                 {menuOption === "activewear" ||
                 menuOption === "footwear" ||
                 menuOption === "clothing" ? (
-                  <IconButton onClick={goBack} classes={{label: classes.label}} disableRipple={true} disableFocusRipple={true}>
+                  <IconButton onClick={goBack} classes={{label: classes.label, root: classes.root}} disableRipple={true} disableFocusRipple={true}>
                     {" "}
                     <ArrowBack />{" "}
                   </IconButton>
