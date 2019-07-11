@@ -24,8 +24,6 @@ import SearchBar from "../SearchBar";
 import { connect } from "react-redux";
 import { selectCategory } from "../../../actions/productActions";
 
-
-
 import MenuIcon from "@material-ui/icons/Menu";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ArrowBack from "@material-ui/icons/ArrowBack";
@@ -103,19 +101,17 @@ function NavigationTop(props) {
     setAnchorEl(null);
   };
 
- const sideDrawerToggle = () => {
-    setToggleSideDrawer(!toggleSideDrawer)
- }
+  const sideDrawerToggle = () => {
+    setToggleSideDrawer(!toggleSideDrawer);
+  };
 
- const goBack = () => {
-   setMenuOption(null)
- }
+  const goBack = () => {
+    setMenuOption(null);
+  };
 
   const handleSelectCategory = category => {
     props.selectCategory(category);
   };
-
-
 
   const classes = navigationStyles();
 
@@ -124,19 +120,15 @@ function NavigationTop(props) {
       <AppBar position="static" onMouseEnter={e => handleClose()}>
         <Toolbar>
           {/* SIDE DRAWER START */}
-          <IconButton
-            className={classes.menuIcon}
-            onClick={sideDrawerToggle}
-          >
+          <IconButton className={classes.menuIcon} onClick={sideDrawerToggle}>
             <MenuIcon />
           </IconButton>
           <div className={classes.sideDrawer}>
-            <SwipeableDrawer
-              open={toggleSideDrawer}
-              onClose={sideDrawerToggle}
-            >
+            <SwipeableDrawer open={toggleSideDrawer} onClose={sideDrawerToggle}>
               <List className={classes.sideDrawerList}>
-                {menuOption ===  'activewear' || menuOption ===  'footwear'  || menuOption ===  'clothing'  ? (
+                {menuOption === "activewear" ||
+                menuOption === "footwear" ||
+                menuOption === "clothing" ? (
                   <IconButton onClick={goBack}>
                     {" "}
                     <ArrowBack />{" "}
@@ -144,7 +136,7 @@ function NavigationTop(props) {
                 ) : null}{" "}
                 {/* Make sure go back doesn't show unless we're inside of a menu */}
                 {options[menuOption] ? (
-                 options[menuOption] .map((option, index) => (
+                  options[menuOption].map((option, index) => (
                     <Link to="/clothing">
                       <ListItem
                         button
@@ -185,7 +177,9 @@ function NavigationTop(props) {
                     <Link to="/clothing">
                       <Button
                         variant="button"
-                        onClick={(e, menuOption) => handleClick(e, "activewear")}
+                        onClick={(e, menuOption) =>
+                          handleClick(e, "activewear")
+                        }
                       >
                         Activewear
                       </Button>
@@ -198,7 +192,7 @@ function NavigationTop(props) {
           {/* SIDE DRAWER END */}
           <List component="nav" className={classes.list}>
             <ListItem
-             autoFocus={Boolean(anchorEl)}
+              autoFocus={Boolean(anchorEl)}
               button
               className={classes.listItem}
               onClick={(e, menuOption) => handleClick(e, "clothing")}
@@ -207,7 +201,7 @@ function NavigationTop(props) {
               <ListItemText>Clothing</ListItemText>
             </ListItem>
             <ListItem
-             autoFocus={Boolean(anchorEl)}
+              autoFocus={Boolean(anchorEl)}
               button
               className={classes.listItem}
               onClick={(e, menuOption) => handleClick(e, "footwear")}
@@ -249,10 +243,17 @@ function NavigationTop(props) {
                 </ListItemText>
               </Link>
             </ListItem>
+            <ListItem button>
+              <Link to={"/about-us"}>
+                <ListItemText>
+                  <Typography>About Us</Typography>
+                </ListItemText>
+              </Link>
+            </ListItem>
           </List>
           {toggleSideDrawer || anchorEl === false ? null : (
             <Menu
-             autoFocus={Boolean(anchorEl)}
+              autoFocus={Boolean(anchorEl)}
               anchorEl={anchorEl}
               open={Boolean(anchorEl)}
               onClose={handleClose}
@@ -299,12 +300,11 @@ function NavigationTop(props) {
 }
 
 const mapDispatchToProps = {
-  selectCategory,
- 
+  selectCategory
 };
 
 const mapStateToProps = state => ({
-  basket: state.products.basket,
+  basket: state.products.basket
 });
 
 export default connect(

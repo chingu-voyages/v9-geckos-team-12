@@ -1,0 +1,140 @@
+.imageOne {
+  background-image: url("../img/woman-1209590_1280.jpg");
+}
+
+.imageTwo {
+  background-image: url("../img/hat-591973_1280.jpg");
+  background-position: center center;
+  background-position: 62% 60% !important;
+}
+
+.imageThree {
+  background-position: contain;
+  background-image: url("../img/beard-1866984_1280.jpg");
+}
+
+.imageFour {
+  background-image: url("../img/men-2425121_1280.jpg");
+  background-size: 95% 95% !important;
+}
+
+.imageFive {
+  background-image: url("../img/friends-3408314_1280.jpg");
+  background-size: 95% 95% !important;
+}
+
+.imageSix {
+  background-image: url("../img/lego-1044891_1280.jpg");
+  background-size: 95% 95% !important;
+}
+
+.whiteBoxAbout {
+  position: absolute;
+  bottom: 12rem;
+  left: 4rem;
+  padding: 1.5rem;
+  background-color: rgba(228, 69, 69, 0.9);
+  border: 5px solid white;
+  color: white;
+  font-size: 2rem;
+  text-transform: uppercase;
+
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(rgb(187, 146, 10)),
+    to(rgba(0, 255, 0, 0.25))
+  );
+  /* For Mozilla */
+  background: -moz-linear-gradient(
+    right,
+    rgb(187, 146, 10),
+    rgba(0, 255, 0, 0.25)
+  );
+  /* For lt IE8 */
+}
+
+.whiteBoxAbout p:nth-child(2) {
+  margin: 0;
+  text-align: center;
+  color: rgb(74, 47, 194) !important;
+}
+
+.blackBox {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: rgba(36, 3, 3, 0.7);
+  color: white;
+  letter-spacing: 0.1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  border: 2px solid white;
+}
+
+.blackBoxTwo {
+  padding: 0.5rem;
+  font-family: "Courier New", Courier, monospace;
+  border: 0;
+  background-color: rgba(36, 3, 3, 1);
+}
+
+.blackBoxThree {
+  padding: 0.5rem;
+  top: 0;
+  bottom: 25rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  border: 0;
+  background-color: rgba(36, 3, 3, 1);
+}
+
+.teamMike {
+  position: absolute;
+  top: 30%;
+  left: 43%;
+  width: 8rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: 2px solid red;
+  background-color: bisque;
+  opacity: 0.4;
+}
+
+.findMike {
+  position: absolute;
+  top: 0;
+  left: 2rem;
+  padding: 0.4rem;
+  color: white;
+  background-color: rgba(36, 3, 3, 1);
+}
+
+.toRemember {
+  position: absolute;
+  top: 1rem;
+  left: 30%;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: rgba(36, 3, 3, 0.6);
+  text-align: center;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.weCreate {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: rgba(36, 3, 3, 0.8);
+  text-align: center;
+  font-size: 1.7rem;
+  color: rgb(231, 233, 199);
+  white-space: nowrap;
+  padding: 0.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  transform: translate(-50%, -90%);
+}
