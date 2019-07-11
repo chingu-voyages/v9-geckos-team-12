@@ -11,6 +11,7 @@ import {
   addItemToBasket,
   cardSelectByID
 } from "../../../actions/productActions";
+import { Box } from "@material-ui/core";
 
 const useStyles = makeStyles({
   card: {},
@@ -19,13 +20,18 @@ const useStyles = makeStyles({
     width: "100%"
   },
   titleBox: {
-    height: 44,
-    padding: "16px 16px 0 16px"
+    padding: "7px 16px 0px 16px"
   },
   priceBox: {
     height: 35,
     padding: "0 16px 0 16px",
     color: "green"
+  },
+  titleText: {
+    height: 44,
+    overflow: "hidden",
+    wordWrap: "break-word",
+    lineHeight: "22px"
   }
 });
 
@@ -36,15 +42,12 @@ function CardComponent({ ...props }) {
     <Card className={classes.card}>
       <Link to='/details' style={{ textDecoration: "none", color: "black" }}>
         <CardActionArea onClick={() => props.cardSelectByID(props.id)}>
-          {/* <CardMedia
-            component='div'
-            className={classes.itemImage}
-            image={props.img}
-          /> */}
-          <img src={props.img} alt='img' className={classes.itemImage} />
+          <CardMedia>
+            <img src={props.img} alt='img' className={classes.itemImage} />
+          </CardMedia>
           <CardContent className={classes.titleBox}>
             <Typography gutterBottom variant='caption'>
-              {props.name}
+              <Box className={classes.titleText}>{props.name}</Box>
             </Typography>
           </CardContent>
           <CardContent className={classes.priceBox}>
