@@ -20,11 +20,11 @@ const useStyles = makeStyles({
     width: "100%"
   },
   titleBox: {
-    padding: "7px 16px 0px 16px"
+    padding: "7px 8px 0px 8px"
   },
   priceBox: {
     height: 35,
-    padding: "0 16px 0 16px",
+    padding: "0 8px 0 8px",
     color: "green"
   },
   titleText: {
