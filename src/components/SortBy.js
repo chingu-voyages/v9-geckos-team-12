@@ -5,7 +5,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { connect } from "react-redux";
 import {
   sortItemsByPriceAscending,
-  sortItemsByPriceDescending
+  sortItemsByPriceDescending,
+  fetchProducts
 } from "../actions/productActions";
 const SortBy = props => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -21,28 +22,44 @@ const SortBy = props => {
   return (
     <div>
       <Button
-        variant='contained'
         aria-controls='simple-menu'
         aria-haspopup='true'
-        color='primary'
         onClick={handleClick}
+        color='secondary'
+        variant='contained'
       >
         SORT PRODUCTS
       </Button>
       <Menu
         id='simple-menu'
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "center"
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "center"
+        }}
+        getContentAnchorEl={null}
         anchorEl={anchorEl}
-        keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
+        <MenuItem
+          onClick={() => {
+            props.dispatch(fetchProducts(props.category));
+            handleClose();
+          }}
+        >
+          Relevance
+        </MenuItem>
         <MenuItem
           onClick={() => {
             props.dispatch(sortItemsByPriceAscending());
             handleClose();
           }}
         >
-          PRICE ASCENDING
+          Price low to high
         </MenuItem>
         <MenuItem
           onClick={() => {
@@ -50,7 +67,7 @@ const SortBy = props => {
             handleClose();
           }}
         >
-          PRICE DESCENDING
+          Price high to low
         </MenuItem>
       </Menu>
     </div>
