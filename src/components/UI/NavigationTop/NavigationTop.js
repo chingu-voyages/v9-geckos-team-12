@@ -17,7 +17,8 @@ import {
   ListItemText,
   IconButton,
   SwipeableDrawer,
-  Divider
+  Divider,
+  Slide
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import SignIn from "../../../containers/Form/SignIn/SignIn";
@@ -34,8 +35,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 const navigationStyles = makeStyles(theme => ({
   list: {
-    display: "flex",
-    
+    display: "flex"
   },
   listItem: {
     marginRight: theme.spacing(6),
@@ -44,8 +44,9 @@ const navigationStyles = makeStyles(theme => ({
     }
   },
 
-  listItemSmall: {
-  
+  navToRight: {
+    display: "flex",
+    marginLeft: "auto"
   },
 
   menuIcon: {
@@ -57,21 +58,19 @@ const navigationStyles = makeStyles(theme => ({
   sideDrawer: {
     display: "none",
     [theme.breakpoints.down("sm")]: {
-      display: "flex",
-      
+      display: "flex"
     }
   },
   sideDrawerList: {
     display: "flex",
     flexDirection: "column",
-    minWidth: '50vw'
+    minWidth: "50vw"
   },
 
   menu: {
     [theme.breakpoints.down("sm")]: {
       display: "none"
-    },
-  
+    }
   },
   a: {
     textDecoration: "none",
@@ -79,18 +78,16 @@ const navigationStyles = makeStyles(theme => ({
   },
 
   menuItem: {
-    minWidth: '150px',
+    minWidth: "150px",
     backgroundColor: theme.palette.secondary
-
   },
   label: {
-    justifyContent: 'flex-start',
-    
+    justifyContent: "flex-start"
   },
 
   root: {
-    '&:hover': {
-      backgroundColor: 'transparent'
+    "&:hover": {
+      backgroundColor: "transparent"
     }
   }
 }));
@@ -132,7 +129,7 @@ function NavigationTop(props) {
 
   const sideDrawerToggle = () => {
     setToggleSideDrawer(!toggleSideDrawer);
-    setAnchorEl(null)
+    setAnchorEl(null);
   };
 
   const goBack = () => {
@@ -163,7 +160,12 @@ function NavigationTop(props) {
                 {menuOption === "activewear" ||
                 menuOption === "footwear" ||
                 menuOption === "clothing" ? (
-                  <IconButton onClick={goBack} classes={{label: classes.label, root: classes.root}} disableRipple={true} disableFocusRipple={true}>
+                  <IconButton
+                    onClick={goBack}
+                    classes={{ label: classes.label, root: classes.root }}
+                    disableRipple={true}
+                    disableFocusRipple={true}
+                  >
                     {" "}
                     <ArrowBack />{" "}
                   </IconButton>
@@ -175,7 +177,7 @@ function NavigationTop(props) {
                       <ListItem
                         button
                         onClick={e => handleSelectCategory(e.target.id)}
-                        id={option}
+                        id={option} 
                         key={index}
                         style={{ minHeight: "3px" }}
                       >
@@ -189,7 +191,6 @@ function NavigationTop(props) {
                   ))
                 ) : (
                   <Fragment>
-                    
                     <Button
                       variant="button"
                       onClick={(e, menuOption) => handleClick(e, "clothing")}
@@ -204,16 +205,13 @@ function NavigationTop(props) {
                       Footwear
                     </Button>
                     <Divider />
-                  
-                      <Button
-                        variant="button"
-                        onClick={(e, menuOption) =>
-                          handleClick(e, "activewear")
-                        }
-                      >
-                        Activewear
-                      </Button>
-                  
+
+                    <Button
+                      variant="button"
+                      onClick={(e, menuOption) => handleClick(e, "activewear")}
+                    >
+                      Activewear
+                    </Button>
                   </Fragment>
                 )}
               </List>
@@ -255,7 +253,11 @@ function NavigationTop(props) {
             <ListItem>
               <SearchBar />
             </ListItem>
-            <ListItem button>
+
+           
+          </List>
+            <List className={classes.list} style={{marginLeft: 'auto'}}> {/* Using margin auto left inline to make sure the login button and cart stay on right*/}
+          <ListItem button>
               <Link to="/basket" replace className={classes.a}>
                 <IconButton aria-label="Show 4 new mails" color="inherit">
                   <Badge badgeContent={props.basket.length} color="secondary">
@@ -264,6 +266,7 @@ function NavigationTop(props) {
                 </IconButton>
               </Link>
             </ListItem>
+
             <ListItem button>
               <Link to={"/login"} className={classes.a}>
                 <ListItemText>
