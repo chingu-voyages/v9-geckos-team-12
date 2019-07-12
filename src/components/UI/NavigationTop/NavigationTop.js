@@ -176,42 +176,40 @@ function NavigationTop(props) {
                 {/* Make sure go back doesn't show unless we're inside of a menu */}
                 {options[menuOption] ? (
                   options[menuOption].map((option, index) => (
-                   
-                    <Slide in={options[menuOption]!== null} direction='right' unmountOnExit mountOnEnter>
-
-                    
-                    <Link to="/clothing" className={classes.a}>
-                      <ListItem
-                        button
-                        onClick={e => handleSelectCategory(e.target.id)}
-                        id={option} 
-                        key={index}
-                        style={{ minHeight: "3px" }}
-                      >
-                        <ListItemText style={{ pointerEvents: "none" }}>
-                          {" "}
-                          {option}
-                        </ListItemText>
-                      </ListItem>
-                      <Divider />
-                    </Link>
+                    <Slide
+                      in={menuOption}
+                      direction="right"
+                      mountOnEnter
+                      unmountOnExit
+                      timeout={300 * index}
+                    >
+                      <Link to="/clothing" className={classes.a}>
+                        <ListItem
+                          button
+                          onClick={e => handleSelectCategory(e.target.id)}
+                          id={option}
+                          key={index}
+                          style={{ minHeight: "3px" }}
+                        >
+                          <ListItemText style={{ pointerEvents: "none" }}>
+                            {" "}
+                            {option}
+                          </ListItemText>
+                        </ListItem>
+                        <Divider />
+                      </Link>
                     </Slide>
-                
                   ))
                 ) : (
-                 
                   <Fragment>
-                      
                     <Button
-                      
                       onClick={(e, menuOption) => handleClick(e, "clothing")}
                     >
                       Clothing
                     </Button>
-                
+
                     <Divider />
                     <Button
-                      
                       onClick={(e, menuOption) => handleClick(e, "footwear")}
                     >
                       Footwear
@@ -219,12 +217,10 @@ function NavigationTop(props) {
                     <Divider />
 
                     <Button
-                     
                       onClick={(e, menuOption) => handleClick(e, "activewear")}
                     >
                       Activewear
                     </Button>
-                
                   </Fragment>
                 )}
               </List>
@@ -266,11 +262,11 @@ function NavigationTop(props) {
             <ListItem>
               <SearchBar />
             </ListItem>
-
-           
           </List>
-            <List className={classes.list} style={{marginLeft: 'auto'}}> {/* Using margin auto left inline to make sure the login button and cart stay on right*/}
-          <ListItem button>
+          <List className={classes.list} style={{ marginLeft: "auto" }}>
+            {" "}
+            {/* Using margin auto left inline to make sure the login button and cart stay on right*/}
+            <ListItem button>
               <Link to="/basket" replace className={classes.a}>
                 <IconButton aria-label="Show 4 new mails" color="inherit">
                   <Badge badgeContent={props.basket.length} color="secondary">
@@ -279,7 +275,6 @@ function NavigationTop(props) {
                 </IconButton>
               </Link>
             </ListItem>
-
             <ListItem button>
               <Link to={"/login"} className={classes.a}>
                 <ListItemText>
