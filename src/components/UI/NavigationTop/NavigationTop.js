@@ -92,6 +92,9 @@ const navigationStyles = makeStyles(theme => ({
   }
 }));
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 function NavigationTop(props) {
   const [toggleSideDrawer, setToggleSideDrawer] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(false);
@@ -173,6 +176,10 @@ function NavigationTop(props) {
                 {/* Make sure go back doesn't show unless we're inside of a menu */}
                 {options[menuOption] ? (
                   options[menuOption].map((option, index) => (
+                   
+                    <Slide in={options[menuOption]!== null} direction='right' unmountOnExit mountOnEnter>
+
+                    
                     <Link to="/clothing" className={classes.a}>
                       <ListItem
                         button
@@ -188,18 +195,23 @@ function NavigationTop(props) {
                       </ListItem>
                       <Divider />
                     </Link>
+                    </Slide>
+                
                   ))
                 ) : (
+                 
                   <Fragment>
+                      
                     <Button
-                      variant="button"
+                      
                       onClick={(e, menuOption) => handleClick(e, "clothing")}
                     >
                       Clothing
                     </Button>
+                
                     <Divider />
                     <Button
-                      variant="button"
+                      
                       onClick={(e, menuOption) => handleClick(e, "footwear")}
                     >
                       Footwear
@@ -207,11 +219,12 @@ function NavigationTop(props) {
                     <Divider />
 
                     <Button
-                      variant="button"
+                     
                       onClick={(e, menuOption) => handleClick(e, "activewear")}
                     >
                       Activewear
                     </Button>
+                
                   </Fragment>
                 )}
               </List>
