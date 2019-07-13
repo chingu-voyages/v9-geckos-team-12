@@ -12,7 +12,22 @@ const useStyles = makeStyles(theme => ({
     listStyleType: "none"
   },
   thumbnail: {
-    width: "8%"
+    width: "8%",
+    minWidth: 110
+  },
+  basketItem: {
+    margin: theme.spacing(2),
+    backgroundColor: "lightgrey"
+  },
+  picAndInfo: {
+    display: "flex"
+  },
+  checkoutButton: {
+    borderRadius: 0
+  },
+  itemInfo: {
+    display: "flex",
+    justifyContent: "flex-end"
   }
 }));
 const Basket = props => {
@@ -33,48 +48,51 @@ const Basket = props => {
           alignItems='flex-start'
           spacing={3}
         >
-          <Grid item md={9} lg={9} xl={9}>
-            <ul className={classes.list}>
-              <Grid
-                container
-                direction='column'
-                justify='space-around'
-                alignItems='stretch'
-                spacing={3}
-              >
-                {basket.map(item => {
-                  return (
-                    <Grid item>
-                      <li key={item.id}>
-                        <Paper className={classes.basketItem}>
-                          <Card>
-                            <img
-                              className={classes.thumbnail}
-                              src={`https://${item.media.images[0].url}`}
-                              alt='thumbnail'
-                            />
-                            {item.name}
-                            {item.price.current.text}
-                            {item.isInStock ? "IN STOCK" : null}
-                            <Button
-                              variant='contained'
-                              color='primary'
-                              onClick={id =>
-                                props.dispatch(removeItemFromBasket(item.id))
-                              }
-                            >
-                              REMOVE
-                            </Button>
-                          </Card>
-                        </Paper>
-                      </li>
-                    </Grid>
-                  );
-                })}
-              </Grid>
-            </ul>
-          </Grid>
+          {/* first grid item with basket items */}
+          <Grid item md={9} lg={9} xl={9} className={classes.itemsGrid}>
+            <Paper>
+              <ul className={classes.list}>
+                <Grid
+                  container
+                  direction='column'
+                  justify='center'
+                  alignItems='stretch'
+                  spacing={3}
+                >
+                  {basket.map(item => {
+                    return (
+                      // returning list of basket items
 
+                      <li key={item.id} className={classes.basketItem}>
+                        <div className={classes.picAndInfo}>
+                          <img
+                            className={classes.thumbnail}
+                            src={`https://${item.media.images[0].url}`}
+                            alt='thumbnail'
+                          />
+                          <div className={classes.itemInfo}>
+                            <p>{item.name}</p>
+                            <p>{item.price.current.text}</p>
+                            <Button>
+                              <i
+                                class='material-icons'
+                                onClick={id =>
+                                  props.dispatch(removeItemFromBasket(item.id))
+                                }
+                              >
+                                clear
+                              </i>
+                            </Button>
+                          </div>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </Grid>
+              </ul>
+            </Paper>
+          </Grid>
+          {/* second grid item with basket summary */}
           <Grid item md={3} lg={3} xl={3}>
             <div className={classes.basketSummary}>
               <Paper>
@@ -85,6 +103,7 @@ const Basket = props => {
                     variant='contained'
                     color='primary'
                     onClick={() => alert("Redirecting to checkout")}
+                    className={classes.checkoutButton}
                   >
                     PROCEED TO CHECKOUT
                   </Button>
