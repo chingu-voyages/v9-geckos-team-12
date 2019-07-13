@@ -26,7 +26,6 @@ const SortBy = props => {
         aria-haspopup='true'
         onClick={handleClick}
         color='secondary'
-        variant='contained'
       >
         SORT PRODUCTS
       </Button>
