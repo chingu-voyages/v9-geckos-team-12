@@ -6,8 +6,6 @@ import { Button, Box } from "@material-ui/core";
 import { removeItemFromBasket } from "../../actions/productActions";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
-
-import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles(theme => ({
@@ -58,7 +56,6 @@ const useStyles = makeStyles(theme => ({
 const Basket = props => {
   const { basket } = props;
   const classes = useStyles();
-  console.log(basket[0]);
   // function which counts total cost of the order
   let totalCost = basket.reduce(function(acc, currentValue) {
     return acc + currentValue.price.current.value;
@@ -66,6 +63,9 @@ const Basket = props => {
   return (
     <React.Fragment>
       <div className={classes.root}>
+        <Box>
+          <Typography variant='h6'>Your shopping bag:</Typography>
+        </Box>
         <Grid container direction='column' spacing={2}>
           {/* first grid item with basket items */}
           <Grid item>
@@ -96,15 +96,12 @@ const Basket = props => {
                           </div>
                         </div>
                         <div style={{ width: 50, height: 50 }}>
-                          <IconButton>
-                            <i
-                              class='material-icons'
-                              onClick={id =>
-                                props.dispatch(removeItemFromBasket(item.id))
-                              }
-                            >
-                              clear
-                            </i>
+                          <IconButton
+                            onClick={id =>
+                              props.dispatch(removeItemFromBasket(item.id))
+                            }
+                          >
+                            <i className='material-icons'>clear</i>
                           </IconButton>
                         </div>
                       </li>
