@@ -1,6 +1,9 @@
 import React, { Component, Fragment } from "react";
 import Card from "../ClothesList/Card/Card";
 import Grid from "@material-ui/core/Grid";
+// import Container from "@material-ui/core/Container";
+import Box from "@material-ui/core/Box";
+
 import { connect } from "react-redux";
 import {
   fetchProducts,
@@ -8,14 +11,24 @@ import {
   fetchMoreProducts,
   updateOffset
 } from "../../actions/productActions";
-import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import {
+  // MuiThemeProvider,
+  // createMuiTheme,
+  withStyles
+} from "@material-ui/core/styles";
 
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { Button } from "@material-ui/core";
 import SortBy from "../SortBy";
 
-
+const styles = {
+  gridContainer: {
+    maxWidth: 1366,
+    margin: "0 auto",
+    padding: 12
+  }
+};
 
 class ClothesList extends Component {
   //fetch for the first time
@@ -38,31 +51,39 @@ class ClothesList extends Component {
   // }
 
   render() {
-    const { products, loading, error } = this.props;
+    const { classes, products, loading, error } = this.props;
 
     if (error) {
       return <div>Error! {error.message}</div>;
     }
 
     if (loading) {
-      return <CircularProgress className='progress' color='secondary' />;
+      return (
+        <Grid container justify='center' style={{ marginTop: "400px" }}>
+          <CircularProgress className='progress' color='secondary' size={80} />{" "}
+        </Grid>
+      );
     }
     if (!products) {
       return <h1>oops</h1>;
     }
     return (
+      <Fragment>
+        {/* sorting menu below */}
 
-      
-        <Fragment>
-          {/* sorting menu below */}
-          <SortBy {...this.props} />
-          <Grid container justify='center' alignItems='center'>
+        <div style={{ marginRight: "25px", marginTop: "20px" }}>
+          <Grid
+            className={classes.gridContainer}
+            container
+            justify='center'
+            spacing={2}
+          >
             {products.map(item => {
               if (item === undefined || null) {
                 return null;
               } else {
                 return (
-                  <Grid item key={item.id} xs={12} sm={12} md={6} lg={3}>
+                  <Grid item key={item.id} xs={6} sm={6} md={4} lg={3}>
                     {" "}
                     {/* sm indicates how much of the page will an individual card cover xs= exstra small etc..*/}
                     <Card
@@ -77,22 +98,26 @@ class ClothesList extends Component {
               }
             })}
           </Grid>
-          <Button
-            autoFocus={false}
-            variant='contained'
-            color='primary'
-            onClick={() => {
-              this.props.dispatch(updateOffset(40));
-              this.props.dispatch(
-                fetchMoreProducts(this.props.category, 40 + this.props.offset)
-              );
-            }}
-          >
-            LOAD MORE
-          </Button>
-        </Fragment>
- 
-    )
+
+          <Grid container justify='center'>
+            <Button
+              autoFocus={false}
+              variant='contained'
+              color='primary'
+              onClick={() => {
+                this.props.dispatch(updateOffset(40));
+                this.props.dispatch(
+                  fetchMoreProducts(this.props.category, 40 + this.props.offset)
+                );
+              }}
+              style={{ marginBottom: "50px" }}
+            >
+              LOAD MORE
+            </Button>{" "}
+          </Grid>
+        </div>
+      </Fragment>
+    );
   }
 }
 
@@ -104,4 +129,4 @@ const mapStateToProps = state => ({
   offset: state.products.offset
 });
 
-export default connect(mapStateToProps)(ClothesList);
+export default connect(mapStateToProps)(withStyles(styles)(ClothesList));
