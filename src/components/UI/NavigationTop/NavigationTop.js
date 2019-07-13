@@ -93,7 +93,7 @@ const navigationStyles = makeStyles(theme => ({
 }));
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
+  return <Slide direction='up' ref={ref} {...props} />;
 });
 function NavigationTop(props) {
   const [toggleSideDrawer, setToggleSideDrawer] = useState(false);
@@ -148,9 +148,9 @@ function NavigationTop(props) {
   return (
     <div>
       <AppBar
-        position="static"
+        position='static'
         onMouseEnter={e => handleClose()}
-        color="primary"
+        color='primary'
       >
         <Toolbar>
           {/* SIDE DRAWER START */}
@@ -178,12 +178,12 @@ function NavigationTop(props) {
                   options[menuOption].map((option, index) => (
                     <Slide
                       in={menuOption}
-                      direction="right"
+                      direction='right'
                       mountOnEnter
                       unmountOnExit
                       timeout={300 * index}
                     >
-                      <Link to="/clothing" className={classes.a}>
+                      <Link to='/clothing' className={classes.a}>
                         <ListItem
                           button
                           onClick={e => handleSelectCategory(e.target.id)}
@@ -227,7 +227,7 @@ function NavigationTop(props) {
             </SwipeableDrawer>
           </div>
           {/* SIDE DRAWER END */}
-          <List component="nav" className={classes.list}>
+          <List component='nav' className={classes.list}>
             <ListItem
               autoFocus={Boolean(anchorEl)}
               button
@@ -267,9 +267,9 @@ function NavigationTop(props) {
             {" "}
             {/* Using margin auto left inline to make sure the login button and cart stay on right*/}
             <ListItem button>
-              <Link to="/basket" replace className={classes.a}>
-                <IconButton aria-label="Show 4 new mails" color="inherit">
-                  <Badge badgeContent={props.basket.length} color="secondary">
+              <Link to='/basket' replace className={classes.a}>
+                <IconButton aria-label='Show 4 new mails' color='inherit'>
+                  <Badge badgeContent={props.basket.length} color='secondary'>
                     <ShoppingCart />
                   </Badge>
                 </IconButton>
@@ -283,7 +283,7 @@ function NavigationTop(props) {
               </Link>
             </ListItem>
             <ListItem button>
-              <Link to={"/about-us"}>
+              <Link to={"/about-us"} className={classes.a}>
                 <ListItemText>
                   <Typography>About Us</Typography>
                 </ListItemText>
@@ -304,7 +304,7 @@ function NavigationTop(props) {
                 menuOption
               ] /* Using ternary operator to make sure items are available otherwise we get an error because items are initially null */
                 ? options[menuOption].map((option, index) => (
-                    <Link to="/clothing" className={classes.a}>
+                    <Link to='/clothing' className={classes.a}>
                       <MenuItem
                         className={classes.menuItem}
                         onClick={e => {
@@ -316,7 +316,7 @@ function NavigationTop(props) {
                         style={{ minHeight: "3px" }}
                       >
                         <Typography
-                          variant="caption"
+                          variant='caption'
                           style={{ pointerEvents: "none" }}
                         >
                           {" "}
