@@ -118,7 +118,7 @@ const Basket = props => {
                                 />
                                 <div className={classes.itemInfo}>
                                   <Box
-                                    style={{ marginRight: 25, minWidth: 100 }}
+                                    style={{ marginRight: 25, minWidth: 80 }}
                                   >
                                     <Typography>{item.name}</Typography>
                                   </Box>
@@ -160,11 +160,16 @@ const Basket = props => {
                         Sub-total: {subTotal.toFixed(2)} EUR
                       </Typography>
                     </Box>
-                    <Delivery
-                      setValues={setValues}
-                      defaultValue={props.defaultValue}
-                    />
-                    <Typography variant='body1'>
+                    <div>
+                      <Delivery
+                        setValues={setValues}
+                        defaultValue={props.defaultValue}
+                      />
+                    </div>
+                    <Typography
+                      variant='body1'
+                      style={{ margin: "20px 0px 20px 0px" }}
+                    >
                       Cost with shipment: {totalWithDelivery} EUR
                     </Typography>
                     {subTotal <= 0 ? null : (
@@ -177,6 +182,14 @@ const Basket = props => {
                         PROCEED TO CHECKOUT
                       </Button>
                     )}
+                    <div style={{ marginTop: "20px" }}>
+                      <Typography variant='body1'>We accept:</Typography>
+                      <img
+                        style={{ width: "166px" }}
+                        src='https://assets.asosservices.com/asos-finance/images/marketing/single.png'
+                        alt='thumbnail'
+                      />
+                    </div>
                   </div>
                 </div>
               </Grid>
