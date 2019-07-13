@@ -14,6 +14,7 @@ export const FETCH_MORE_PRODUCTS_BEGIN = "FETCH_MORE_PRODUCTS_BEGIN";
 export const UPDATE_OFFSET = "UPDATE_OFFSET";
 export const SORT_ITEMS_BY_PRICE_ASCENDING = "SORT_ITEMS_BY_PRICE_ASCENDING";
 export const SORT_ITEMS_BY_PRICE_DESCENDING = "SORT_ITEMS_BY_PRICE_DESCENDING";
+export const FETCH_ITEM_BY_ID_BEGIN = "FETCH_ITEM_BY_ID_BEGIN";
 
 const config = {
   headers: {
@@ -59,9 +60,13 @@ export const fetchMoreProductsBegin = () => ({
   type: FETCH_MORE_PRODUCTS_BEGIN
 });
 
+export const fetchItemByIDBegin = () => ({
+  type: FETCH_ITEM_BY_ID_BEGIN
+});
+
 export function fetchProductByID(id) {
   return dispatch => {
-    dispatch(fetchMoreProductsBegin());
+    dispatch(fetchItemByIDBegin());
     return axios
       .get(
         `https://brianiswu-unofficial-asos-com-v1.p.rapidapi.com/product/catalogue/v2/products/${id}?lang=en-GB&productid=${id}&store=COM&sizeschema=EU&currency=EUR`,

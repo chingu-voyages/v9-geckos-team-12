@@ -5,6 +5,7 @@ import ResponsiveDrawer from "../SideDrawer/SideDrawer";
 
 import {
   AppBar,
+  Badge,
   Toolbar,
   Typography,
   Button,
@@ -26,6 +27,7 @@ import { selectCategory } from "../../../actions/productActions";
 
 import MenuIcon from "@material-ui/icons/Menu";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import ShoppingCart from "@material-ui/icons/ShoppingCart";
 import ArrowBack from "@material-ui/icons/ArrowBack";
 
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -39,12 +41,6 @@ const navigationStyles = makeStyles(theme => ({
   },
   listItem: {
     marginRight: theme.spacing(6)
-  },
-  paper: {
-    boxShadow: "none !important",
-    [theme.breakpoints.down("xs")]: {
-      display: "none"
-    }
   },
 
   menuIcon: {
@@ -63,6 +59,17 @@ const navigationStyles = makeStyles(theme => ({
   sideDrawerList: {
     display: "flex",
     flexDirection: "column"
+  },
+
+  menu: {
+    [theme.breakpoints.down("xs")]: {
+      display: "none"
+    },
+    backgroundColor: theme.palette.primary.light
+  },
+  a: {
+    textDecoration: "none",
+    color: "inherit"
   }
 }));
 
@@ -117,7 +124,11 @@ function NavigationTop(props) {
 
   return (
     <div>
-      <AppBar position="static" onMouseEnter={e => handleClose()}>
+      <AppBar
+        position="static"
+        onMouseEnter={e => handleClose()}
+        color="primary"
+      >
         <Toolbar>
           {/* SIDE DRAWER START */}
           <IconButton className={classes.menuIcon} onClick={sideDrawerToggle}>
@@ -137,16 +148,10 @@ function NavigationTop(props) {
                 {/* Make sure go back doesn't show unless we're inside of a menu */}
                 {options[menuOption] ? (
                   options[menuOption].map((option, index) => (
-                    <Link to="/clothing">
+                    <Link to="/clothing" className={classes.a}>
                       <ListItem
                         button
-                        onClick={e =>
-                          handleSelectCategory(
-                            `${props.activewear ? "activewear " : null} ${
-                              e.target.id
-                            }`
-                          )
-                        }
+                        onClick={e => handleSelectCategory(e.target.id)}
                         id={option}
                         key={index}
                         style={{ minHeight: "3px" }}
@@ -174,7 +179,7 @@ function NavigationTop(props) {
                       Footwear
                     </Button>
 
-                    <Link to="/clothing">
+                    <Link to="/clothing" className={classes.a}>
                       <Button
                         variant="button"
                         onClick={(e, menuOption) =>
@@ -226,18 +231,16 @@ function NavigationTop(props) {
               <SearchBar />
             </ListItem>
             <ListItem button>
-              <Link to="/basket" replace>
-                <ListItemText>
-                  <Typography>
-                    {" "}
-                    Items in basket: {props.basket.length}
-                    {/* implement displaying the value from the counter */}
-                  </Typography>
-                </ListItemText>
+              <Link to="/basket" replace className={classes.a}>
+                <IconButton aria-label="Show 4 new mails" color="inherit">
+                  <Badge badgeContent={props.basket.length} color="secondary">
+                    <ShoppingCart />
+                  </Badge>
+                </IconButton>
               </Link>
             </ListItem>
             <ListItem button>
-              <Link to={"/login"}>
+              <Link to={"/login"} className={classes.a}>
                 <ListItemText>
                   <Typography>Login</Typography>
                 </ListItemText>
@@ -265,14 +268,10 @@ function NavigationTop(props) {
                 menuOption
               ] /* Using ternary operator to make sure items are available otherwise we get an error because items are initially null */
                 ? options[menuOption].map((option, index) => (
-                    <Link to="/clothing">
+                    <Link to="/clothing" className={classes.a}>
                       <MenuItem
                         onClick={e => {
-                          handleSelectCategory(
-                            `${props.activewear ? "activewear " : null} ${
-                              e.target.id
-                            }`
-                          );
+                          handleSelectCategory(e.target.id);
                           handleClose();
                         }}
                         id={option}
