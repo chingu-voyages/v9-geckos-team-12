@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
-import { Button, Box } from "@material-ui/core";
+import { Button, Box, Container } from "@material-ui/core";
 import { removeItemFromBasket } from "../../actions/productActions";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
@@ -71,104 +71,120 @@ const Basket = props => {
   return (
     <React.Fragment>
       <div className={classes.root}>
-        <Box>
-          <Typography variant='h6'>Your shopping bag:</Typography>
-        </Box>
-        <Grid container direction='column' spacing={2}>
-          {/* first grid item with basket items */}
-          <Grid item>
-            <Grid
-              container
-              direction='column'
-              justify='center'
-              alignItems='stretch'
-              spacing={3}
-            >
-              <ul className={classes.ul}>
-                <CSSTransitionGroup
-                  transitionName='example'
-                  transitionEnterTimeout={500}
-                  transitionLeaveTimeout={1000}
+        {subTotal <= 0 ? (
+          <Container fixed>
+            <Box style={{ margin: "0 auto", textAlign: "center" }}>
+              <Typography variant='h4'>Your shopping bag is empty</Typography>
+            </Box>
+          </Container>
+        ) : (
+          <>
+            <Box>
+              <Typography variant='h6'>Your shopping bag:</Typography>
+            </Box>
+            <Grid container direction='column' spacing={2}>
+              {/* first grid item with basket items */}
+              <Grid item>
+                <Grid
+                  container
+                  direction='column'
+                  justify='center'
+                  alignItems='stretch'
+                  spacing={3}
                 >
-                  {basket.map(item => {
-                    return (
-                      // returning list of basket items
+                  <ul className={classes.ul}>
+                    <CSSTransitionGroup
+                      transitionName='example'
+                      transitionEnterTimeout={500}
+                      transitionLeaveTimeout={1000}
+                    >
+                      {basket.map(item => {
+                        return (
+                          // returning list of basket items
 
-                      <Paper
-                        square={true}
-                        style={{
-                          boxShadow:
-                            "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
-                        }}
+                          <Paper
+                            square={true}
+                            style={{
+                              boxShadow:
+                                "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
+                            }}
+                          >
+                            <li key={item.id} className={classes.basketItem}>
+                              <div className={classes.picAndInfo}>
+                                <img
+                                  className={classes.thumbnail}
+                                  src={`https://${item.media.images[0].url}`}
+                                  alt='thumbnail'
+                                />
+                                <div className={classes.itemInfo}>
+                                  <Box
+                                    style={{ marginRight: 25, minWidth: 100 }}
+                                  >
+                                    <Typography>{item.name}</Typography>
+                                  </Box>
+                                  <Typography>
+                                    {item.price.current.text}
+                                  </Typography>
+                                </div>
+                              </div>
+                              <div style={{ width: 50, height: 50 }}>
+                                <IconButton
+                                  onClick={id =>
+                                    props.dispatch(
+                                      removeItemFromBasket(item.id)
+                                    )
+                                  }
+                                >
+                                  <i className='material-icons'>clear</i>
+                                </IconButton>
+                              </div>
+                            </li>
+                          </Paper>
+                        );
+                      })}
+                    </CSSTransitionGroup>
+                  </ul>
+                </Grid>
+              </Grid>
+
+              <Grid item className={classes.basketSummary}>
+                <div className={classes.summaryContent}>
+                  <div>
+                    <Box>
+                      <Typography variant='h5' style={{ marginTop: 0 }}>
+                        Order summary:
+                      </Typography>
+                    </Box>
+                    <Box>
+                      <Typography variant='body1'>
+                        Sub-total: {subTotal.toFixed(2)} EUR
+                      </Typography>
+                    </Box>
+                    <Delivery
+                      setValues={setValues}
+                      defaultValue={props.defaultValue}
+                    />
+                    <Typography variant='body1'>
+                      Cost with shipment: {totalWithDelivery} EUR
+                    </Typography>
+                    {subTotal <= 0 ? null : (
+                      <Button
+                        variant='contained'
+                        color='primary'
+                        onClick={() => alert("Redirecting to checkout")}
+                        className={classes.checkoutButton}
                       >
-                        <li key={item.id} className={classes.basketItem}>
-                          <div className={classes.picAndInfo}>
-                            <img
-                              className={classes.thumbnail}
-                              src={`https://${item.media.images[0].url}`}
-                              alt='thumbnail'
-                            />
-                            <div className={classes.itemInfo}>
-                              <Box style={{ marginRight: 25, minWidth: 100 }}>
-                                <Typography>{item.name}</Typography>
-                              </Box>
-                              <Typography>{item.price.current.text}</Typography>
-                            </div>
-                          </div>
-                          <div style={{ width: 50, height: 50 }}>
-                            <IconButton
-                              onClick={id =>
-                                props.dispatch(removeItemFromBasket(item.id))
-                              }
-                            >
-                              <i className='material-icons'>clear</i>
-                            </IconButton>
-                          </div>
-                        </li>
-                      </Paper>
-                    );
-                  })}
-                </CSSTransitionGroup>
-              </ul>
+                        PROCEED TO CHECKOUT
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              </Grid>
+
+              {/* second grid item with basket summary */}
             </Grid>
-          </Grid>
-
-          <Grid item className={classes.basketSummary}>
-            <div className={classes.summaryContent}>
-              <div>
-                <Box>
-                  <Typography variant='h5' style={{ marginTop: 0 }}>
-                    Order summary:
-                  </Typography>
-                </Box>
-                <Box>
-                  <Typography variant='body1'>
-                    Sub-total: {subTotal.toFixed(2)} EUR
-                  </Typography>
-                </Box>
-                <Delivery
-                  setValues={setValues}
-                  defaultValue={props.defaultValue}
-                />
-                <Typography variant='body1'>
-                  Cost with shipment: {totalWithDelivery} EUR
-                </Typography>
-                {subTotal <= 0 ? null : (
-                  <Button
-                    variant='contained'
-                    color='primary'
-                    onClick={() => alert("Redirecting to checkout")}
-                    className={classes.checkoutButton}
-                  >
-                    PROCEED TO CHECKOUT
-                  </Button>
-                )}
-              </div>
-            </div>
-          </Grid>
-
-          {/* second grid item with basket summary */}
-        </Grid>
+          </>
+        )}
       </div>
     </React.Fragment>
   );
