@@ -80,7 +80,13 @@ const Basket = props => {
                 {basket.map(item => {
                   return (
                     // returning list of basket items
-                    <Paper square={true}>
+                    <Paper
+                      square={true}
+                      style={{
+                        boxShadow:
+                          "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
+                      }}
+                    >
                       <li key={item.id} className={classes.basketItem}>
                         <div className={classes.picAndInfo}>
                           <img
@@ -89,9 +95,9 @@ const Basket = props => {
                             alt='thumbnail'
                           />
                           <div className={classes.itemInfo}>
-                            <p style={{ marginRight: 25, minWidth: 100 }}>
-                              {item.name}
-                            </p>
+                            <Box style={{ marginRight: 25, minWidth: 100 }}>
+                              <Typography>{item.name}</Typography>
+                            </Box>
                             <Typography>{item.price.current.text}</Typography>
                           </div>
                         </div>
