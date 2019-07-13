@@ -8,7 +8,8 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
 import Delivery from "./Delivery";
-
+import "./style.css";
+import { CSSTransitionGroup } from "react-transition-group";
 const useStyles = makeStyles(theme => ({
   root: {
     marginLeft: "10%",
@@ -64,7 +65,8 @@ const Basket = props => {
     return acc + currentValue.price.current.value;
   }, 0);
 
-  let totalWithDelivery = Number(subTotal) + Number(deliveryValue);
+  let totalWithDelivery =
+    Number(subTotal.toFixed(2)) + Number(deliveryValue.toFixed(2));
 
   return (
     <React.Fragment>
@@ -83,43 +85,50 @@ const Basket = props => {
               spacing={3}
             >
               <ul className={classes.ul}>
-                {basket.map(item => {
-                  return (
-                    // returning list of basket items
-                    <Paper
-                      square={true}
-                      style={{
-                        boxShadow:
-                          "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
-                      }}
-                    >
-                      <li key={item.id} className={classes.basketItem}>
-                        <div className={classes.picAndInfo}>
-                          <img
-                            className={classes.thumbnail}
-                            src={`https://${item.media.images[0].url}`}
-                            alt='thumbnail'
-                          />
-                          <div className={classes.itemInfo}>
-                            <Box style={{ marginRight: 25, minWidth: 100 }}>
-                              <Typography>{item.name}</Typography>
-                            </Box>
-                            <Typography>{item.price.current.text}</Typography>
+                <CSSTransitionGroup
+                  transitionName='example'
+                  transitionEnterTimeout={500}
+                  transitionLeaveTimeout={1000}
+                >
+                  {basket.map(item => {
+                    return (
+                      // returning list of basket items
+
+                      <Paper
+                        square={true}
+                        style={{
+                          boxShadow:
+                            "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
+                        }}
+                      >
+                        <li key={item.id} className={classes.basketItem}>
+                          <div className={classes.picAndInfo}>
+                            <img
+                              className={classes.thumbnail}
+                              src={`https://${item.media.images[0].url}`}
+                              alt='thumbnail'
+                            />
+                            <div className={classes.itemInfo}>
+                              <Box style={{ marginRight: 25, minWidth: 100 }}>
+                                <Typography>{item.name}</Typography>
+                              </Box>
+                              <Typography>{item.price.current.text}</Typography>
+                            </div>
                           </div>
-                        </div>
-                        <div style={{ width: 50, height: 50 }}>
-                          <IconButton
-                            onClick={id =>
-                              props.dispatch(removeItemFromBasket(item.id))
-                            }
-                          >
-                            <i className='material-icons'>clear</i>
-                          </IconButton>
-                        </div>
-                      </li>
-                    </Paper>
-                  );
-                })}
+                          <div style={{ width: 50, height: 50 }}>
+                            <IconButton
+                              onClick={id =>
+                                props.dispatch(removeItemFromBasket(item.id))
+                              }
+                            >
+                              <i className='material-icons'>clear</i>
+                            </IconButton>
+                          </div>
+                        </li>
+                      </Paper>
+                    );
+                  })}
+                </CSSTransitionGroup>
               </ul>
             </Grid>
           </Grid>
