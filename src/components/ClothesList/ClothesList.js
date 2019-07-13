@@ -71,6 +71,10 @@ class ClothesList extends Component {
       <Fragment>
         {/* sorting menu below */}
 
+        <Grid container justify='center' style={{ marginTop: 25 }}>
+          <SortBy {...this.props} />
+        </Grid>
+
         <div style={{ marginRight: "25px", marginTop: "20px" }}>
           <Grid
             className={classes.gridContainer}
@@ -78,6 +82,7 @@ class ClothesList extends Component {
             justify='center'
             spacing={2}
           >
+            {" "}
             {products.map(item => {
               if (item === undefined || null) {
                 return null;
