@@ -3,11 +3,13 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { Slide } from "react-slideshow-image";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import { Button } from "@material-ui/core";
+import { Button, Grid } from "@material-ui/core";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import Paper from '@material-ui/core/Paper'
+
 import {
   fetchProductByID,
   addItemToBasket
@@ -33,6 +35,9 @@ const useStyles = makeStyles(theme => ({
   },
   selectEmpty: {
     marginTop: theme.spacing(2)
+  },
+  paper : {
+    paddingBottom: theme.spacing(4)
   }
 }));
 
@@ -62,28 +67,19 @@ const Details = props => {
   }
 
   if (loading) {
-    return <CircularProgress className='progress' color='secondary' />;
+    return (
+      <Grid container justify='center' style={{ marginTop: "400px" }}>
+        <CircularProgress className='progress' color='secondary' size={80} />{" "}
+      </Grid>
+    );
   }
 
   return (
-    <div>
-      <Typography variant='h4' gutterBottom>
-        {item.name}
-      </Typography>
-      <Typography variant='h5' gutterBottom>
-        Price: {item.price.current.text}
-      </Typography>
-      <Button
-        variant='contained'
-        color='primary'
-        onClick={() => props.dispatch(addItemToBasket())}
-      >
-        Add to cart
-      </Button>
-      <Typography variant='button' display='block' gutterBottom>
-        Brand: {item.brand.name}
-      </Typography>
+    <div className={classes.root}>
+      <Paper component='div' className={classes.paper}>
 
+        
+    
       <div className='slideshow'>
         <Slide {...properties} style={{ width: "314px", margin: "0 auto" }}>
           <div className='each-slide'>
@@ -142,6 +138,25 @@ const Details = props => {
           <FormHelperText>Select your size</FormHelperText>
         </FormControl>
       </form>
+        
+      <Typography variant='body1' gutterBottom>
+        {item.name}
+      </Typography>
+      <Typography variant='body2' gutterBottom>
+        Price: {item.price.current.text}
+      </Typography>
+      <Button
+        variant='contained'
+        color='primary'
+        onClick={() => props.dispatch(addItemToBasket())}
+      >
+        Add to cart
+      </Button>
+      <Typography variant='button' display='block' gutterBottom>
+        Brand: {item.brand.name}
+      </Typography>
+
+      </Paper> 
     </div>
   );
 };

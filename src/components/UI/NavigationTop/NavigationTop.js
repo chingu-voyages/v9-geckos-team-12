@@ -38,9 +38,12 @@ const navigationStyles = makeStyles(theme => ({
     display: "flex"
   },
   listItem: {
-    marginRight: theme.spacing(12),
+    marginRight: theme.spacing(8),
+    [theme.breakpoints.down("lg")]: {
+      marginRight: theme.spacing(3)
+    },
     [theme.breakpoints.down("md")]: {
-      marginRight: theme.spacing(7),
+      marginRight: 0
     },
     [theme.breakpoints.down("md")]: {
       display: "none",
