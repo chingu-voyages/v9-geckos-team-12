@@ -2,30 +2,55 @@ import React from "react";
 import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
-import { Button } from "@material-ui/core";
+import { Button, Box } from "@material-ui/core";
 import { removeItemFromBasket } from "../../actions/productActions";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
+
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    marginLeft: "10%",
+    marginRight: "10%",
+    marginTop: "50px"
+  },
   list: {
     listStyleType: "none"
+  },
+  ul: {
+    paddingLeft: 0
   },
   thumbnail: {
     width: "8%",
     minWidth: 110
   },
   basketItem: {
-    margin: theme.spacing(2),
-    backgroundColor: "lightgrey"
+    display: "flex",
+    justifyContent: "space-between",
+    marginBottom: theme.spacing(2)
   },
   picAndInfo: {
-    display: "flex"
+    display: "flex",
+    width: "90%"
   },
   checkoutButton: {
     borderRadius: 0
   },
   itemInfo: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    flexGrow: 1,
+    marginLeft: 50
+  },
+  basketSummary: {
+    marginBottom: "100px",
+    padding: 0
+  },
+  summaryContent: {
+    flexGrow: 1,
     display: "flex",
     justifyContent: "flex-end"
   }
@@ -41,28 +66,21 @@ const Basket = props => {
   return (
     <React.Fragment>
       <div className={classes.root}>
-        <Grid
-          container
-          direction='row'
-          justify='center'
-          alignItems='flex-start'
-          spacing={3}
-        >
+        <Grid container direction='column' spacing={2}>
           {/* first grid item with basket items */}
-          <Grid item md={9} lg={9} xl={9} className={classes.itemsGrid}>
-            <Paper>
-              <ul className={classes.list}>
-                <Grid
-                  container
-                  direction='column'
-                  justify='center'
-                  alignItems='stretch'
-                  spacing={3}
-                >
-                  {basket.map(item => {
-                    return (
-                      // returning list of basket items
-
+          <Grid item>
+            <Grid
+              container
+              direction='column'
+              justify='center'
+              alignItems='stretch'
+              spacing={3}
+            >
+              <ul className={classes.ul}>
+                {basket.map(item => {
+                  return (
+                    // returning list of basket items
+                    <Paper square={true}>
                       <li key={item.id} className={classes.basketItem}>
                         <div className={classes.picAndInfo}>
                           <img
@@ -71,33 +89,45 @@ const Basket = props => {
                             alt='thumbnail'
                           />
                           <div className={classes.itemInfo}>
-                            <p>{item.name}</p>
-                            <p>{item.price.current.text}</p>
-                            <Button>
-                              <i
-                                class='material-icons'
-                                onClick={id =>
-                                  props.dispatch(removeItemFromBasket(item.id))
-                                }
-                              >
-                                clear
-                              </i>
-                            </Button>
+                            <p style={{ marginRight: 25, minWidth: 100 }}>
+                              {item.name}
+                            </p>
+                            <Typography>{item.price.current.text}</Typography>
                           </div>
                         </div>
+                        <div style={{ width: 50, height: 50 }}>
+                          <IconButton>
+                            <i
+                              class='material-icons'
+                              onClick={id =>
+                                props.dispatch(removeItemFromBasket(item.id))
+                              }
+                            >
+                              clear
+                            </i>
+                          </IconButton>
+                        </div>
                       </li>
-                    );
-                  })}
-                </Grid>
+                    </Paper>
+                  );
+                })}
               </ul>
-            </Paper>
+            </Grid>
           </Grid>
-          {/* second grid item with basket summary */}
-          <Grid item md={3} lg={3} xl={3}>
-            <div className={classes.basketSummary}>
-              <Paper>
-                <h1>Order summary:</h1>
-                <h4>Total cost: {totalCost.toFixed(2)} EUR</h4>
+
+          <Grid item className={classes.basketSummary}>
+            <div className={classes.summaryContent}>
+              <div>
+                <Box>
+                  <Typography variant='h5' style={{ marginTop: 0 }}>
+                    Order summary:
+                  </Typography>
+                </Box>
+                <Box>
+                  <Typography variant='body1'>
+                    Total cost: {totalCost.toFixed(2)} EUR
+                  </Typography>
+                </Box>
                 {totalCost <= 0 ? null : (
                   <Button
                     variant='contained'
@@ -108,9 +138,11 @@ const Basket = props => {
                     PROCEED TO CHECKOUT
                   </Button>
                 )}
-              </Paper>
+              </div>
             </div>
           </Grid>
+
+          {/* second grid item with basket summary */}
         </Grid>
       </div>
     </React.Fragment>
