@@ -17,7 +17,8 @@ import {
   ListItemText,
   IconButton,
   SwipeableDrawer,
-  Divider
+  Divider,
+  Slide
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import SignIn from "../../../containers/Form/SignIn/SignIn";
@@ -27,55 +28,73 @@ import { selectCategory } from "../../../actions/productActions";
 
 import MenuIcon from "@material-ui/icons/Menu";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import ShoppingCart from '@material-ui/icons/ShoppingCart'
+import ShoppingCart from "@material-ui/icons/ShoppingCart";
 import ArrowBack from "@material-ui/icons/ArrowBack";
 
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 const navigationStyles = makeStyles(theme => ({
   list: {
-   
-    display: "flex",
-    [theme.breakpoints.down("xs")]: {
+    display: "flex"
+  },
+  listItem: {
+    marginRight: theme.spacing(6),
+    [theme.breakpoints.down("sm")]: {
       display: "none"
     }
   },
-  listItem: {
-    marginRight: theme.spacing(6)
-  },
 
+  navToRight: {
+    display: "flex",
+    marginLeft: "auto"
+  },
 
   menuIcon: {
     display: "none",
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       display: "inline-block"
     }
   },
   sideDrawer: {
     display: "none",
-    [theme.breakpoints.down("xs")]: {
-      display: "flex",
-      width: 450
+    [theme.breakpoints.down("sm")]: {
+      display: "flex"
     }
   },
   sideDrawerList: {
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
+    minWidth: "50vw"
   },
 
   menu: {
-   
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       display: "none"
-    },
-    backgroundColor: theme.palette.primary.light,
+    }
   },
   a: {
-    textDecoration:'none',
-    color: 'inherit'
+    textDecoration: "none",
+    color: "inherit"
+  },
+
+  menuItem: {
+    minWidth: "150px",
+    backgroundColor: theme.palette.secondary
+  },
+  label: {
+    justifyContent: "flex-start"
+  },
+
+  root: {
+    "&:hover": {
+      backgroundColor: "transparent"
+    }
   }
 }));
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction='up' ref={ref} {...props} />;
+});
 function NavigationTop(props) {
   const [toggleSideDrawer, setToggleSideDrawer] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(false);
@@ -113,6 +132,7 @@ function NavigationTop(props) {
 
   const sideDrawerToggle = () => {
     setToggleSideDrawer(!toggleSideDrawer);
+    setAnchorEl(null);
   };
 
   const goBack = () => {
@@ -127,7 +147,11 @@ function NavigationTop(props) {
 
   return (
     <div>
-      <AppBar position='static' onMouseEnter={e => handleClose()} color='primary'>
+      <AppBar
+        position='static'
+        onMouseEnter={e => handleClose()}
+        color='primary'
+      >
         <Toolbar>
           {/* SIDE DRAWER START */}
           <IconButton className={classes.menuIcon} onClick={sideDrawerToggle}>
@@ -139,7 +163,12 @@ function NavigationTop(props) {
                 {menuOption === "activewear" ||
                 menuOption === "footwear" ||
                 menuOption === "clothing" ? (
-                  <IconButton onClick={goBack}>
+                  <IconButton
+                    onClick={goBack}
+                    classes={{ label: classes.label, root: classes.root }}
+                    disableRipple={true}
+                    disableFocusRipple={true}
+                  >
                     {" "}
                     <ArrowBack />{" "}
                   </IconButton>
@@ -147,47 +176,51 @@ function NavigationTop(props) {
                 {/* Make sure go back doesn't show unless we're inside of a menu */}
                 {options[menuOption] ? (
                   options[menuOption].map((option, index) => (
-                    <Link to='/clothing' className={classes.a}>
-                      <ListItem
-                        button
-                        onClick={e => handleSelectCategory(e.target.id)}
-                        id={option}
-                        key={index}
-                        style={{ minHeight: "3px" }}
-                      >
-                        <ListItemText style={{ pointerEvents: "none" }}>
-                          {" "}
-                          {option}
-                        </ListItemText>
-                      </ListItem>
-                    </Link>
+                    <Slide
+                      in={menuOption}
+                      direction='right'
+                      mountOnEnter
+                      unmountOnExit
+                      timeout={300 * index}
+                    >
+                      <Link to='/clothing' className={classes.a}>
+                        <ListItem
+                          button
+                          onClick={e => handleSelectCategory(e.target.id)}
+                          id={option}
+                          key={index}
+                          style={{ minHeight: "3px" }}
+                        >
+                          <ListItemText style={{ pointerEvents: "none" }}>
+                            {" "}
+                            {option}
+                          </ListItemText>
+                        </ListItem>
+                        <Divider />
+                      </Link>
+                    </Slide>
                   ))
                 ) : (
                   <Fragment>
                     <Button
-                      variant='button'
                       onClick={(e, menuOption) => handleClick(e, "clothing")}
                     >
                       Clothing
                     </Button>
 
+                    <Divider />
                     <Button
-                      variant='button'
                       onClick={(e, menuOption) => handleClick(e, "footwear")}
                     >
                       Footwear
                     </Button>
+                    <Divider />
 
-                    <Link to='/clothing' className={classes.a}>
-                      <Button
-                        variant='button'
-                        onClick={(e, menuOption) =>
-                          handleClick(e, "activewear")
-                        }
-                      >
-                        Activewear
-                      </Button>
-                    </Link>
+                    <Button
+                      onClick={(e, menuOption) => handleClick(e, "activewear")}
+                    >
+                      Activewear
+                    </Button>
                   </Fragment>
                 )}
               </List>
@@ -229,19 +262,30 @@ function NavigationTop(props) {
             <ListItem>
               <SearchBar />
             </ListItem>
+          </List>
+          <List className={classes.list} style={{ marginLeft: "auto" }}>
+            {" "}
+            {/* Using margin auto left inline to make sure the login button and cart stay on right*/}
             <ListItem button>
               <Link to='/basket' replace className={classes.a}>
-              <IconButton aria-label="Show 4 new mails" color="inherit">
-          <Badge badgeContent={props.basket.length} color="secondary">
-            <ShoppingCart />
-          </Badge>
-        </IconButton>
+                <IconButton aria-label='Show 4 new mails' color='inherit'>
+                  <Badge badgeContent={props.basket.length} color='secondary'>
+                    <ShoppingCart />
+                  </Badge>
+                </IconButton>
               </Link>
             </ListItem>
             <ListItem button>
               <Link to={"/login"} className={classes.a}>
                 <ListItemText>
                   <Typography>Login</Typography>
+                </ListItemText>
+              </Link>
+            </ListItem>
+            <ListItem button>
+              <Link to={"/about-us"} className={classes.a}>
+                <ListItemText>
+                  <Typography>About Us</Typography>
                 </ListItemText>
               </Link>
             </ListItem>
@@ -260,8 +304,9 @@ function NavigationTop(props) {
                 menuOption
               ] /* Using ternary operator to make sure items are available otherwise we get an error because items are initially null */
                 ? options[menuOption].map((option, index) => (
-                    <Link to='/clothing' className={classes.a }>
+                    <Link to='/clothing' className={classes.a}>
                       <MenuItem
+                        className={classes.menuItem}
                         onClick={e => {
                           handleSelectCategory(e.target.id);
                           handleClose();
