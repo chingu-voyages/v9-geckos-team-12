@@ -3,12 +3,11 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { Slide } from "react-slideshow-image";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import { Button, Grid } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-
 import {
   fetchProductByID,
   addItemToBasket
@@ -63,11 +62,7 @@ const Details = props => {
   }
 
   if (loading) {
-    return (
-      <Grid container justify='center' style={{ marginTop: "400px" }}>
-        <CircularProgress className='progress' color='secondary' size={80} />{" "}
-      </Grid>
-    );
+    return <CircularProgress className='progress' color='secondary' />;
   }
 
   return (

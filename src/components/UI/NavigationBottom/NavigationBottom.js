@@ -3,6 +3,7 @@ import Box from '@material-ui/core/Box';
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Toolbar, Typography, useScrollTrigger } from "@material-ui/core";
 import Slide from '@material-ui/core/Slide';
+import {Link} from 'react-router-dom'
 
 const useStyles = makeStyles({
     root: {
@@ -11,6 +12,10 @@ const useStyles = makeStyles({
     appBar: {
         top: 'auto',
         bottom: 0,
+      },
+      a: {
+        textDecoration: "none",
+        color: "inherit"
       },
   });
 
@@ -29,11 +34,15 @@ const NavigationBottom = () => {
                             Our Catalog 
                         </Typography>
                         </Box>
-                        <Box p={2}>
+                        <Link to='/about-us' className={classes.a}>
+                      
+                            
                         <Typography variant="button" color="inherit" style={{ borderRight: '0.1em solid ', paddingRight: '33px' }}>
-                              Terms & Conditions 
+                              About Us
                         </Typography>
-                        </Box>
+                    
+                       
+                            </Link>
                         <Box p={2}>
                         <Typography variant="button" color="inherit">
                              Privacy
