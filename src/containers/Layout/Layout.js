@@ -41,6 +41,15 @@ const theme = createMuiTheme({
         margin: "0 auto"
       }
     }
+  },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 576,
+      md: 768,
+      lg: 1024,
+      xl: 1920
+    }
   }
 });
 
@@ -51,13 +60,13 @@ class Layout extends Component {
         <Fragment>
           <NavigationTop />
           <Switch>
-            <Route component={ClothesList} path="/clothing" />
-            <Route component={Details} path="/details" exact />
-            <Route component={Form} path="/login" exact />
-            <Route component={Basket} path="/basket" exact />
-            <Route component={ClothesList} path="/search/*" />
-            <Route component={MainAboutPage} path="/about-us" exact />
-            <Route path="/" exact>
+            <Route component={ClothesList} path='/clothing' />
+            <Route component={Details} path='/details' exact />
+            <Route component={Form} path='/login' exact />
+            <Route component={Basket} path='/basket' exact />
+            <Route component={ClothesList} path='/search/*' />
+            <Route component={MainAboutPage} path='/about-us' exact />
+            <Route path='/' exact>
               <FirstHeader />
               <SecondHeader />
               <BigCollectEmails />
