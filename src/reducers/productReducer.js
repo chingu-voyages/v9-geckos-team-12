@@ -13,7 +13,8 @@ import {
   FETCH_MORE_PRODUCTS_BEGIN,
   UPDATE_OFFSET,
   SORT_ITEMS_BY_PRICE_ASCENDING,
-  SORT_ITEMS_BY_PRICE_DESCENDING
+  SORT_ITEMS_BY_PRICE_DESCENDING,
+  FETCH_ITEM_BY_ID_BEGIN
 } from "../actions/productActions";
 
 const initialState = {
@@ -101,6 +102,12 @@ export default function productReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
+        error: null
+      };
+    case FETCH_ITEM_BY_ID_BEGIN:
+      return {
+        ...state,
+        loading: true,
         error: null
       };
     case FETCH_MORE_PRODUCTS_SUCCESS:
