@@ -282,6 +282,13 @@ function NavigationTop(props) {
                 </ListItemText>
               </Link>
             </ListItem>
+            <ListItem button>
+              <Link to={"/about-us"}>
+                <ListItemText>
+                  <Typography>About Us</Typography>
+                </ListItemText>
+              </Link>
+            </ListItem>
           </List>
           {toggleSideDrawer || anchorEl === false ? null : (
             <Menu

@@ -1,0 +1,98 @@
+.pictureClass,
+.bigCollectEmails {
+  height: 400px;
+  overflow: hidden;
+  padding: 0.1rem;
+  background-color: rgb(67, 67, 194);
+  background-image: url("../img/clothing-3987617_1920.jpg");
+  background-size: cover;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.bigCollectEmails {
+  height: 480px;
+  background-image: url("../img/best-friends-1534506_1920.jpg");
+}
+
+.forAbsolute {
+  position: relative;
+}
+
+.secondClass {
+  background-image: url(../img/high-heels-2561844_1920.jpg);
+}
+
+.whiteBox {
+  padding: 0.5rem;
+  padding-left: 2rem;
+  position: absolute;
+  bottom: 1.5rem;
+  left: 2rem;
+  min-width: 27rem;
+  background-color: white;
+}
+
+.whiteBox h1 {
+  color: silver;
+  margin-bottom: 0.5rem;
+}
+
+.whiteBox h3 {
+  color: rgb(172, 172, 23);
+  padding-left: 2rem;
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.whiteBox a {
+  color: black;
+  text-decoration: none;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgb(172, 116, 116);
+}
+
+.secondWhiteCollect {
+  bottom: 2.5rem;
+  left: 10rem;
+  max-width: 30rem;
+}
+
+.secondWhiteCollect p {
+  margin: 0;
+  margin-top: 0.5rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.secondWhiteCollect h6 {
+  padding-left: 1rem;
+  margin-bottom: -0.5rem;
+  margin-top: 0.7rem;
+  font-size: 1rem;
+}
+
+.secondWhiteCollect button {
+  margin: 0.5rem;
+}
+
+.secondWhiteCollect h2 {
+  line-height: 1.125;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+a.adetailsOfOrder {
+  border: none;
+  font-size: 0.8rem;
+  font-style: italic;
+  text-decoration: underline;
+  color: rgb(165, 149, 149);
+}
+.inputDetails {
+  width: 25rem;
+}
