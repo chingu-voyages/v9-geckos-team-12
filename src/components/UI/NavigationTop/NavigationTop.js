@@ -38,9 +38,13 @@ const navigationStyles = makeStyles(theme => ({
     display: "flex"
   },
   listItem: {
-    marginRight: theme.spacing(6),
-    [theme.breakpoints.down("sm")]: {
-      display: "none"
+    marginRight: theme.spacing(12),
+    [theme.breakpoints.down("md")]: {
+      marginRight: theme.spacing(7),
+    },
+    [theme.breakpoints.down("md")]: {
+      display: "none",
+
     }
   },
 
@@ -51,13 +55,13 @@ const navigationStyles = makeStyles(theme => ({
 
   menuIcon: {
     display: "none",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
       display: "inline-block"
     }
   },
   sideDrawer: {
     display: "none",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
       display: "flex"
     }
   },
@@ -68,7 +72,7 @@ const navigationStyles = makeStyles(theme => ({
   },
 
   menu: {
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
       display: "none"
     }
   },
@@ -282,13 +286,7 @@ function NavigationTop(props) {
                 </ListItemText>
               </Link>
             </ListItem>
-            <ListItem button>
-              <Link to={"/about-us"} className={classes.a}>
-                <ListItemText>
-                  <Typography>About Us</Typography>
-                </ListItemText>
-              </Link>
-            </ListItem>
+         
           </List>
           {toggleSideDrawer || anchorEl === false ? null : (
             <Menu

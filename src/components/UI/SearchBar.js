@@ -10,7 +10,7 @@ import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import { Link } from "react-router-dom";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme =>({
   root: {
     padding: "1px 2px",
     display: "flex",
@@ -22,11 +22,25 @@ const useStyles = makeStyles({
     marginRight: 10,
     flex: 1,
     width: '30vw',
+    [theme.breakpoints.down("md")]: {
+      width: '30vw',
+      marginLeft: theme.spacing(5)
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: '20vw',
+      marginLeft: theme.spacing(5)
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: '10vw',
+      marginLeft: 0,
+      
+    },
+
   },
   iconButton: {
     padding: 10
   }
-});
+}));
 
 const SearchBar = props => {
   const [searchBarInput, setSearchBarInput] = useState();
