@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
@@ -7,6 +7,7 @@ import { removeItemFromBasket } from "../../actions/productActions";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
+import Delivery from "./Delivery";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -54,12 +55,17 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 const Basket = props => {
+  const [deliveryValue, setValues] = useState(8);
+
   const { basket } = props;
   const classes = useStyles();
   // function which counts total cost of the order
-  let totalCost = basket.reduce(function(acc, currentValue) {
+  let subTotal = basket.reduce(function(acc, currentValue) {
     return acc + currentValue.price.current.value;
   }, 0);
+
+  let totalWithDelivery = Number(subTotal) + Number(deliveryValue);
+
   return (
     <React.Fragment>
       <div className={classes.root}>
@@ -128,10 +134,17 @@ const Basket = props => {
                 </Box>
                 <Box>
                   <Typography variant='body1'>
-                    Total cost: {totalCost.toFixed(2)} EUR
+                    Sub-total: {subTotal.toFixed(2)} EUR
                   </Typography>
                 </Box>
-                {totalCost <= 0 ? null : (
+                <Delivery
+                  setValues={setValues}
+                  defaultValue={props.defaultValue}
+                />
+                <Typography variant='body1'>
+                  Cost with shipment: {totalWithDelivery} EUR
+                </Typography>
+                {subTotal <= 0 ? null : (
                   <Button
                     variant='contained'
                     color='primary'
