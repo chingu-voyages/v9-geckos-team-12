@@ -9,6 +9,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Paper from '@material-ui/core/Paper'
+import {CardActions,CardHeader,CardContent} from '@material-ui/core/'
 
 import {
   fetchProductByID,
@@ -37,7 +38,12 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(2)
   },
   paper : {
-    paddingBottom: theme.spacing(4)
+    paddingBottom: theme.spacing(4),
+    width: '90vw',
+    textAlign: 'center'
+  },
+  MuiCardActions: {
+     justifyContent:'center'
   }
 }));
 
@@ -77,9 +83,8 @@ const Details = props => {
   return (
     <div className={classes.root}>
       <Paper component='div' className={classes.paper}>
-
-        
-    
+      <CardHeader title={item.name} className={classes.cardHeader}/>
+   
       <div className='slideshow'>
         <Slide {...properties} style={{ width: "314px", margin: "0 auto" }}>
           <div className='each-slide'>
@@ -114,7 +119,20 @@ const Details = props => {
           </div>
         </Slide>
       </div>
-
+   
+  
+        <CardContent>
+   
+      <Typography variant='body2' gutterBottom>
+        Price: {item.price.current.text}
+      </Typography>
+     
+      <Typography variant='button' display='block' gutterBottom>
+        Brand: {item.brand.name}
+      </Typography>
+      </CardContent>
+              <CardActions className={classes.MuiCardActions}>
+                  
       <form className={classes.root} autoComplete='off'>
         <FormControl className={classes.formControl}>
           <Select
@@ -138,13 +156,6 @@ const Details = props => {
           <FormHelperText>Select your size</FormHelperText>
         </FormControl>
       </form>
-        
-      <Typography variant='body1' gutterBottom>
-        {item.name}
-      </Typography>
-      <Typography variant='body2' gutterBottom>
-        Price: {item.price.current.text}
-      </Typography>
       <Button
         variant='contained'
         color='primary'
@@ -152,10 +163,8 @@ const Details = props => {
       >
         Add to cart
       </Button>
-      <Typography variant='button' display='block' gutterBottom>
-        Brand: {item.brand.name}
-      </Typography>
-
+    
+              </CardActions>
       </Paper> 
     </div>
   );
