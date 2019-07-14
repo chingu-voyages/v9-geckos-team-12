@@ -137,8 +137,8 @@ function NavigationTop(props) {
     setAnchorEl(null);
   };
 
-  const sideDrawerToggle = () => {
-    setToggleSideDrawer(!toggleSideDrawer);
+  const sideDrawerToggle = (toggle) => {
+    setToggleSideDrawer(toggle);
     setAnchorEl(null);
   };
 
@@ -147,7 +147,7 @@ function NavigationTop(props) {
   };
 
   const handleSelectCategory = category => {
-    sideDrawerToggle()
+    sideDrawerToggle(false)
     props.selectCategory(category);
   };
 
@@ -162,11 +162,11 @@ function NavigationTop(props) {
       >
         <Toolbar>
           {/* SIDE DRAWER START */}
-          <IconButton className={classes.menuIcon} onClick={sideDrawerToggle}>
+          <IconButton className={classes.menuIcon} onClick={() => sideDrawerToggle(true)}>
             <MenuIcon />
           </IconButton>
           <div className={classes.sideDrawer}>
-            <SwipeableDrawer open={toggleSideDrawer} onClose={sideDrawerToggle} onOpen={() => null}>
+            <SwipeableDrawer open={toggleSideDrawer} onClose={() => sideDrawerToggle(false)} onOpen={() => null}>
               <List className={classes.sideDrawerList}>
                 {menuOption === "activewear" ||
                 menuOption === "footwear" ||
