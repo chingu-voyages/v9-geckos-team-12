@@ -24,7 +24,7 @@ const MyListItemText = styled(ListItemText)({
 
 export default function PopularBrands() {
   return (
-    <div style={{ marginTop: 200 }}>
+    <div style={{ marginTop: 50 }}>
       <Box>
         <Typography variant='h5' gutterBottom align='center' color='primary'>
           Our Popular Brands
