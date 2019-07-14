@@ -147,6 +147,7 @@ function NavigationTop(props) {
   };
 
   const handleSelectCategory = category => {
+    sideDrawerToggle()
     props.selectCategory(category);
   };
 
@@ -189,7 +190,7 @@ function NavigationTop(props) {
                       direction='right'
                       mountOnEnter
                       unmountOnExit
-                      timeout={300 * index}
+                      timeout={260 * index}
                     >
                       <Link to='/clothing' className={classes.a}>
                         <ListItem
