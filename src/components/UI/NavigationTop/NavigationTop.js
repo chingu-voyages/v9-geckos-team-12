@@ -165,7 +165,7 @@ function NavigationTop(props) {
             <MenuIcon />
           </IconButton>
           <div className={classes.sideDrawer}>
-            <SwipeableDrawer open={toggleSideDrawer} onClose={sideDrawerToggle}>
+            <SwipeableDrawer open={toggleSideDrawer} onClose={sideDrawerToggle} onOpen={() => null}>
               <List className={classes.sideDrawerList}>
                 {menuOption === "activewear" ||
                 menuOption === "footwear" ||
@@ -184,7 +184,7 @@ function NavigationTop(props) {
                 {options[menuOption] ? (
                   options[menuOption].map((option, index) => (
                     <Slide
-                      in={menuOption}
+                      in={menuOption === null ? false : true}
                       key={`${option}${index}`}
                       direction='right'
                       mountOnEnter
