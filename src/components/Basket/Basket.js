@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
   },
   thumbnail: {
     width: "8%",
-    minWidth: 110
+    minWidth: 100
   },
   basketItem: {
     display: "flex",
@@ -122,7 +122,7 @@ const Basket = props => {
                                 />
                                 <div className={classes.itemInfo}>
                                   <Box
-                                    style={{ marginRight: 25, minWidth: 80 }}
+                                    style={{ marginRight: 25, minWidth: 75 }}
                                   >
                                     <Typography>{item.name}</Typography>
                                   </Box>
