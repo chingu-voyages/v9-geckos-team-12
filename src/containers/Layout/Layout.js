@@ -57,7 +57,7 @@ class Layout extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
-        <Fragment>
+        <div style={{paddingBottom: '2.5rem'}}>
           <NavigationTop />
           <Switch>
             <Route component={ClothesList} path='/clothing' />
@@ -75,7 +75,7 @@ class Layout extends Component {
             </Route>
           </Switch>
           <NavigationBottom />
-        </Fragment>
+        </div>
       </ThemeProvider>
     );
   }
