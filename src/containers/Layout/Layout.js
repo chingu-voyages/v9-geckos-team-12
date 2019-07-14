@@ -13,10 +13,12 @@ import FirstHeader from "../../components/TwoBanners/FirstHeader";
 import SecondHeader from "../../components/TwoBanners/SecondHeader";
 import PopularMarks from "../../components/PopularMarks/PopularMarks";
 import HelpMenu from "../../components/HelpMenu/HelpMenu";
+import SalesClothes from "../../components/salesClothes/salesClothes";
 
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import { teal } from "@material-ui/core/colors";
+import salesClothes from "../../components/salesClothes/salesClothes";
 
 // Layout will render NavigationTop, NavigationBottom,ClothesList
 
@@ -58,6 +60,7 @@ class Layout extends Component {
             <Route component={ClothesList} path="/search/*" />
             <Route component={MainAboutPage} path="/about-us" exact />
             <Route path="/" exact>
+              <SalesClothes />
               <FirstHeader />
               <SecondHeader />
               <BigCollectEmails />

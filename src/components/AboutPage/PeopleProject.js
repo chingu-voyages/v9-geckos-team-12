@@ -30,8 +30,7 @@ import Button from "@material-ui/core/Button";
 
 const useStyless = makeStyles({
   card: {
-    maxWidth: 345,
-    transform: "translate(18%)"
+    maxWidth: 345
   },
   media: {
     height: 240

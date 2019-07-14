@@ -26,10 +26,10 @@ export default function PopularMarks() {
   return (
     <Box>
       <Typography variant="h4" gutterBottom align="center" color="primary">
-        Our Popular Marks
+        Our Popular Brands
       </Typography>
       <Box>
-        <MyStyledList component="nav" aria-label="Our Popular Marks">
+        <MyStyledList component="nav" aria-label="Our Popular Brands">
           <ListItem button>
             <MyListItemText primary="adidas" />
           </ListItem>

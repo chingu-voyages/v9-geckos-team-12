@@ -34,15 +34,15 @@ const MyTypoGraphy1 = styled(Typography)({
 });
 
 const MyTypoGraphyTitle = styled(Typography)({
-  fontFamily: "Arial",
+  fontFamily: "Roboto",
+  fontWeight: "200",
   textAlign: "center",
   fontSize: "2.5rem",
-  fontWeight: "bold",
   padding: "1rem",
-  marginBottom: "1rem",
-  marginTop: "1rem",
-  textShadow:
-    "0px 3px 0px #b2a98f, 0px 14px 10px rgba(0,0,0,0.15), 0px 24px 2px rgba(0,0,0,0.1), 0px 34px 30px rgba(0,0,0,0.1)"
+  marginTop: "3rem",
+  marginBottom: "3rem",
+  color: "#80847d",
+  backgroundColor: "#fefad7"
 });
 
 const MyMainPaper = styled(Paper)({
@@ -55,7 +55,7 @@ const HeaderAboutUs = () => {
   return (
     <MyMainPaper>
       <Box>
-        <MyTypoGraphyTitle>Who We ARE </MyTypoGraphyTitle>
+        <MyTypoGraphyTitle>Who We Are </MyTypoGraphyTitle>
         <MyTypoGraphy1>
           <Typography variant="h4"> Team 12 - Chingu Voyage 9 </Typography>
           <hr />
