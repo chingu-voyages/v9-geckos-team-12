@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "33bdc25208857c86eb9e60db8b754f33",
+    "revision": "3f7827ca6161cabbca230b32b06feb11",
     "url": "/v9-geckos-team-12/index.html"
   },
   {
-    "revision": "d7ceb05d19d9046999e7",
+    "revision": "bece3db49474cfd36a67",
     "url": "/v9-geckos-team-12/static/css/2.792b98df.chunk.css"
   },
   {
-    "revision": "5c7b752ef2cac2be257f",
-    "url": "/v9-geckos-team-12/static/css/main.85f8af37.chunk.css"
+    "revision": "b00b00a1859c56768bf1",
+    "url": "/v9-geckos-team-12/static/css/main.f6b97480.chunk.css"
   },
   {
-    "revision": "d7ceb05d19d9046999e7",
-    "url": "/v9-geckos-team-12/static/js/2.4cb6693f.chunk.js"
+    "revision": "bece3db49474cfd36a67",
+    "url": "/v9-geckos-team-12/static/js/2.06188cd6.chunk.js"
   },
   {
-    "revision": "5c7b752ef2cac2be257f",
-    "url": "/v9-geckos-team-12/static/js/main.6842a518.chunk.js"
+    "revision": "b00b00a1859c56768bf1",
+    "url": "/v9-geckos-team-12/static/js/main.9cb02ef2.chunk.js"
   },
   {
     "revision": "63f500283d08964391e6",
@@ -28,12 +28,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/v9-geckos-team-12/static/media/beard-1866984_1280.520d0b19.jpg"
   },
   {
-    "revision": "ce7352f90de7cb402bd87ab4b20a2fc3",
-    "url": "/v9-geckos-team-12/static/media/best-friends-1534506_1920.ce7352f9.jpg"
-  },
-  {
-    "revision": "73f1c4c2bd7a5cec128b483af994814b",
-    "url": "/v9-geckos-team-12/static/media/clothing-3987617_1920.73f1c4c2.jpg"
+    "revision": "62be8bd4b976c1c6110be10ba5dfb580",
+    "url": "/v9-geckos-team-12/static/media/brownjacket.62be8bd4.jpg"
   },
   {
     "revision": "cd14afbd71b007314d39a8ff5275c464",
@@ -42,10 +38,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "2b72398938ebd134d8ba293f68a118e3",
     "url": "/v9-geckos-team-12/static/media/hat-591973_1280.2b723989.jpg"
-  },
-  {
-    "revision": "0e1197f60c15e80543a4d71d84ca1d35",
-    "url": "/v9-geckos-team-12/static/media/high-heels-2561844_1920.0e1197f6.jpg"
   },
   {
     "revision": "1455b90f3cc087719fdb97a6c3e182aa",
@@ -158,5 +150,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "c234e995ac480b45b186d622f03c6c09",
     "url": "/v9-geckos-team-12/static/media/woman-1209590_1280.c234e995.jpg"
+  },
+  {
+    "revision": "8954fe028e9ce195e4342ffa3fd7a777",
+    "url": "/v9-geckos-team-12/static/media/yellowsuit.8954fe02.jpg"
   }
 ]);

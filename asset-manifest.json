@@ -1,21 +1,22 @@
 {
   "files": {
-    "main.css": "/v9-geckos-team-12/static/css/main.85f8af37.chunk.css",
-    "main.js": "/v9-geckos-team-12/static/js/main.6842a518.chunk.js",
-    "main.js.map": "/v9-geckos-team-12/static/js/main.6842a518.chunk.js.map",
+    "main.css": "/v9-geckos-team-12/static/css/main.f6b97480.chunk.css",
+    "main.js": "/v9-geckos-team-12/static/js/main.9cb02ef2.chunk.js",
+    "main.js.map": "/v9-geckos-team-12/static/js/main.9cb02ef2.chunk.js.map",
     "runtime~main.js": "/v9-geckos-team-12/static/js/runtime~main.b5aaf299.js",
     "runtime~main.js.map": "/v9-geckos-team-12/static/js/runtime~main.b5aaf299.js.map",
     "static/css/2.792b98df.chunk.css": "/v9-geckos-team-12/static/css/2.792b98df.chunk.css",
-    "static/js/2.4cb6693f.chunk.js": "/v9-geckos-team-12/static/js/2.4cb6693f.chunk.js",
-    "static/js/2.4cb6693f.chunk.js.map": "/v9-geckos-team-12/static/js/2.4cb6693f.chunk.js.map",
+    "static/js/2.06188cd6.chunk.js": "/v9-geckos-team-12/static/js/2.06188cd6.chunk.js",
+    "static/js/2.06188cd6.chunk.js.map": "/v9-geckos-team-12/static/js/2.06188cd6.chunk.js.map",
     "index.html": "/v9-geckos-team-12/index.html",
-    "precache-manifest.90353204672983a0953738081864c7b8.js": "/v9-geckos-team-12/precache-manifest.90353204672983a0953738081864c7b8.js",
+    "precache-manifest.cc16ef7f375f17ec65827dbdc791383b.js": "/v9-geckos-team-12/precache-manifest.cc16ef7f375f17ec65827dbdc791383b.js",
     "service-worker.js": "/v9-geckos-team-12/service-worker.js",
     "static/css/2.792b98df.chunk.css.map": "/v9-geckos-team-12/static/css/2.792b98df.chunk.css.map",
-    "static/css/main.85f8af37.chunk.css.map": "/v9-geckos-team-12/static/css/main.85f8af37.chunk.css.map",
+    "static/css/main.f6b97480.chunk.css.map": "/v9-geckos-team-12/static/css/main.f6b97480.chunk.css.map",
     "static/media/myStyles.css": "/v9-geckos-team-12/static/media/woman-1209590_1280.c234e995.jpg",
-    "static/media/FirstHeader.css": "/v9-geckos-team-12/static/media/high-heels-2561844_1920.0e1197f6.jpg",
+    "static/media/brownjacket.jpg": "/v9-geckos-team-12/static/media/brownjacket.62be8bd4.jpg",
     "static/media/human.jpg": "/v9-geckos-team-12/static/media/human.1455b90f.jpg",
-    "static/media/index.css": "/v9-geckos-team-12/static/media/roboto-latin-900italic.bc833e72.woff"
+    "static/media/index.css": "/v9-geckos-team-12/static/media/roboto-latin-900italic.bc833e72.woff",
+    "static/media/yellowsuit.jpg": "/v9-geckos-team-12/static/media/yellowsuit.8954fe02.jpg"
   }
 }
