@@ -22,125 +22,125 @@ const MyListItemText = styled(ListItemText)({
   textAlign: "center"
 });
 
-export default function PopularMarks() {
+export default function PopularBrands() {
   return (
     <Box>
-      <Typography variant="h4" gutterBottom align="center" color="primary">
-        Our Popular Marks
+      <Typography variant='h5' gutterBottom align='center' color='primary'>
+        Our Popular Brands
       </Typography>
       <Box>
-        <MyStyledList component="nav" aria-label="Our Popular Marks">
+        <MyStyledList component='nav' aria-label='Our Popular Marks'>
           <ListItem button>
-            <MyListItemText primary="adidas" />
+            <MyListItemText primary='adidas' />
           </ListItem>
           <ListItem button>
-            <MyListItemText primary="Clarks" />
+            <MyListItemText primary='Clarks' />
           </ListItem>
           <ListItem button>
-            <MyListItemText primary="Dr. Martens" />
+            <MyListItemText primary='Dr. Martens' />
           </ListItem>
           <ListItem button>
-            <MyListItemText primary="Guess" />
+            <MyListItemText primary='Guess' />
           </ListItem>
           <ListItem button>
-            <MyListItemText primary="Michael Kors" />
+            <MyListItemText primary='Michael Kors' />
           </ListItem>
           <ListItem button>
-            <MyListItemText primary="Ray Ban" />
+            <MyListItemText primary='Ray Ban' />
           </ListItem>
           <ListItem button>
-            <MyListItemText primary="Timberland" />
+            <MyListItemText primary='Timberland' />
           </ListItem>
           <ListItem button>
-            <MyListItemText primary="Wrangler" />
-          </ListItem>
-
-          <ListItem button>
-            <MyListItemText primary="ASICS" />
-          </ListItem>
-          <ListItem button>
-            <MyListItemText primary="Converse" />
-          </ListItem>
-          <ListItem button>
-            <MyListItemText primary="ecco" />
-          </ListItem>
-          <ListItem button>
-            <MyListItemText primary="Jack Wolfskim" />
-          </ListItem>
-          <ListItem button>
-            <MyListItemText primary="New Balance" />
-          </ListItem>
-          <ListItem button>
-            <MyListItemText primary="Reebok" />
-          </ListItem>
-          <ListItem button>
-            <MyListItemText primary="Tommy Hilfiger" />
+            <MyListItemText primary='Wrangler' />
           </ListItem>
 
           <ListItem button>
-            <MyListItemText primary="Benetton" />
+            <MyListItemText primary='ASICS' />
           </ListItem>
           <ListItem button>
-            <MyListItemText primary="Esprit" />
+            <MyListItemText primary='Converse' />
           </ListItem>
           <ListItem button>
-            <MyListItemText primary="Lacoste" />
+            <MyListItemText primary='ecco' />
           </ListItem>
           <ListItem button>
-            <MyListItemText primary="New Look" />
+            <MyListItemText primary='Jack Wolfskim' />
           </ListItem>
           <ListItem button>
-            <MyListItemText primary="River Island" />
+            <MyListItemText primary='New Balance' />
           </ListItem>
           <ListItem button>
-            <MyListItemText primary="Topshop" />
+            <MyListItemText primary='Reebok' />
           </ListItem>
           <ListItem button>
-            <MyListItemText primary="Crocs" />
-          </ListItem>
-
-          <ListItem button>
-            <MyListItemText primary="Calvin Klein" />
-          </ListItem>
-          <ListItem button>
-            <MyListItemText primary="Desigual" />
-          </ListItem>
-          <ListItem button>
-            <MyListItemText primary="GAP" />
-          </ListItem>
-          <ListItem button>
-            <MyListItemText primary="Lee" />
-          </ListItem>
-          <ListItem button>
-            <MyListItemText primary="Nike" />
-          </ListItem>
-          <ListItem button>
-            <MyListItemText primary="Tamaris" />
-          </ListItem>
-          <ListItem button>
-            <MyListItemText primary="Triumph" />
+            <MyListItemText primary='Tommy Hilfiger' />
           </ListItem>
 
           <ListItem button>
-            <MyListItemText primary="Chi Chi London" />
+            <MyListItemText primary='Benetton' />
           </ListItem>
           <ListItem button>
-            <MyListItemText primary="Dorothy Perkins" />
+            <MyListItemText primary='Esprit' />
           </ListItem>
           <ListItem button>
-            <MyListItemText primary="Geox" />
+            <MyListItemText primary='Lacoste' />
+          </ListItem>
+          <ListItem button>
+            <MyListItemText primary='New Look' />
+          </ListItem>
+          <ListItem button>
+            <MyListItemText primary='River Island' />
+          </ListItem>
+          <ListItem button>
+            <MyListItemText primary='Topshop' />
+          </ListItem>
+          <ListItem button>
+            <MyListItemText primary='Crocs' />
+          </ListItem>
+
+          <ListItem button>
+            <MyListItemText primary='Calvin Klein' />
+          </ListItem>
+          <ListItem button>
+            <MyListItemText primary='Desigual' />
+          </ListItem>
+          <ListItem button>
+            <MyListItemText primary='GAP' />
+          </ListItem>
+          <ListItem button>
+            <MyListItemText primary='Lee' />
+          </ListItem>
+          <ListItem button>
+            <MyListItemText primary='Nike' />
+          </ListItem>
+          <ListItem button>
+            <MyListItemText primary='Tamaris' />
+          </ListItem>
+          <ListItem button>
+            <MyListItemText primary='Triumph' />
+          </ListItem>
+
+          <ListItem button>
+            <MyListItemText primary='Chi Chi London' />
+          </ListItem>
+          <ListItem button>
+            <MyListItemText primary='Dorothy Perkins' />
+          </ListItem>
+          <ListItem button>
+            <MyListItemText primary='Geox' />
           </ListItem>
           <ListItem button>
             <MyListItemText primary="Levi's" />
           </ListItem>
           <ListItem button>
-            <MyListItemText primary="Pepe Jeans" />
+            <MyListItemText primary='Pepe Jeans' />
           </ListItem>
           <ListItem button>
-            <MyListItemText primary="The North Face" />
+            <MyListItemText primary='The North Face' />
           </ListItem>
           <ListItem button>
-            <MyListItemText primary="Vans" />
+            <MyListItemText primary='Vans' />
           </ListItem>
         </MyStyledList>
       </Box>

@@ -6,13 +6,11 @@ import ClothesList from "../../components/ClothesList/ClothesList";
 import Details from "../../components/Details/Details";
 import Form from "../Form";
 import Basket from "../../components/Basket/Basket";
+import LandingPage from "../../LandingPage/LandingPage";
 
 import MainAboutPage from "../../components/AboutPage/MainAboutPageApp";
-import BigCollectEmails from "../../components/CollectEmails/BigCollectEmails";
-import FirstHeader from "../../components/TwoBanners/FirstHeader";
-import SecondHeader from "../../components/TwoBanners/SecondHeader";
-import PopularMarks from "../../components/PopularMarks/PopularMarks";
-import HelpMenu from "../../components/HelpMenu/HelpMenu";
+
+import PopularBrands from "../../LandingPage/PopularBrands";
 
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
@@ -57,7 +55,7 @@ class Layout extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
-        <div style={{paddingBottom: '2.5rem'}}>
+        <div style={{ paddingBottom: "2.5rem" }}>
           <NavigationTop />
           <Switch>
             <Route component={ClothesList} path='/clothing' />
@@ -66,13 +64,7 @@ class Layout extends Component {
             <Route component={Basket} path='/basket' exact />
             <Route component={ClothesList} path='/search/*' />
             <Route component={MainAboutPage} path='/about-us' exact />
-            <Route path='/' exact>
-              <FirstHeader />
-              <SecondHeader />
-              <BigCollectEmails />
-              <PopularMarks />
-              <HelpMenu />
-            </Route>
+            <Route component={LandingPage} path='/' exact />
           </Switch>
           <NavigationBottom />
         </div>
