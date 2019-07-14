@@ -66,6 +66,11 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("sm")]: {
       justifyContent: "center"
     }
+  },
+  itemPrice: {
+    [theme.breakpoints.down("xs")]: {
+     paddingTop: '50%'
+    },
   }
 }));
 const Basket = props => {
@@ -134,7 +139,7 @@ const Basket = props => {
                                   >
                                     <Typography>{item.name}</Typography>
                                   </Box>
-                                  <Typography>
+                                  <Typography className={classes.itemPrice}>
                                     {item.price.current.text}
                                   </Typography>
                                 </div>
