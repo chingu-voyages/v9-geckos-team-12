@@ -8,8 +8,9 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import Paper from '@material-ui/core/Paper'
-import {CardActions,CardHeader,CardContent} from '@material-ui/core/'
+import Paper from "@material-ui/core/Paper";
+import { CardActions, CardHeader, CardContent } from "@material-ui/core/";
+import Swal from "sweetalert2";
 
 import {
   fetchProductByID,
@@ -37,30 +38,30 @@ const useStyles = makeStyles(theme => ({
   selectEmpty: {
     marginTop: theme.spacing(2)
   },
-  paper : {
+  paper: {
     paddingBottom: theme.spacing(4),
-    width: '90vw',
-    textAlign: 'center',
-    height: '90vh',
-    [theme.breakpoints.down('xs')]: {
-      height: '100%'
-    },
+    width: "90vw",
+    textAlign: "center",
+    height: "90vh",
+    [theme.breakpoints.down("xs")]: {
+      height: "100%"
+    }
   },
   MuiCardActions: {
-     justifyContent:'center'
+    justifyContent: "center"
   },
   slide: {
-    margin: '0 auto',
+    margin: "0 auto",
     width: 314,
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down("xs")]: {
       width: 290
     }
   },
 
   slideImage: {
     width: 314,
-    margin: '0 auto',
-    [theme.breakpoints.down('xs')]: {
+    margin: "0 auto",
+    [theme.breakpoints.down("xs")]: {
       width: 290
     }
   }
@@ -102,89 +103,91 @@ const Details = props => {
   return (
     <div className={classes.root}>
       <Paper component='div' className={classes.paper}>
-      <CardHeader title={item.name} className={classes.cardHeader}/>
-   
-      <div className='slideshow'>
-        <Slide {...properties} className={classes.slide}>
-          <div className='each-slide'>
-            <div
-            className={classes.slideImage}
-              style={{
-                backgroundImage: `url('https://${item.media.images[0].url}')`,
-                height: "400px",
-               
-              }}
-            />
-          </div>
-          <div className='each-slide'>
-            <div
-             className={classes.slideImage}
-              style={{
-                backgroundImage: `url('https://${item.media.images[1].url}')`,
-                height: "400px",
-              
-              }}
-            />
-          </div>
-          <div className='each-slide'>
-            <div
-             className={classes.slideImage}
-              style={{
-                backgroundImage: `url('https://${item.media.images[2].url}')`,
-                height: "400px",
-                
-              }}
-            />
-          </div>
-        </Slide>
-      </div>
-   
-  
+        <CardHeader title={item.name} className={classes.cardHeader} />
+
+        <div className='slideshow'>
+          <Slide {...properties} className={classes.slide}>
+            <div className='each-slide'>
+              <div
+                className={classes.slideImage}
+                style={{
+                  backgroundImage: `url('https://${item.media.images[0].url}')`,
+                  height: "400px"
+                }}
+              />
+            </div>
+            <div className='each-slide'>
+              <div
+                className={classes.slideImage}
+                style={{
+                  backgroundImage: `url('https://${item.media.images[1].url}')`,
+                  height: "400px"
+                }}
+              />
+            </div>
+            <div className='each-slide'>
+              <div
+                className={classes.slideImage}
+                style={{
+                  backgroundImage: `url('https://${item.media.images[2].url}')`,
+                  height: "400px"
+                }}
+              />
+            </div>
+          </Slide>
+        </div>
+
         <CardContent>
-   
-      <Typography variant='body2' gutterBottom>
-        Price: {item.price.current.text}
-      </Typography>
-     
-      <Typography variant='button' display='block' gutterBottom>
-        Brand: {item.brand.name}
-      </Typography>
-      </CardContent>
-              <CardActions className={classes.MuiCardActions}>
-                  
-      <form className={classes.root} autoComplete='off'>
-        <FormControl className={classes.formControl}>
-          <Select
-            value={values.size}
-            onChange={handleChange}
-            name='size'
-            displayEmpty
-            className={classes.selectEmpty}
-          >
-            <MenuItem value='Select size' disabled>
-              Select size
-            </MenuItem>
-            {item.variants.map(variant => {
-              return (
-                <MenuItem value={variant.brandSize}>
-                  {variant.brandSize}
+          <Typography variant='body2' gutterBottom>
+            Price: {item.price.current.text}
+          </Typography>
+
+          <Typography variant='button' display='block' gutterBottom>
+            Brand: {item.brand.name}
+          </Typography>
+        </CardContent>
+        <CardActions className={classes.MuiCardActions}>
+          <form className={classes.root} autoComplete='off'>
+            <FormControl className={classes.formControl}>
+              <Select
+                value={values.size}
+                onChange={handleChange}
+                name='size'
+                displayEmpty
+                className={classes.selectEmpty}
+              >
+                <MenuItem value='Select size' disabled>
+                  Select size
                 </MenuItem>
-              );
-            })}
-          </Select>
-          <FormHelperText>Select your size</FormHelperText>
-        </FormControl>
-      </form>
-      <Button
-        variant='contained'
-        color='primary'
-        onClick={() => props.dispatch(addItemToBasket())}
-      >
-        Add to cart
-      </Button>
-    
-              </CardActions>
-      </Paper> 
+                {item.variants.map(variant => {
+                  return (
+                    <MenuItem value={variant.brandSize}>
+                      {variant.brandSize}
+                    </MenuItem>
+                  );
+                })}
+              </Select>
+              <FormHelperText>Select your size</FormHelperText>
+            </FormControl>
+          </form>
+          <Button
+            variant='contained'
+            color='primary'
+            onClick={() => {
+              props.dispatch(addItemToBasket());
+              Swal.fire({
+                position: "top",
+                type: "success",
+                title: "Item added to basket!",
+                showConfirmButton: false,
+                timer: 1300
+              });
+            }}
+          >
+            Add to cart
+          </Button>
+        </CardActions>
+      </Paper>
     </div>
   );
 };
