@@ -185,6 +185,7 @@ function NavigationTop(props) {
                   options[menuOption].map((option, index) => (
                     <Slide
                       in={menuOption}
+                      key={`${option}${index}`}
                       direction='right'
                       mountOnEnter
                       unmountOnExit
@@ -305,7 +306,7 @@ function NavigationTop(props) {
                 menuOption
               ] /* Using ternary operator to make sure items are available otherwise we get an error because items are initially null */
                 ? options[menuOption].map((option, index) => (
-                    <Link to='/clothing' className={classes.a}>
+                    <Link to='/clothing' className={classes.a} key={`${option}${index}`}>
                       <MenuItem
                         className={classes.menuItem}
                         onClick={e => {
