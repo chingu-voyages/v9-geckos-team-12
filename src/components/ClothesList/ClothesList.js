@@ -59,7 +59,11 @@ class ClothesList extends Component {
 
     if (loading) {
       return (
-        <Grid container justify='center' style={{ marginTop: "400px" }}>
+        <Grid
+          container
+          justify='center'
+          style={{ height: "83vh", alignItems: "center" }}
+        >
           <CircularProgress className='progress' color='secondary' size={80} />{" "}
         </Grid>
       );
