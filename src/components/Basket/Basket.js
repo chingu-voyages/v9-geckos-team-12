@@ -182,7 +182,7 @@ const Basket = props => {
                       variant='body1'
                       style={{ margin: "20px 0px 20px 0px" }}
                     >
-                      Total: {totalWithDelivery} EUR
+                      Total: {totalWithDelivery.toFixed(2)} EUR
                     </Typography>
                     {subTotal <= 0 ? null : (
                       <Button
