@@ -1,27 +1,63 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a4b3a289739093c858508102d407b4de",
+    "revision": "82d3c82198f53f228cecc4289bd9ca84",
     "url": "/v9-geckos-team-12/index.html"
   },
   {
-    "revision": "f5b9b344e5ae5453a9ee",
-    "url": "/v9-geckos-team-12/static/css/2.df9f8eb4.chunk.css"
+    "revision": "c0356fe13e55d1869f90",
+    "url": "/v9-geckos-team-12/static/css/2.792b98df.chunk.css"
   },
   {
-    "revision": "801e70c43a369347163c",
-    "url": "/v9-geckos-team-12/static/css/main.498d002a.chunk.css"
+    "revision": "a4e8c542dcee2ae391a7",
+    "url": "/v9-geckos-team-12/static/css/main.85f8af37.chunk.css"
   },
   {
-    "revision": "f5b9b344e5ae5453a9ee",
-    "url": "/v9-geckos-team-12/static/js/2.e8020505.chunk.js"
+    "revision": "c0356fe13e55d1869f90",
+    "url": "/v9-geckos-team-12/static/js/2.5a03d38a.chunk.js"
   },
   {
-    "revision": "801e70c43a369347163c",
-    "url": "/v9-geckos-team-12/static/js/main.adf94e09.chunk.js"
+    "revision": "a4e8c542dcee2ae391a7",
+    "url": "/v9-geckos-team-12/static/js/main.d24636ff.chunk.js"
   },
   {
     "revision": "63f500283d08964391e6",
     "url": "/v9-geckos-team-12/static/js/runtime~main.b5aaf299.js"
+  },
+  {
+    "revision": "520d0b191b2cb98d3f9e0647f335db81",
+    "url": "/v9-geckos-team-12/static/media/beard-1866984_1280.520d0b19.jpg"
+  },
+  {
+    "revision": "ce7352f90de7cb402bd87ab4b20a2fc3",
+    "url": "/v9-geckos-team-12/static/media/best-friends-1534506_1920.ce7352f9.jpg"
+  },
+  {
+    "revision": "73f1c4c2bd7a5cec128b483af994814b",
+    "url": "/v9-geckos-team-12/static/media/clothing-3987617_1920.73f1c4c2.jpg"
+  },
+  {
+    "revision": "cd14afbd71b007314d39a8ff5275c464",
+    "url": "/v9-geckos-team-12/static/media/friends-3408314_1280.cd14afbd.jpg"
+  },
+  {
+    "revision": "2b72398938ebd134d8ba293f68a118e3",
+    "url": "/v9-geckos-team-12/static/media/hat-591973_1280.2b723989.jpg"
+  },
+  {
+    "revision": "0e1197f60c15e80543a4d71d84ca1d35",
+    "url": "/v9-geckos-team-12/static/media/high-heels-2561844_1920.0e1197f6.jpg"
+  },
+  {
+    "revision": "1455b90f3cc087719fdb97a6c3e182aa",
+    "url": "/v9-geckos-team-12/static/media/human.1455b90f.jpg"
+  },
+  {
+    "revision": "75d1dc039df72d11dba28378c12a8b9f",
+    "url": "/v9-geckos-team-12/static/media/lego-1044891_1280.75d1dc03.jpg"
+  },
+  {
+    "revision": "fb21b0b6339ea59e71c1ea38b422d6c3",
+    "url": "/v9-geckos-team-12/static/media/men-2425121_1280.fb21b0b6.jpg"
   },
   {
     "revision": "987b84570ea69ee660455b8d5e91f5f1",
@@ -118,5 +154,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "bc833e725c137257c2c42a789845d82f",
     "url": "/v9-geckos-team-12/static/media/roboto-latin-900italic.bc833e72.woff"
+  },
+  {
+    "revision": "c234e995ac480b45b186d622f03c6c09",
+    "url": "/v9-geckos-team-12/static/media/woman-1209590_1280.c234e995.jpg"
   }
 ]);
