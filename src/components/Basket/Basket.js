@@ -221,3 +221,14 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(Basket);
+
+// Swal.fire({
+//   position: "top",
+//   type: "success",
+//   title: "Item added to basket!",
+//   showConfirmButton: false,
+//   timer: 1300
+// });
+
+// npm install --save sweetalert2
+// import Swal from 'sweetalert2'
