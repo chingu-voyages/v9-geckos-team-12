@@ -45,10 +45,16 @@ const useStyles = makeStyles(theme => ({
     height: "90vh",
     [theme.breakpoints.down("xs")]: {
       height: "100%"
-    }
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: '100%'
+    },
   },
   MuiCardActions: {
-    justifyContent: "center"
+    justifyContent: "center",
+    [theme.breakpoints.down("sm")]: {
+      paddingBottom: '3.9rem'
+    },
   },
   slide: {
     margin: "0 auto",
