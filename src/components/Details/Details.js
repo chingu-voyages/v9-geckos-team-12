@@ -67,6 +67,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+// Listen for orientation changes
+window.addEventListener("orientationchange", function() {
+  // Announce the new orientation number
+  if(this.window.orientation === 90) {
+    alert(`This page does't support landscape mode. Please switch to orientation mode for optimal experience`)
+  }
+}, false);
 const Details = props => {
   const classes = useStyles();
   //when component did mount it fetches product by ID passed before by clicking Card
