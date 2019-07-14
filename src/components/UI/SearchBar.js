@@ -33,6 +33,7 @@ const useStyles = makeStyles(theme =>({
     [theme.breakpoints.down("xs")]: {
       width: '10vw',
       marginLeft: 0,
+      display: 'contents'
       
     },
 

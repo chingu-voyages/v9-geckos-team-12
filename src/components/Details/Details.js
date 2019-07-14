@@ -40,7 +40,11 @@ const useStyles = makeStyles(theme => ({
   paper : {
     paddingBottom: theme.spacing(4),
     width: '90vw',
-    textAlign: 'center'
+    textAlign: 'center',
+    height: '90vh',
+    [theme.breakpoints.down('xs')]: {
+      height: '100%'
+    },
   },
   MuiCardActions: {
      justifyContent:'center'

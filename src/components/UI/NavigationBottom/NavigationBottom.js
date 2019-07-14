@@ -26,7 +26,7 @@ const NavigationBottom = () => {
     const classes = useStyles();
     return (
         <div>
-            <Slide appear={true} direction='up' in={trigger ? false: true}>
+        
              <AppBar position="fixed" color="primary" className={classes.appBar}>
                  <Toolbar style={{alignSelf: 'center'}}>
                     <Box p={2}>
@@ -50,7 +50,7 @@ const NavigationBottom = () => {
                         </Box>
                     </Toolbar>
              </AppBar>
-             </Slide>
+                
         </div>
     )
 }
