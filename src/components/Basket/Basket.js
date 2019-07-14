@@ -15,11 +15,10 @@ const useStyles = makeStyles(theme => ({
     marginLeft: "10%",
     marginRight: "10%",
     marginTop: "50px",
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down("xs")]: {
       marginLeft: 0,
       marginRight: 0
-    },
-    
+    }
   },
   list: {
     listStyleType: "none"
@@ -89,7 +88,7 @@ const Basket = props => {
           </Container>
         ) : (
           <>
-            <Box>
+            <Box style={{ paddingLeft: 10 }}>
               <Typography variant='h6'>Your shopping bag:</Typography>
             </Box>
             <Grid container direction='column'>
