@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import { styled } from "@material-ui/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { makeStyles } from "@material-ui/core/styles";
-
+import Link from "@material-ui/core/Link";
 import storeSale from "../../img/store-sales.jpg";
 
 import storeSaleJacket from "../../img/jackets.jpg";
@@ -23,25 +23,33 @@ const useStyles = makeStyles({
       backgroundImage: `url(${storeSaleJacket})`,
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
-      backgroundPosition: "center"
+      backgroundPosition: "center",
+      flexGrow: "1",
+      position: "relative"
     },
     "&  #imageTwo": {
       backgroundImage: `url(${storeSaleTshirts})`,
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
-      backgroundPosition: "center"
+      backgroundPosition: "center",
+      flexGrow: "1",
+      position: "relative"
     },
     "&  #imageThree": {
       backgroundImage: `url(${storeSaleJeans})`,
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
-      backgroundPosition: "center"
+      backgroundPosition: "center",
+      flexGrow: "1",
+      position: "relative"
     },
     "&  #imageFour": {
       backgroundImage: `url(${storeSaleShoes})`,
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
-      backgroundPosition: "center"
+      backgroundPosition: "center",
+      flexGrow: "1",
+      position: "relative"
     }
   }
 });
@@ -57,7 +65,6 @@ const MyBoxSales = styled(Box)({
 });
 
 const SalesSmallBox = styled(Box)({
-  width: "12rem",
   height: "16rem",
   backgroundColor: "green",
   margin: "1rem"
@@ -116,7 +123,34 @@ function SalesBanner() {
   );
 }
 
-// Text to check it occasion
+//  Text to check it occasion
+
+const BoxOccasion = styled(Box)({
+  position: "absolute",
+  color: "Yellow",
+  backgroundColor: "gray",
+  transform: "rotate(-30deg)",
+  fontWeight: "bold",
+  padding: "0.5rem",
+  fontSize: "1.5rem",
+  top: "50%",
+  left: "1rem"
+});
+
+const BoxTextOccasion = styled(Box)({
+  fontWeight: "bold",
+  fontSize: "2rem"
+});
+
+function CheckOcasion() {
+  return (
+    <BoxOccasion>
+      <BoxTextOccasion>
+        <Link color="inherit">Check it Now</Link>
+      </BoxTextOccasion>
+    </BoxOccasion>
+  );
+}
 
 //FOUR BOXES BELOW
 
@@ -135,7 +169,7 @@ export default function SalesClothes() {
 
   if (matches) {
     finalStyle = smallerText;
-    maxLen = { width: "20rem" };
+    maxLen = { alignSelf: "normal" };
   } else {
     finalStyle = emptyStyle;
     maxLen = emptyStyle;
@@ -145,19 +179,16 @@ export default function SalesClothes() {
       <SalesBanner />
       <MyBoxSales style={finalStyle}>
         <SalesSmallBox id="imageOne" style={maxLen}>
-          bb{" "}
+          <CheckOcasion />
         </SalesSmallBox>
         <SalesSmallBox id="imageTwo" style={maxLen}>
-          {" "}
-          bb
+          <CheckOcasion />
         </SalesSmallBox>
         <SalesSmallBox id="imageThree" style={maxLen}>
-          {" "}
-          bb
+          <CheckOcasion />
         </SalesSmallBox>
         <SalesSmallBox id="imageFour" style={maxLen}>
-          {" "}
-          bb
+          <CheckOcasion />
         </SalesSmallBox>
       </MyBoxSales>
     </Box>
