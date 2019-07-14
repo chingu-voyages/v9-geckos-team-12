@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
   },
   thumbnail: {
     width: "8%",
-    minWidth: 110
+    minWidth: 100
   },
   basketItem: {
     display: "flex",
@@ -47,12 +47,17 @@ const useStyles = makeStyles(theme => ({
   },
   basketSummary: {
     marginBottom: "100px",
-    padding: 0
+    paddingRight: 0,
+    paddingLeft: 0
   },
   summaryContent: {
     flexGrow: 1,
     display: "flex",
-    justifyContent: "flex-end"
+    justifyContent: "flex-end",
+    textAlign: "justify",
+    [theme.breakpoints.down("sm")]: {
+      justifyContent: "center"
+    }
   }
 }));
 const Basket = props => {
@@ -82,7 +87,7 @@ const Basket = props => {
             <Box>
               <Typography variant='h6'>Your shopping bag:</Typography>
             </Box>
-            <Grid container direction='column' spacing={2}>
+            <Grid container direction='column'>
               {/* first grid item with basket items */}
               <Grid item>
                 <Grid
@@ -90,7 +95,6 @@ const Basket = props => {
                   direction='column'
                   justify='center'
                   alignItems='stretch'
-                  spacing={3}
                 >
                   <ul className={classes.ul}>
                     <CSSTransitionGroup
@@ -118,7 +122,7 @@ const Basket = props => {
                                 />
                                 <div className={classes.itemInfo}>
                                   <Box
-                                    style={{ marginRight: 25, minWidth: 80 }}
+                                    style={{ marginRight: 25, minWidth: 75 }}
                                   >
                                     <Typography>{item.name}</Typography>
                                   </Box>
@@ -149,14 +153,22 @@ const Basket = props => {
 
               <Grid item className={classes.basketSummary}>
                 <div className={classes.summaryContent}>
-                  <div>
+                  <div
+                    style={{
+                      justifyContent: "center",
+                      width: "200px",
+                      padding: "10px",
+                      boxShadow:
+                        "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
+                    }}
+                  >
                     <Box>
                       <Typography variant='h5' style={{ marginTop: 0 }}>
                         Order summary:
                       </Typography>
                     </Box>
                     <Box>
-                      <Typography variant='body1'>
+                      <Typography variant='body2'>
                         Sub-total: {subTotal.toFixed(2)} EUR
                       </Typography>
                     </Box>
@@ -170,7 +182,7 @@ const Basket = props => {
                       variant='body1'
                       style={{ margin: "20px 0px 20px 0px" }}
                     >
-                      Cost with shipment: {totalWithDelivery} EUR
+                      Total: {totalWithDelivery} EUR
                     </Typography>
                     {subTotal <= 0 ? null : (
                       <Button
@@ -183,7 +195,7 @@ const Basket = props => {
                       </Button>
                     )}
                     <div style={{ marginTop: "20px" }}>
-                      <Typography variant='body1'>We accept:</Typography>
+                      <Typography variant='body2'>We accept:</Typography>
                       <img
                         style={{ width: "166px" }}
                         src='https://assets.asosservices.com/asos-finance/images/marketing/single.png'
@@ -209,3 +221,14 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(Basket);
+
+// Swal.fire({
+//   position: "top",
+//   type: "success",
+//   title: "Item added to basket!",
+//   showConfirmButton: false,
+//   timer: 1300
+// });
+
+// npm install --save sweetalert2
+// import Swal from 'sweetalert2'
