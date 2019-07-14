@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     marginLeft: 50,
     [theme.breakpoints.down("xs")]: {
-      marginLeft: 0,
+      marginLeft: '3%',
       marginRight: 0
     }
   },
