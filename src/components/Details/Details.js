@@ -55,25 +55,29 @@ const useStyles = makeStyles(theme => ({
     width: 314,
     [theme.breakpoints.down("xs")]: {
       width: 290
+    },
+    [theme.breakpoints.down('sm')]: {
+
     }
   },
 
   slideImage: {
     width: 314,
+    height: 400,
     margin: "0 auto",
     [theme.breakpoints.down("xs")]: {
-      width: 290
-    }
+      width: 290,
+      height: 400
+    },
+
+    [theme.breakpoints.down("sm")]: {
+      width: 290,
+      height: 290
+    },
   }
 }));
 
-// Listen for orientation changes
-window.addEventListener("orientationchange", function() {
-  // Announce the new orientation number
-  if(this.window.orientation === 90) {
-    alert(`This page does't support landscape mode. Please switch to orientation mode for optimal experience`)
-  }
-}, false);
+
 const Details = props => {
   const classes = useStyles();
   //when component did mount it fetches product by ID passed before by clicking Card
@@ -123,7 +127,7 @@ const Details = props => {
                 className={classes.slideImage}
                 style={{
                   backgroundImage: `url('https://${item.media.images[0].url}')`,
-                  height: "400px"
+                  
                 }}
               />
             </div>
@@ -132,7 +136,7 @@ const Details = props => {
                 className={classes.slideImage}
                 style={{
                   backgroundImage: `url('https://${item.media.images[1].url}')`,
-                  height: "400px"
+                  
                 }}
               />
             </div>
@@ -141,7 +145,7 @@ const Details = props => {
                 className={classes.slideImage}
                 style={{
                   backgroundImage: `url('https://${item.media.images[2].url}')`,
-                  height: "400px"
+                  
                 }}
               />
             </div>
