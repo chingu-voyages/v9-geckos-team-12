@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   },
   img: {
     width: "25vw",
-    height: "100%",
+    height: "75%",
     margin: "0 auto",
     [theme.breakpoints.down("sm")]: {
       width: "90%",
