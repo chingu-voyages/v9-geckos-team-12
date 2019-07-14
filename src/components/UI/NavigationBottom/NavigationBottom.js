@@ -31,18 +31,17 @@ const NavigationBottom = () => {
                  <Toolbar style={{alignSelf: 'center'}}>
                     <Box p={2}>
                         <Typography variant="button" color="inherit"   style={{ borderRight: '0.1em solid ', paddingRight: '33px' }}>
-                            Our Catalog 
+                            Catalog
                         </Typography>
                         </Box>
-                        <Link to='/about-us' className={classes.a}>
-                      
+                       
                             
                         <Typography variant="button" color="inherit" style={{ borderRight: '0.1em solid ', paddingRight: '33px' }}>
-                              About Us
+                              Terms Of Use
                         </Typography>
                     
                        
-                            </Link>
+                         
                         <Box p={2}>
                         <Typography variant="button" color="inherit">
                              Privacy

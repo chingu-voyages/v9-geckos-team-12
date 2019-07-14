@@ -47,7 +47,11 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "space-between",
     alignItems: "center",
     flexGrow: 1,
-    marginLeft: 50
+    marginLeft: 50,
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: 0,
+      marginRight: 0
+    }
   },
   basketSummary: {
     marginBottom: "100px",
