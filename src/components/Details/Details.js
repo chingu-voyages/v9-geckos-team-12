@@ -44,6 +44,21 @@ const useStyles = makeStyles(theme => ({
   },
   MuiCardActions: {
      justifyContent:'center'
+  },
+  slide: {
+    margin: '0 auto',
+    width: 314,
+    [theme.breakpoints.down('xs')]: {
+      width: 290
+    }
+  },
+
+  slideImage: {
+    width: 314,
+    margin: '0 auto',
+    [theme.breakpoints.down('xs')]: {
+      width: 290
+    }
   }
 }));
 
@@ -86,34 +101,34 @@ const Details = props => {
       <CardHeader title={item.name} className={classes.cardHeader}/>
    
       <div className='slideshow'>
-        <Slide {...properties} style={{ width: "314px", margin: "0 auto" }}>
+        <Slide {...properties} className={classes.slide}>
           <div className='each-slide'>
             <div
+            className={classes.slideImage}
               style={{
                 backgroundImage: `url('https://${item.media.images[0].url}')`,
                 height: "400px",
-                width: "314px",
-                margin: "0 auto"
+               
               }}
             />
           </div>
           <div className='each-slide'>
             <div
+             className={classes.slideImage}
               style={{
                 backgroundImage: `url('https://${item.media.images[1].url}')`,
                 height: "400px",
-                width: "314px",
-                margin: "0 auto"
+              
               }}
             />
           </div>
           <div className='each-slide'>
             <div
+             className={classes.slideImage}
               style={{
                 backgroundImage: `url('https://${item.media.images[2].url}')`,
                 height: "400px",
-                width: "314px",
-                margin: "0 auto"
+                
               }}
             />
           </div>
