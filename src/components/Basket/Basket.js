@@ -14,7 +14,12 @@ const useStyles = makeStyles(theme => ({
   root: {
     marginLeft: "10%",
     marginRight: "10%",
-    marginTop: "50px"
+    marginTop: "50px",
+    [theme.breakpoints.down('xs')]: {
+      marginLeft: 0,
+      marginRight: 0
+    },
+    
   },
   list: {
     listStyleType: "none"
