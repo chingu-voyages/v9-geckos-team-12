@@ -60,7 +60,7 @@ const LandingPage = (props) => {
   return (
     <>
       <div style={{ textAlign: "center", marginTop: 20 }}>
-        <Typography variant='h5'>Welcome to Chingu Clothes Shop</Typography>
+        <Typography variant='h5' color='textPrimary'>Welcome to Chingu Clothes Shop</Typography>
       </div>
       <div className={classes.twoPics}>
         <div className={classes.picWithInfo}>
