@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme => ({
 
 const SignIn = props => {
   const classes = useStyles();
-  console.log(props)
+  
   return (
     <Container component="main" maxWidth="xs" style={{paddingBottom: '4.7rem'}}>
       <CssBaseline />

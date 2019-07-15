@@ -32,7 +32,7 @@ const initialState = {
 export default function productReducer(state = initialState, action) {
   switch (action.type) {
     case FETCH_PRODUCTS_BEGIN:
-      console.log("product begins", state.offset);
+
       return {
         ...state,
         loading: true,
@@ -40,7 +40,7 @@ export default function productReducer(state = initialState, action) {
       };
 
     case FETCH_PRODUCTS_SUCCESS:
-      console.log("product suuccess", state.offset);
+     
       return {
         ...state,
         loading: false,
