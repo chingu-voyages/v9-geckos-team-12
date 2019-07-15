@@ -2,10 +2,12 @@ import React from "react";
 import PopularBrands from "./PopularBrands";
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography, Box, Button } from "@material-ui/core";
-
+import { Link } from "react-router-dom";
 import YellowSuit from "../assets/yellowsuit.jpg";
 import BrownJacket from "../assets/brownjacket.jpg";
 import { typography } from "@material-ui/system";
+import { connect } from "react-redux";
+import { selectCategory } from '../actions/productActions'
 const useStyles = makeStyles(theme => ({
   twoPics: {
     display: "flex",
@@ -41,11 +43,20 @@ const useStyles = makeStyles(theme => ({
     marginTop: 20,
     marginBottom: 50,
     border: "2px solid black"
+  },
+  a: {
+    textDecoration: 'none',
+    color: 'inherit'
   }
 }));
 
-const LandingPage = () => {
+const LandingPage = (props) => {
   const classes = useStyles();
+  const handleSelectCategory = category => {
+    props.selectCategory(category);
+     
+  };
+  
   return (
     <>
       <div style={{ textAlign: "center", marginTop: 20 }}>
@@ -57,28 +68,32 @@ const LandingPage = () => {
 
           <div className={classes.textSection}>
             <Typography variant='body1'>Trendy tracksuits</Typography>
+            <Link to='/clothing' className={classes.a}>
             <Button
               variant='outlined'
               color='inherit'
-              onClick={() => alert("shop")}
+              onClick={() => handleSelectCategory('tracksuit')}
               className={classes.shopNowButton}
             >
               SHOP NOW
             </Button>
+            </Link>
           </div>
         </div>
         <div className={classes.picWithInfo}>
           <img src={BrownJacket} alt='brownjacket' className={classes.img} />
           <div className={classes.textSection}>
             <Typography variant='body1'>Brand new leather jackets</Typography>
+            <Link to='/clothing' className={classes.a}>
             <Button
               variant='outlined'
               color='inherit'
-              onClick={() => alert("shop")}
+              onClick={() => handleSelectCategory('Leather jacket')}
               className={classes.shopNowButton}
             >
               SHOP NOW
             </Button>
+            </Link>
           </div>
         </div>
       </div>
@@ -89,4 +104,16 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+const mapDispatchToProps = {
+  selectCategory
+};
+
+const mapStateToProps = state => ({
+  basket: state.products.basket
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LandingPage);
+
