@@ -84,8 +84,8 @@ function PopularBrands(props) {
           <MyStyledList component="nav" aria-label="Our Popular Marks">
             {brands.map((brand, i) => {
               return (
-                <Fragment>
-                  <Link to="/clothing" key={brand + i} style={{textDecoration: 'none', color: 'inherit'}}>
+                <Fragment key={brand + i}>
+                  <Link to="/clothing"  style={{textDecoration: 'none', color: 'inherit'}}>
                     <ListItem button  onClick={() => handleSelectCategory(brand)}>
                       <MyListItemText primary={brand} />
                     </ListItem>
