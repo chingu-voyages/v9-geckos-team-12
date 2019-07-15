@@ -28,7 +28,7 @@ const SortBy = props => {
         onClick={handleClick}
         color='inherit'
       >
-        <Typography variant='title'>SORT PRODUCTS</Typography>
+        <Typography >SORT PRODUCTS</Typography>
       </Button>
       <Menu
         id='simple-menu'
