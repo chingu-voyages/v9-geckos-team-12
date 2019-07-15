@@ -262,10 +262,11 @@ function NavigationTop(props) {
           <List component="nav" className={classes.list}>
             <ListItem   className={classes.listItem} >
               <ListItemText>
-              
+              <Link to="/" replace className={classes.a}>
                 <IconButton color='inherit' size='small' className={classes.homeButton}>
                <HomeIcon /> Home 
                 </IconButton>
+                </Link>
               
               </ListItemText>
             </ListItem>
