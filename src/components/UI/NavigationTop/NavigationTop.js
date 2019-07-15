@@ -107,7 +107,9 @@ const navigationStyles = makeStyles(theme => ({
         color: 'black'
       }
     
-  }
+  },
+
+ 
 }));
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -181,6 +183,7 @@ function NavigationTop(props) {
           </IconButton>
           <div className={classes.sideDrawer}>
             <SwipeableDrawer
+             
               open={toggleSideDrawer}
               onClose={() => sideDrawerToggle(false)}
               onOpen={() => null}
@@ -229,8 +232,8 @@ function NavigationTop(props) {
                   ))
                 ) : (
                   <Fragment>
-                    <Link to="/" className={classes.a} onClick={() => sideDrawerToggle(false)} >
-                    <IconButton>
+                    <Link to="/" className={classes.a} onClick={() => sideDrawerToggle(false)} style={{textAlign: 'center'}}>
+                    <IconButton >
                       <HomeIcon />
                     </IconButton>
                     </Link>
