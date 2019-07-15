@@ -29,6 +29,7 @@ import { selectCategory } from "../../../actions/productActions";
 import MenuIcon from "@material-ui/icons/Menu";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ShoppingCart from "@material-ui/icons/ShoppingCart";
+import HomeIcon from "@material-ui/icons/Home";
 import ArrowBack from "@material-ui/icons/ArrowBack";
 
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -42,12 +43,14 @@ const navigationStyles = makeStyles(theme => ({
     [theme.breakpoints.down("lg")]: {
       marginRight: theme.spacing(3)
     },
+    [theme.breakpoints.up('md')]: {
+      marginRight: 0
+    },
     [theme.breakpoints.down("md")]: {
       marginRight: 0
     },
     [theme.breakpoints.down("md")]: {
-      display: "none",
-
+      display: "none"
     }
   },
 
@@ -96,11 +99,19 @@ const navigationStyles = makeStyles(theme => ({
     "&:hover": {
       backgroundColor: "transparent"
     }
+  },
+
+  homeButton: {
+    
+      "&:hover": {
+        color: 'black'
+      }
+    
   }
 }));
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction='up' ref={ref} {...props} />;
+  return <Slide direction="up" ref={ref} {...props} />;
 });
 function NavigationTop(props) {
   const [toggleSideDrawer, setToggleSideDrawer] = useState(false);
@@ -137,7 +148,7 @@ function NavigationTop(props) {
     setAnchorEl(null);
   };
 
-  const sideDrawerToggle = (toggle) => {
+  const sideDrawerToggle = toggle => {
     setToggleSideDrawer(toggle);
     setAnchorEl(null);
   };
@@ -147,7 +158,7 @@ function NavigationTop(props) {
   };
 
   const handleSelectCategory = category => {
-    sideDrawerToggle(false)
+    sideDrawerToggle(false);
     props.selectCategory(category);
   };
 
@@ -156,17 +167,24 @@ function NavigationTop(props) {
   return (
     <div>
       <AppBar
-        position='static'
+        position="static"
         onMouseEnter={e => handleClose()}
-        color='primary'
+        color="primary"
       >
         <Toolbar>
           {/* SIDE DRAWER START */}
-          <IconButton className={classes.menuIcon} onClick={() => sideDrawerToggle(true)}>
+          <IconButton
+            className={classes.menuIcon}
+            onClick={() => sideDrawerToggle(true)}
+          >
             <MenuIcon />
           </IconButton>
           <div className={classes.sideDrawer}>
-            <SwipeableDrawer open={toggleSideDrawer} onClose={() => sideDrawerToggle(false)} onOpen={() => null}>
+            <SwipeableDrawer
+              open={toggleSideDrawer}
+              onClose={() => sideDrawerToggle(false)}
+              onOpen={() => null}
+            >
               <List className={classes.sideDrawerList}>
                 {menuOption === "activewear" ||
                 menuOption === "footwear" ||
@@ -187,12 +205,12 @@ function NavigationTop(props) {
                     <Slide
                       in={menuOption === null ? false : true}
                       key={`${option}${index}`}
-                      direction='right'
+                      direction="right"
                       mountOnEnter
                       unmountOnExit
                       timeout={260 * index}
                     >
-                      <Link to='/clothing' className={classes.a}>
+                      <Link to="/clothing" className={classes.a}>
                         <ListItem
                           button
                           onClick={e => handleSelectCategory(e.target.id)}
@@ -211,6 +229,11 @@ function NavigationTop(props) {
                   ))
                 ) : (
                   <Fragment>
+                    <Link to="/" className={classes.a} onClick={() => sideDrawerToggle(false)} >
+                    <IconButton>
+                      <HomeIcon />
+                    </IconButton>
+                    </Link>
                     <Button
                       onClick={(e, menuOption) => handleClick(e, "clothing")}
                     >
@@ -236,7 +259,16 @@ function NavigationTop(props) {
             </SwipeableDrawer>
           </div>
           {/* SIDE DRAWER END */}
-          <List component='nav' className={classes.list}>
+          <List component="nav" className={classes.list}>
+            <ListItem   className={classes.listItem} >
+              <ListItemText>
+              
+                <IconButton color='inherit' size='small' className={classes.homeButton}>
+               <HomeIcon /> Home 
+                </IconButton>
+              
+              </ListItemText>
+            </ListItem>
             <ListItem
               autoFocus={Boolean(anchorEl)}
               button
@@ -276,9 +308,9 @@ function NavigationTop(props) {
             {" "}
             {/* Using margin auto left inline to make sure the login button and cart stay on right*/}
             <ListItem button>
-              <Link to='/basket' replace className={classes.a}>
-                <IconButton aria-label='Show 4 new mails' color='inherit'>
-                  <Badge badgeContent={props.basket.length} color='secondary'>
+              <Link to="/basket" replace className={classes.a}>
+                <IconButton aria-label="Show 4 new mails" color="inherit">
+                  <Badge badgeContent={props.basket.length} color="secondary">
                     <ShoppingCart />
                   </Badge>
                 </IconButton>
@@ -291,7 +323,6 @@ function NavigationTop(props) {
                 </ListItemText>
               </Link>
             </ListItem>
-         
           </List>
           {toggleSideDrawer || anchorEl === false ? null : (
             <Menu
@@ -307,7 +338,11 @@ function NavigationTop(props) {
                 menuOption
               ] /* Using ternary operator to make sure items are available otherwise we get an error because items are initially null */
                 ? options[menuOption].map((option, index) => (
-                    <Link to='/clothing' className={classes.a} key={`${option}${index}`}>
+                    <Link
+                      to="/clothing"
+                      className={classes.a}
+                      key={`${option}${index}`}
+                    >
                       <MenuItem
                         className={classes.menuItem}
                         onClick={e => {
@@ -319,7 +354,7 @@ function NavigationTop(props) {
                         style={{ minHeight: "3px" }}
                       >
                         <Typography
-                          variant='caption'
+                          variant="caption"
                           style={{ pointerEvents: "none" }}
                         >
                           {" "}
