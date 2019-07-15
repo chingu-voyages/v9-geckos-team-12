@@ -26,9 +26,9 @@ const SortBy = props => {
         aria-controls='simple-menu'
         aria-haspopup='true'
         onClick={handleClick}
-        color='textPrimary'
+        color='inherit'
       >
-        <Typography variant='subtitle'>SORT PRODUCTS</Typography>
+        <Typography variant='title'>SORT PRODUCTS</Typography>
       </Button>
       <Menu
         id='simple-menu'
