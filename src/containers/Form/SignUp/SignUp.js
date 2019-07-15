@@ -140,7 +140,8 @@ const SignUp = props => {
               <Link
                 href="#"
                 variant="body2"
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault()
                   props.dispatch(signInAction());
                 }}
               >
