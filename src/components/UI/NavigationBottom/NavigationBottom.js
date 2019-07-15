@@ -30,14 +30,14 @@ const NavigationBottom = () => {
              <AppBar position="fixed" color="primary" className={classes.appBar}>
                  <Toolbar style={{alignSelf: 'center'}}>
                     <Box p={2}>
-                        <Typography variant="button" color="inherit"   style={{ borderRight: '0.1em solid ', paddingRight: '33px' }}>
+                        <Typography variant="button" color="inherit"   style={{  paddingRight: '33px' }}>
                             Catalog
                         </Typography>
                         </Box>
                        
                             
-                        <Typography variant="button" color="inherit" style={{ borderRight: '0.1em solid ', paddingRight: '33px' }}>
-                              Terms Of Use
+                        <Typography variant="button" color="inherit" style={{  paddingRight: '33px' }}>
+                              Careers
                         </Typography>
                     
                        

@@ -2,6 +2,7 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import Typography from '@material-ui/core/Typography'
 import { connect } from "react-redux";
 import {
   sortItemsByPriceAscending,
@@ -25,9 +26,9 @@ const SortBy = props => {
         aria-controls='simple-menu'
         aria-haspopup='true'
         onClick={handleClick}
-        color='secondary'
+        color='textPrimary'
       >
-        SORT PRODUCTS
+        <Typography variant='subtitle'>SORT PRODUCTS</Typography>
       </Button>
       <Menu
         id='simple-menu'
