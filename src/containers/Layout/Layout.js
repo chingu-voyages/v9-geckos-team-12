@@ -19,20 +19,8 @@ import { teal } from "@material-ui/core/colors";
 // Layout will render NavigationTop, NavigationBottom,ClothesList
 
 const theme = createMuiTheme({
-  palette: {
-    primary: {
-      light: "#a4a4a4",
-      main: "#757575",
-      dark: "#494949",
-      contrastText: "#fff"
-    },
-    secondary: {
-      light: "#819ca9",
-      main: "#546e7a",
-      dark: "#29434e",
-      contrastText: "#fff"
-    }
-  },
+ 
+
   overrides: {
     MuiPaper: {
       root: {
