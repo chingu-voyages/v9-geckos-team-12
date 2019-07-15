@@ -11,15 +11,27 @@ import {
   addItemToBasket,
   cardSelectByID
 } from "../../../actions/productActions";
+import { Box } from "@material-ui/core";
 
 const useStyles = makeStyles({
-  card: {
-    maxWidth: 345,
-    marginTop: "20px",
-    marginBottom: "20px"
+  card: {},
+  itemImage: {
+    height: "100%",
+    width: "100%"
   },
-  media: {
-    height: 420
+  titleBox: {
+    padding: "7px 8px 0px 8px"
+  },
+  priceBox: {
+    height: 35,
+    padding: "0 8px 0 8px",
+    
+  },
+  titleText: {
+    height: 44,
+    overflow: "hidden",
+    wordWrap: "break-word",
+    lineHeight: "22px"
   }
 });
 
@@ -28,16 +40,18 @@ function CardComponent({ ...props }) {
 
   return (
     <Card className={classes.card}>
-      <Link to='/details'>
+      <Link to='/details' style={{ textDecoration: "none", color: "black" }}>
         <CardActionArea onClick={() => props.cardSelectByID(props.id)}>
-          <CardMedia className={classes.media} image={props.img} />
-          <CardContent>
-            <Typography gutterBottom variant='caption' component='h2'>
-              {props.name}
+          <CardMedia>
+            <img src={props.img} alt='img' className={classes.itemImage} />
+          </CardMedia>
+          <CardContent className={classes.titleBox}>
+            <Typography gutterBottom variant='caption'>
+              <Box className={classes.titleText}>{props.name}</Box>
             </Typography>
-            <Typography variant='body2' color='textSecondary' component='p'>
-              Price: {props.price}
-            </Typography>
+          </CardContent>
+          <CardContent className={classes.priceBox}>
+            <Typography varian='subtitle' color='secondary'>{props.price}</Typography>
           </CardContent>
         </CardActionArea>
       </Link>
