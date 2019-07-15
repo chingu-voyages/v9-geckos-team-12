@@ -140,11 +140,12 @@ const SignUp = props => {
               <Link
                 href="#"
                 variant="body2"
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault()
                   props.dispatch(signInAction());
                 }}
               >
-                {"Don't have an account? Sign Up"}
+                {"Already have an account? Sign In"}
               </Link>
             </Grid>
           </Grid>

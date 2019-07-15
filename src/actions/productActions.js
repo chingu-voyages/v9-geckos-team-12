@@ -9,10 +9,17 @@ export const FETCH_READY = "FETCH_READY";
 export const ADD_BASKET_COUNT = "ADD_BASKET_COUNT";
 export const ADD_ITEM_TO_BASKET = "ADD_ITEM_TO_BASKET";
 export const REMOVE_ITEM_FROM_BASKET = "REMOVE_ITEM_FROM_BASKET";
+export const FETCH_MORE_PRODUCTS_SUCCESS = "FETCH_MORE_PRODUCTS_SUCCESS";
+export const FETCH_MORE_PRODUCTS_BEGIN = "FETCH_MORE_PRODUCTS_BEGIN";
+export const UPDATE_OFFSET = "UPDATE_OFFSET";
+export const SORT_ITEMS_BY_PRICE_ASCENDING = "SORT_ITEMS_BY_PRICE_ASCENDING";
+export const SORT_ITEMS_BY_PRICE_DESCENDING = "SORT_ITEMS_BY_PRICE_DESCENDING";
+export const FETCH_ITEM_BY_ID_BEGIN = "FETCH_ITEM_BY_ID_BEGIN";
 
 const config = {
   headers: {
-    "X-RapidAPI-Key": "07ea04e210mshdcdcdfaeb0a8a2fp1b7079jsnb16592877577"
+    "X-RapidAPI-Key": "07ea04e210mshdcdcdfaeb0a8a2fp1b7079jsnb16592877577",
+    "X-RapidAPI-Host": "brianiswu-unofficial-asos-com-v1.p.rapidapi.com"
   }
 };
 
@@ -49,9 +56,17 @@ export const fetchSingleProductSuccess = item => ({
   payload: { item }
 });
 
+export const fetchMoreProductsBegin = () => ({
+  type: FETCH_MORE_PRODUCTS_BEGIN
+});
+
+export const fetchItemByIDBegin = () => ({
+  type: FETCH_ITEM_BY_ID_BEGIN
+});
+
 export function fetchProductByID(id) {
   return dispatch => {
-    dispatch(fetchProductsBegin());
+    dispatch(fetchItemByIDBegin());
     return axios
       .get(
         `https://brianiswu-unofficial-asos-com-v1.p.rapidapi.com/product/catalogue/v2/products/${id}?lang=en-GB&productid=${id}&store=COM&sizeschema=EU&currency=EUR`,
@@ -71,7 +86,7 @@ export function fetchProducts(category) {
     dispatch(fetchProductsBegin());
     return axios
       .get(
-        `https://brianiswu-unofficial-asos-com-v1.p.rapidapi.com/product/search/v1/?q=${category}&lang=en-GB&currency=EUR&store=1`,
+        `https://brianiswu-unofficial-asos-com-v1.p.rapidapi.com/product/search/v1/?q=${category}&lang=en-GB&currency=EUR&store=1&limit=40`,
         config
       )
       .then(res => {
@@ -93,4 +108,37 @@ export const addItemToBasket = () => ({
 export const removeItemFromBasket = id => ({
   type: REMOVE_ITEM_FROM_BASKET,
   id
+});
+
+export function fetchMoreProducts(category, offset) {
+  return dispatch => {
+    dispatch(fetchMoreProductsBegin());
+    return axios
+      .get(
+        `https://brianiswu-unofficial-asos-com-v1.p.rapidapi.com/product/search/v1/?q=${category}&lang=en-GB&currency=EUR&store=1&limit=40&offset=${offset}`,
+        config
+      )
+      .then(res => {
+        dispatch(fetchMoreProductsSuccess(res.data.products));
+      })
+      .catch(error => dispatch(fetchProductsFailure(error)));
+  };
+}
+
+export const fetchMoreProductsSuccess = products => ({
+  type: FETCH_MORE_PRODUCTS_SUCCESS,
+  payload: { products }
+});
+
+export const updateOffset = offset => ({
+  type: UPDATE_OFFSET,
+  offset
+});
+
+export const sortItemsByPriceAscending = () => ({
+  type: SORT_ITEMS_BY_PRICE_ASCENDING
+});
+
+export const sortItemsByPriceDescending = () => ({
+  type: SORT_ITEMS_BY_PRICE_DESCENDING
 });
