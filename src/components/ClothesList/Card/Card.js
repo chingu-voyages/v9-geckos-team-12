@@ -25,7 +25,7 @@ const useStyles = makeStyles({
   priceBox: {
     height: 35,
     padding: "0 8px 0 8px",
-    color: "green"
+    
   },
   titleText: {
     height: 44,
@@ -51,7 +51,7 @@ function CardComponent({ ...props }) {
             </Typography>
           </CardContent>
           <CardContent className={classes.priceBox}>
-            <Typography>{props.price}</Typography>
+            <Typography varian='subtitle' color='secondary'>{props.price}</Typography>
           </CardContent>
         </CardActionArea>
       </Link>

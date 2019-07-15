@@ -159,7 +159,7 @@ const Details = props => {
         </div>
 
         <CardContent>
-          <Typography variant='body2' gutterBottom>
+          <Typography variant='body2'  gutterBottom>
             Price: {item.price.current.text}
           </Typography>
 
