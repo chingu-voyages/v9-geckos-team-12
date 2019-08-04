@@ -1,6 +1,6 @@
 # Clothes Online Store
 
-Clothes store made with React, Redux, MaterialUI during Chingu Voyage 9
+Clothes store made with React, Redux, MaterialUI during Chingu Voyage 9 <br>
 For Agile project management we were using ZenHub 
 
 ## Built With
