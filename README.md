@@ -7,7 +7,7 @@ For Agile project management we were using ZenHub
 https://chingu-voyages.github.io/v9-geckos-team-12/ 
 
 
-Note: currently offline due to broken API on [RapidAPI](https://rapidapi.com/brianiswu/api/unofficial-asos-com)
+⚠️ Note: currently offline due to broken API on [RapidAPI](https://rapidapi.com/brianiswu/api/unofficial-asos-com)
 
 
 
