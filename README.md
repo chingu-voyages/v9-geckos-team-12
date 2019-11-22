@@ -3,9 +3,13 @@
 Clothes store made with React, Redux, MaterialUI during Chingu Voyage 9 <br>
 For Agile project management we were using ZenHub 
 
-## Live demo
+## Live demo 
+https://chingu-voyages.github.io/v9-geckos-team-12/ 
 
-https://chingu-voyages.github.io/v9-geckos-team-12/
+
+Note: currently offline due to broken API on [RapidAPI](https://rapidapi.com/brianiswu/api/unofficial-asos-com)
+
+
 
 ## Built With
 * [Redux](https://redux.js.org) - A predictable state container for JavaScript apps
